@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://newsapi.org/v2/'
+    baseURL: 'http://localhost:5000/api/v1/'
 })

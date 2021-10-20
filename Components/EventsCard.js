@@ -3,13 +3,12 @@ import {View, StyleSheet, Text, Image, Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
-const NewsCard = ({item}) => {
+const EventsCard = ({item}) => {
     return (
         <View style = {styles.cardView}>
-            <Text style = {styles.title}>{item.title}</Text>
-            <Text style = {styles.author}>{item.author}</Text>
-            <Image style = {styles.image} source = {{uri: item.urlToImage}}/>
-            <Text style = {styles.description}>{item.description}</Text>
+            <Text style = {styles.title}>{item.eventName}</Text>
+            <Text style = {styles.author}>{item.clubName}</Text>
+            <Text style = {styles.description}>{item.desc}</Text>
         </View>
     )
 };
@@ -44,12 +43,6 @@ const styles = StyleSheet.create({
         fontSize: 18
 
     },
-    image: {
-        height: height / 6,
-        marginLeft: width * 0.05,
-        marginRight: width * 0.05,
-        marginVertical: height * 0.02
-    }
 });
 
-export default NewsCard;
+export default EventsCard;
