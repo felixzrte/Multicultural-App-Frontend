@@ -3,12 +3,12 @@ import {View, StyleSheet, Text, Image, Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
-const EventsCard = ({item}) => {
+const EventsCard = ({ event }) => {
     return (
         <View style = {styles.cardView}>
-            <Text style = {styles.title}>{item.eventName}</Text>
-            <Text style = {styles.author}>{item.clubName}</Text>
-            <Text style = {styles.description}>{item.desc}</Text>
+            <Text style = {styles.title}>{`${event.eventName}`}</Text>
+            <Text style = {styles.author}>{`${event.clubName}`}</Text>
+            <Text style = {styles.description}>{`${event.desc}`}</Text>
         </View>
     )
 };
