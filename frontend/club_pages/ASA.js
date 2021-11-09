@@ -121,12 +121,12 @@ function AppBar(){
 //StyleSheet
 const styles = StyleSheet.create({
   app: {
-    backgroundColor: '#191970'
+    backgroundColor: '##ff69b4'
     ,position: 'relative'
 
   },
   back: {
-    backgroundColor: 'white'
+    backgroundColor: '#ff69b4'
 
   },
   heading: {
