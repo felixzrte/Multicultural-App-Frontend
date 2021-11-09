@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, Dimensions } from 'react-native';
-
+import {View, StyleSheet, Text, Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
-const EventsCard = ({ event }) => {
+
+const EventCard = ({item}) => {
     return (
-        <View style = {styles.cardView}>
-            <Text style = {styles.title}>{`${event.eventName}`}</Text>
-            <Text style = {styles.author}>{`${event.clubName}`}</Text>
-            <Text style = {styles.description}>{`${event.desc}`}</Text>
+        <View style={styles.cardView}>
+            <Text style={styles.eventName}>{item.eventName}</Text>
+            <Text style={styles.clubName}>{item.clubName}</Text>
+            <Text style={styles.desc}>{item.desc}</Text>
         </View>
     )
-};
+}
 
 const styles = StyleSheet.create({
     cardView: {
@@ -23,26 +23,26 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2
     },
-    title: {
+    eventName: {
         marginHorizontal: width * 0.05,
         marginVertical: width * 0.03,
         color: 'black',
         fontSize: 20,
         fontWeight: 'bold'
     },
-    author: {
+    clubName: {
         marginBottom: width * 0.0,
         marginHorizontal: width * 0.05,
         fontSize: 15,
         color: 'gray'
     },
-    description: {
+    desc: {
         marginVertical: width * 0.05,
-        marginHorizontal: width * 0.02,
+        marginHorizontal: width * 0.05,
         color: 'gray',
-        fontSize: 18
+        fontSize: 13
 
     },
 });
 
-export default EventsCard;
+export default EventCard;
