@@ -91,7 +91,7 @@ function AppBar(){
 //StyleSheet
 const styles = StyleSheet.create({
   app: {
-    backgroundColor: '#191970'
+    backgroundColor: '#F9FC78'
     ,position: 'relative'
 
   },
