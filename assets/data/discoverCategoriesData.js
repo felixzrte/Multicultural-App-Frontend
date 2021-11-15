@@ -5,15 +5,11 @@ const discoverCategoriesData = [
   },
   {
     id: 'discover-categories-2',
-    text: 'Destinations',
+    text: 'This Week',
   },
   {
     id: 'discover-categories-3',
-    text: 'Cities',
-  },
-  {
-    id: 'discover-categories-4',
-    text: 'Experiences',
+    text: 'This Month',
   },
 ];
 

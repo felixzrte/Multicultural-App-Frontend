@@ -1,4 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import {
   View,
@@ -15,6 +16,9 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import eventAPI from '../apis/axios';
+import discoverCategoriesData from '../assets/data/discoverCategoriesData';
+import Carousel from 'react-native-snap-carousel';
+
 const {width, height} = Dimensions.get('window');
 
 Feather.loadFont();
@@ -42,7 +46,17 @@ const Home = ({navigation}) => {
   if (!events) {
     return null;
   }
-
+  const renderCategoriesData = ({item}) => {
+    return (
+      <ScrollView>
+        <View>
+          <View style={styles.categoryBox}>
+            <Text>{item.text}</Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  };
   const renderDiscoverItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -58,6 +72,7 @@ const Home = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -76,13 +91,14 @@ const Home = ({navigation}) => {
         {/* Discover */}
         <View style={styles.discoverWrapper}>
           <Text style={styles.discoverTitle}>Events</Text>
-          <View style={styles.discoverCategoriesWrapper}>
-            <Text
-              style={[styles.discoverCategoriesText, {color: colors.orange}]}>
-              All
-            </Text>
-            <Text style={styles.discoverCategoriesText}>This Week</Text>
-            <Text style={styles.discoverCategoriesText}>This Month</Text>
+          <View style={styles.categoriesWrapper}>
+            <FlatList
+              data={discoverCategoriesData}
+              renderItem={renderCategoriesData}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
           <View style={styles.discoverItemsWrapper}>
             <FlatList
@@ -121,37 +137,34 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     fontSize: 32,
   },
-  discoverCategoriesWrapper: {
-    marginHorizontal: 20,
+  categoriesWrapper: {
+    paddingTop: 11,
     flexDirection: 'row',
-    marginTop: 20,
   },
-  discoverCategoriesText: {
-    marginRight: 20,
-    fontFamily: 'Lato-Regular',
-    fontSize: 16,
-    color: colors.gray,
+  categoryBox: {
+    height: 28,
+    width: 89,
+    borderWidth: 0.7,
+    borderColor: '#2c2c2e',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 20,
+    marginRight: 10,
+    marginVertical: 5,
   },
   discoverItemsWrapper: {
     paddingVertical: 20,
   },
-  discoverItem: {
-    width: 170,
-    height: 250,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    marginRight: 20,
-  },
   // ================================
   cardView: {
-    width: 170,
-    height: 250,
+    width: 200,
+    height: 300,
     justifyContent: 'flex-end',
     paddingHorizontal: 10,
     paddingVertical: 15,
     marginRight: 10,
-    marginLeft: 10,
+    marginLeft: 20,
     backgroundColor: 'white',
     borderRadius: width * 0.05,
     shadowColor: '#000',
