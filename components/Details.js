@@ -18,55 +18,33 @@ const Details = ({route, navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <ImageBackground source={item.imageBig} style={styles.backgroundImage}>
+        <View source={item.imageBig} style={styles.backgroundImage}>
           <TouchableOpacity
             style={styles.backIcon}
             onPress={() => navigation.goBack()}>
             <Entypo name="chevron-left" size={32} color={colors.white} />
           </TouchableOpacity>
           <View style={styles.titlesWrapper}>
-            <Text style={styles.itemTitle}>{item.title}</Text>
+            <Text style={styles.itemTitle}>{item.eventName}</Text>
             <View style={styles.locationWrapper}>
-              <Entypo name="location-pin" size={24} color={colors.white} />
+              <Entypo name="location-pin" size={24} color={colors.black} />
               <Text style={styles.locationText}>{item.location}</Text>
             </View>
           </View>
-        </ImageBackground>
+        </View>
         <View style={styles.descriptionWrapepr}>
           <View style={styles.heartWrapper}>
             <Entypo name="heart" size={32} color={colors.orange} />
           </View>
           <View style={styles.descriptionTextWrapper}>
             <Text style={styles.descriptionTitle}>Description</Text>
-            <Text style={styles.descriptionText}>{item.description}</Text>
+            <Text style={styles.descriptionText}>{item.desc}</Text>
           </View>
-          <View style={styles.infoWrapper}>
-            <View style={styles.infoItem}>
-              <Text style={styles.infoTitle}>PRICE</Text>
-              <View style={styles.infoTextWrapper}>
-                <Text style={styles.infoText}>${item.price}</Text>
-                <Text style={styles.infoSubText}>/person</Text>
-              </View>
-            </View>
-            <View style={styles.infoItem}>
-              <Text style={styles.infoTitle}>RATING</Text>
-              <View style={styles.infoTextWrapper}>
-                <Text style={styles.infoText}>{item.rating}</Text>
-                <Text style={styles.infoSubText}>/5</Text>
-              </View>
-            </View>
-            <View style={styles.infoItem}>
-              <Text style={styles.infoTitle}>DURATION</Text>
-              <View style={styles.infoTextWrapper}>
-                <Text style={styles.infoText}>{item.duration}</Text>
-                <Text style={styles.infoSubText}> hours</Text>
-              </View>
-            </View>
-          </View>
+          <View style={styles.infoWrapper}></View>
           <TouchableOpacity
             style={styles.buttonWrapper}
-            onPress={() => alert('You Booked a Trip')}>
-            <Text style={styles.buttonText}>Book Now</Text>
+            onPress={() => alert('You Have Signed Up')}>
+            <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -100,7 +78,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontFamily: 'Lato-Bold',
     fontSize: 32,
-    color: colors.white,
+    color: colors.black,
   },
   locationWrapper: {
     flexDirection: 'row',
@@ -110,7 +88,7 @@ const styles = StyleSheet.create({
   locationText: {
     fontFamily: 'Lato-Bold',
     fontSize: 16,
-    color: colors.white,
+    color: colors.black,
   },
   heartWrapper: {
     position: 'absolute',
@@ -152,27 +130,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
     justifyContent: 'space-between',
-  },
-  infoItem: {},
-  infoTitle: {
-    fontFamily: 'Lato-Bold',
-    fontSize: 12,
-    color: colors.gray,
-  },
-  infoTextWrapper: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginTop: 5,
-  },
-  infoText: {
-    fontFamily: 'Lato-Bold',
-    fontSize: 24,
-    color: colors.orange,
-  },
-  infoSubText: {
-    fontFamily: 'Lato-Bold',
-    fontSize: 14,
-    color: colors.gray,
   },
   buttonWrapper: {
     marginHorizontal: 20,
