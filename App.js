@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Home from './components/Home';
 import Details from './components/Details';
-import Liked from './components/Liked';
+import Bookmarked from './components/Bookmarked';
 import Profile from './components/Profile';
 import colors from './assets/colors/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -38,11 +38,11 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Liked"
-        component={Liked}
+        name="Bookmarked"
+        component={Bookmarked}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="heart" size={32} color={color} />
+            <Entypo name="bookmark" size={32} color={color} />
           ),
         }}
       />

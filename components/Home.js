@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
@@ -9,6 +10,8 @@ import {
   Image,
   ImageBackground,
   Dimensions,
+  Icon,
+  Animated,
 } from 'react-native';
 import colors from '../assets/colors/colors';
 import Feather from 'react-native-vector-icons/Feather';
@@ -17,15 +20,17 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import eventAPI from '../apis/axios';
 import discoverCategoriesData from '../assets/data/discoverCategoriesData';
-import Carousel from 'react-native-snap-carousel';
+import discoverData from '../assets/data/discoverData';
 
-const {width, height} = Dimensions.get('window');
-
+const {width} = Dimensions.get('screen');
+const cardWidth = width / 1.5;
 Feather.loadFont();
 Entypo.loadFont();
 
 const Home = ({navigation}) => {
   const [events, setEvents] = useState([]);
+  const [activeCardIndex, setActiveCardIndex] = React.useState(0);
+  const scrollX = React.useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     getEventsFromAPI();
@@ -46,6 +51,7 @@ const Home = ({navigation}) => {
   if (!events) {
     return null;
   }
+
   const renderCategoriesData = ({item}) => {
     return (
       <ScrollView>
@@ -57,18 +63,50 @@ const Home = ({navigation}) => {
       </ScrollView>
     );
   };
-  const renderDiscoverItem = ({item}) => {
+  const renderCard = ({item, index}) => {
+    const inputRange = [
+      (index - 1) * cardWidth,
+      index * cardWidth,
+      (index + 1) * cardWidth,
+    ];
+    const opacity = scrollX.interpolate({
+      inputRange,
+      outputRange: [0.7, 0, 0.7],
+    });
+    const scale = scrollX.interpolate({
+      inputRange,
+      outputRange: [0.8, 1, 0.8],
+    });
     return (
       <TouchableOpacity
+        disabled={activeCardIndex != index}
+        activeOpacity={1}
         onPress={() =>
           navigation.navigate('Details', {
             item: item,
           })
         }>
-        <View style={styles.cardView}>
-          <Text style={styles.eventName}>{item.eventName}</Text>
-          <Text style={styles.clubName}>{item.clubName}</Text>
-        </View>
+        <Animated.View style={{...styles.card, transform: [{scale}]}}>
+          <Animated.View style={{...styles.cardOverlay, opacity}} />
+          <View style={styles.cardDateContainer}>
+            <Text style={styles.cardDateText}>Date</Text>
+          </View>
+          <Image
+            source={require('../assets/images/mcc.png')}
+            style={styles.cardImage}
+          />
+          <View style={styles.cardDetailsContainer}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View>
+                <Text style={styles.cardEventName}>{item.eventName}</Text>
+                <Text style={styles.cardClubName}>{item.clubName}</Text>
+                <Text style={styles.cardLocation}>{item.location}</Text>
+                <Text style={styles.cardTime}>Time</Text>
+              </View>
+            </View>
+          </View>
+        </Animated.View>
       </TouchableOpacity>
     );
   };
@@ -88,9 +126,9 @@ const Home = ({navigation}) => {
           </View>
         </SafeAreaView>
 
-        {/* Discover */}
-        <View style={styles.discoverWrapper}>
-          <Text style={styles.discoverTitle}>Events</Text>
+        {/* Home */}
+        <View style={styles.homeContainer}>
+          <Text style={styles.homeTitle}>Home</Text>
           <View style={styles.categoriesWrapper}>
             <FlatList
               data={discoverCategoriesData}
@@ -100,11 +138,26 @@ const Home = ({navigation}) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-          <View style={styles.discoverItemsWrapper}>
-            <FlatList
+          <View style={styles.eventItemContainer}>
+            <Animated.FlatList
+              onMomentumScrollEnd={(e) => {
+                setActiveCardIndex(
+                  Math.round(e.nativeEvent.contentOffset.x / cardWidth),
+                );
+              }}
+              onScroll={Animated.event(
+                [{nativeEvent: {contentOffset: {x: scrollX}}}],
+                {useNativeDriver: true},
+              )}
               data={events.events}
               keyExtractor={(item, index) => 'key' + index}
-              renderItem={renderDiscoverItem}
+              contentContainerStyle={{
+                paddingVertical: 10,
+                paddingLeft: 20,
+                paddingRight: cardWidth / 2 - 40,
+              }}
+              renderItem={renderCard}
+              snapToInterval={cardWidth}
               horizontal
               showsHorizontalScrollIndicator={false}
             />
@@ -128,15 +181,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   // DISCOVER ======================
-  discoverWrapper: {
+  homeContainer: {
     // marginHorizontal: 20,
     marginTop: 20,
   },
-  discoverTitle: {
+  homeTitle: {
     marginHorizontal: 20,
     fontFamily: 'Lato-Bold',
     fontSize: 32,
   },
+
+  eventItemContainer: {
+    paddingVertical: 20,
+  },
+  // CATEGORIES ===================
   categoriesWrapper: {
     paddingTop: 11,
     flexDirection: 'row',
@@ -153,43 +211,72 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginVertical: 5,
   },
-  discoverItemsWrapper: {
-    paddingVertical: 20,
+  // CARD ================================
+  card: {
+    height: 350,
+    width: cardWidth,
+    elevation: 15,
+    marginRight: 20,
+    borderRadius: 15,
+    backgroundColor: colors.gray,
   },
-  // ================================
-  cardView: {
-    width: 200,
-    height: 300,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    marginRight: 10,
-    marginLeft: 20,
-    backgroundColor: 'white',
-    borderRadius: width * 0.05,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
+  cardImage: {
+    height: 250,
+    width: '100%',
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
-  eventName: {
-    marginHorizontal: width * 0.05,
-    marginVertical: width * 0.03,
-    color: 'black',
-    fontSize: 20,
-    fontWeight: 'bold',
+  cardDateContainer: {
+    height: 40,
+    width: 80,
+    backgroundColor: colors.white,
+    position: 'absolute',
+    zIndex: 1,
+    right: 0,
+    borderTopRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  clubName: {
-    marginBottom: width * 0.0,
-    marginHorizontal: width * 0.05,
+  cardDateText: {
+    color: colors.black,
     fontSize: 15,
-    color: 'gray',
   },
-  desc: {
-    marginVertical: width * 0.05,
-    marginHorizontal: width * 0.05,
-    color: 'gray',
-    fontSize: 13,
+  cardDetailsContainer: {
+    height: 120,
+    borderRadius: 15,
+    backgroundColor: colors.white,
+    position: 'absolute',
+    bottom: 0,
+    padding: 20,
+    width: '100%',
+  },
+  cardEventName: {
+    fontWeight: 'bold',
+    fontSize: 17,
+  },
+  cardClubName: {
+    marginTop: 5,
+    color: colors.darkGray,
+    fontSize: 12,
+  },
+  cardLocation: {
+    marginTop: 5,
+    color: colors.darkGray,
+    fontSize: 12,
+  },
+  cardTime: {
+    marginTop: 5,
+    color: colors.darkGray,
+    fontSize: 12,
+  },
+  cardOverlay: {
+    height: 350,
+    backgroundColor: colors.white,
+    position: 'absolute',
+    zIndex: 100,
+    width: cardWidth,
+    borderRadius: 15,
   },
 });
 
