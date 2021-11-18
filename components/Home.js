@@ -86,27 +86,34 @@ const Home = ({navigation}) => {
             item: item,
           })
         }>
-        <Animated.View style={{...styles.card, transform: [{scale}]}}>
-          <Animated.View style={{...styles.cardOverlay, opacity}} />
-          <View style={styles.cardDateContainer}>
-            <Text style={styles.cardDateText}>Date</Text>
-          </View>
-          <Image
-            source={require('../assets/images/mcc.png')}
-            style={styles.cardImage}
-          />
-          <View style={styles.cardDetailsContainer}>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <View>
-                <Text style={styles.cardEventName}>{item.eventName}</Text>
-                <Text style={styles.cardClubName}>{item.clubName}</Text>
-                <Text style={styles.cardLocation}>{item.location}</Text>
-                <Text style={styles.cardTime}>Time</Text>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: cardWidth,
+          }}>
+          <Animated.View style={{...styles.card, transform: [{scale}]}}>
+            <Animated.View style={{...styles.cardOverlay, opacity}} />
+            <View style={styles.cardDateContainer}>
+              <Text style={styles.cardDateText}>Date</Text>
+            </View>
+            <Image
+              source={require('../assets/images/mcc.png')}
+              style={styles.cardImage}
+            />
+            <View style={styles.cardDetailsContainer}>
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View>
+                  <Text style={styles.cardEventName}>{item.eventName}</Text>
+                  <Text style={styles.cardClubName}>{item.clubName}</Text>
+                  <Text style={styles.cardLocation}>{item.location}</Text>
+                  <Text style={styles.cardTime}>Time</Text>
+                </View>
               </View>
             </View>
-          </View>
-        </Animated.View>
+          </Animated.View>
+        </View>
       </TouchableOpacity>
     );
   };
