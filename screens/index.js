@@ -1,4 +1,5 @@
 import Home from './Home';
-import Place from './Place';
+import Bookmark from './Bookmark';
+import Maps from './Maps';
 
-export {Home, Place};
+export {Home, Bookmark, Maps};

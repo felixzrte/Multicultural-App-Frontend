@@ -35,10 +35,12 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Dashboard'}>
-        <Stack.Screen name="Dashboard" component={Tabs} />
+        initialRouteName={'Home'}>
+        <Stack.Screen name="Home" component={Tabs} />
 
-        <Stack.Screen name="Place" component={Place} />
+        <Stack.Screen name="Bookmark" component={Tabs} />
+
+        <Stack.Screen name="Maps" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
   ) : (
