@@ -6,7 +6,7 @@ import {
   BottomTabBar,
 } from '@react-navigation/bottom-tabs';
 
-import {Home} from '../screens';
+import {Bookmark, Home, Maps, Place} from '../screens';
 import {COLORS, FONTS, icons, SIZES} from '../constants';
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +54,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Bookmark"
-        component={Home}
+        component={Bookmark}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -73,7 +73,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Maps"
-        component={Home}
+        component={Maps}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
