@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
-import {Home, Place} from './screens';
+import {EventDetails, Home, Place} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -41,6 +41,8 @@ export default function App() {
         <Stack.Screen name="Bookmark" component={Tabs} />
 
         <Stack.Screen name="Maps" component={Tabs} />
+
+        <Stack.Screen name="EventDetails" component={EventDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   ) : (

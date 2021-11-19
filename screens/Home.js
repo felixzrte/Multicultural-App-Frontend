@@ -62,20 +62,41 @@ const Home = ({navigation}) => {
             transform: [{scale}],
           },
         ]}>
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={() => console.log('Clicked')}>
-          <Image
-            source={images.beach}
-            style={{
-              height: 350,
-              width: SIZES.cardWidth,
-              borderRadius: SIZES.radius,
-            }}
-          />
-        </TouchableOpacity>
-        <View>
-          <McText body2>{item.eventName}</McText>
+        <View
+          style={{
+            marginTop: 22,
+            borderRadius: SIZES.radius,
+            shadowColor: COLORS.white,
+            shadowOpacity: 0.5,
+            shadowRadius: 16,
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+            padding: 12,
+            backgroundColor: 'white',
+          }}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() =>
+              navigation.navigate('EventDetails', {
+                item: item,
+              })
+            }>
+            <Image
+              source={{
+                uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
+              }}
+              style={{
+                height: 350,
+                width: SIZES.cardWidth,
+                borderRadius: SIZES.radius,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={{marginTop: 20}}>
+          <McText body3>{item.eventName}</McText>
         </View>
       </Animated.View>
     );
@@ -110,11 +131,11 @@ const Home = ({navigation}) => {
         </View>
         {/* Announcements */}
         <View style={styles.announcementsHeader}>
-          <McText h2>ANNOUNCEMENTS</McText>
+          <McText h3>ANNOUNCEMENTS</McText>
         </View>
         {/* Events */}
         <View style={styles.eventHeader}>
-          <McText h2>EVENTS</McText>
+          <McText h3>EVENTS</McText>
         </View>
         <View>
           <Animated.FlatList
