@@ -57,7 +57,7 @@ export const FONTS = {
     fontSize: SIZES.large,
     lineHeight: 40,
   },
-  h1: {fontFamily: CUSTOMFONT_BOLD, fontSize: SIZES.h1, lineHeight: 36},
+  h1: {fontFamily: CUSTOMFONT_BLACK, fontSize: SIZES.h1, lineHeight: 36},
   h2: {fontFamily: CUSTOMFONT_BOLD, fontSize: SIZES.h2, lineHeight: 30},
   h3: {fontFamily: CUSTOMFONT_BOLD, fontSize: SIZES.h3, lineHeight: 22},
   h4: {fontFamily: CUSTOMFONT_BOLD, fontSize: SIZES.h4, lineHeight: 22},
