@@ -64,16 +64,16 @@ const Home = ({navigation}) => {
         ]}>
         <View
           style={{
-            marginTop: 22,
+            marginTop: 10,
             borderRadius: SIZES.radius,
             shadowColor: COLORS.white,
             shadowOpacity: 0.5,
-            shadowRadius: 16,
+            shadowRadius: 10,
             shadowOffset: {
               width: 0,
               height: 0,
             },
-            padding: 12,
+            padding: 2,
             backgroundColor: 'white',
           }}>
           <TouchableOpacity
