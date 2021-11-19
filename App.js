@@ -1,89 +1,47 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Home from './components/Home';
-import Details from './components/Details';
-import Bookmarked from './components/Bookmarked';
-import Profile from './components/Profile';
-import colors from './assets/colors/colors';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  StatusBar,
+} from 'react-native';
+import * as Font from 'expo-font';
+import {Home, Place} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 
-Entypo.loadFont();
-MaterialCommunityIcons.loadFont();
+import Tabs from './navigation/Tabs';
+import {customFonts} from './constants';
 
 const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
-  return (
-    <Tab.Navigator
-      tabBarOptions={{
-        style: styles.tabBar,
-        activeTintColor: colors.orange,
-        inactiveTintColor: colors.gray,
-        showLabel: false,
-      }}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({color}) => (
-            <Entypo name="home" size={32} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Bookmarked"
-        component={Bookmarked}
-        options={{
-          tabBarIcon: ({color}) => (
-            <Entypo name="bookmark" size={32} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="account" size={32} color={color} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
-  );
-};
+export default function App() {
+  const [assetsLoaded, setAssetLoaded] = useState(false);
 
-const App = () => {
-  return (
+  /* Loading custom fonts in async */
+  const _loadAssetsAsync = async () => {
+    await Font.loadAsync(customFonts);
+    setAssetLoaded(true);
+  };
+
+  useEffect(() => {
+    _loadAssetsAsync();
+  });
+  return assetsLoaded ? (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="TabNavigator"
-          component={TabNavigator}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Details"
-          component={Details}
-          options={{headerShown: false}}
-        />
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName={'Dashboard'}>
+        <Stack.Screen name="Dashboard" component={Tabs} />
+
+        <Stack.Screen name="Place" component={Place} />
       </Stack.Navigator>
     </NavigationContainer>
+  ) : (
+    <ActivityIndicator size="small" />
   );
-};
-
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: colors.white,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-});
-
-export default App;
+}
