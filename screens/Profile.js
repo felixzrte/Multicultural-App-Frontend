@@ -2,7 +2,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, Image, ScrollView} from 'react-native';
 import { Ionicons, MaterialIcons} from '@expo/vector-icons';
-import { backgroundColor } from 'styled-system';
 
 
 
@@ -17,7 +16,7 @@ const Profile = () => {
 
             <View style={{ alignSelf: "center" }}>
               <View style={styles.profileImage}>
-                <Image source={require("./assets/images/mcc.png")} style={styles.image} resizeMode="center"></Image>
+                <Image source={require("../assets/images/mcc.png")} style={styles.image} resizeMode="center"></Image>
             </View>
             <View style={styles.dm}>
               <MaterialIcons name="chat" size={18} color="#DFD8C8"></MaterialIcons>
