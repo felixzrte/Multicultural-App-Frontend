@@ -14,6 +14,7 @@
     "native-base": "^3.2.2",
     "react-native": "^0.63.4",
     "react-native-elements": "^3.4.2",
+    "react-native-imaged-carousel-card": "^0.1.1",
     "react-native-navbar": "^2.1.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-snap-carousel": "^3.9.1",
