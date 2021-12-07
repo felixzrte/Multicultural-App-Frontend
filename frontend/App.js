@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 //import {McIcon, McText} from '../components';
 import { View, Image, Button, StyleSheet, TextInput, Pressable, Text} from 'react-native';
@@ -75,4 +76,18 @@ const styles = StyleSheet.create({
 });
 export default ResetPassword;
 
+=======
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import {View, Text} from 'react-native';
 
+const Profile = () => {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Profile</Text>
+    </View>
+  );
+};
+>>>>>>> 79ba2fd4ec51de891fa038c599ddf412910eae70
+
+export default Profile;
