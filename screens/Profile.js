@@ -1,11 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-<<<<<<< HEAD
-import { StyleSheet, View, Text, SafeAreaView, Image, ScrollView} from 'react-native';
-import { Ionicons, MaterialIcons} from '@expo/vector-icons';
 
-
-=======
 import {
   StyleSheet,
   View,
@@ -15,8 +10,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
-// import {backgroundColor} from 'styled-system';
->>>>>>> 770d951ab9d0f797cb3ee138dd7599c4b99862eb
 
 const Profile = () => {
   return (
@@ -26,35 +19,6 @@ const Profile = () => {
           <Ionicons name="ios-arrow-back" size={24} color="#52575D" />
           <Ionicons name="checkmark-circle-outline" size={24} color="#52575D" />
         </View>
-
-<<<<<<< HEAD
-            <View style={{ alignSelf: "center" }}>
-              <View style={styles.profileImage}>
-                <Image source={require("../assets/images/mcc.png")} style={styles.image} resizeMode="center"></Image>
-            </View>
-            <View style={styles.dm}>
-              <MaterialIcons name="chat" size={18} color="#DFD8C8"></MaterialIcons>
-            </View>
-            <View style={styles.active}></View>
-            <View style={styles.add}>
-                <Ionicons name="ios-add" size={48} color="#DFD8C8" style={{marginTop: 6, marginLeft:2 }}></Ionicons>
-
-            </View>
-            </View>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>MCC</Text>
-              <Text style={styles.text}>Admin</Text>
-            </View>
-            <View style={styles.statsContainer}>
-              <View style={styles.statsBox}>
-                <Text> Yahh </Text>
-                <Text> Text </Text>
-                </View>
-            </View>
-          </ScrollView>
-      </SafeAreaView>
-    
-=======
         <View style={{alignSelf: 'center'}}>
           <View style={styles.profileImage}>
             <Image
@@ -88,7 +52,6 @@ const Profile = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
->>>>>>> 770d951ab9d0f797cb3ee138dd7599c4b99862eb
   );
 };
 
