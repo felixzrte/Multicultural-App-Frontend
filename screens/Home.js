@@ -87,16 +87,24 @@ const Home = ({navigation}) => {
             alignItems: 'center',
             paddingBottom: 120,
           }}>
-          <Image
-            source={{
-              uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
-            }}
-            style={{
-              height: ITEM_HEIGHT,
-              width: ITEM_WIDTH,
-              borderRadius: SIZES.radius,
-            }}
-          />
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() =>
+              navigation.navigate('EventDetails', {
+                item: item,
+              })
+            }>
+            <Image
+              source={{
+                uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
+              }}
+              style={{
+                height: ITEM_HEIGHT,
+                width: ITEM_WIDTH,
+                borderRadius: SIZES.radius,
+              }}
+            />
+          </TouchableOpacity>
         </View>
       </Animated.View>
     );
