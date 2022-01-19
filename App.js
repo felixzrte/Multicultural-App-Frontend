@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
-import {EventDetails, Home, Place,} from './screens';
+import {EventDetails, Home, Place, Login} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -35,7 +35,9 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Home'}>
+        initialRouteName={'Login'}>
+        <Stack.Screen name="Login" component={Login} />
+
         <Stack.Screen name="Home" component={Tabs} />
 
         <Stack.Screen name="Bookmark" component={Tabs} />
@@ -51,4 +53,3 @@ export default function App() {
     <ActivityIndicator size="small" />
   );
 }
-
