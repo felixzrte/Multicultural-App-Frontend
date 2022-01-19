@@ -3,7 +3,7 @@ import {View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {CustomButton, CustomInput} from '../components';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,6 +17,9 @@ const Login = () => {
   };
   const onRegisterPressed = () => {
     console.warn('Register');
+  };
+  const onHomePressed = () => {
+    navigation.navigate('Home');
   };
   return (
     <View style={styles.container}>
@@ -46,6 +49,11 @@ const Login = () => {
       <CustomButton
         text="Don't Have An Account? Create One"
         onPress={onRegisterPressed}
+        type="Tertiary"
+      />
+      <CustomButton
+        text="Go To Home Screen"
+        onPress={onHomePressed}
         type="Tertiary"
       />
     </View>
