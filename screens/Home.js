@@ -18,6 +18,15 @@ import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
+import {EvilIcons} from '@expo/vector-icons';
+
+const OVERFLOW_HEIGHT = 70;
+const SPACING = 10;
+const ITEM_WIDTH = SIZES.width * 0.76;
+const ITEM_HEIGHT = ITEM_WIDTH * 1.7;
+const VISIBLE_ITEMS = 3;
+const ITEM_SIZE = SIZES.width * 0.8;
+const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
 
 const Home = ({navigation}) => {
   const {
@@ -49,32 +58,34 @@ const Home = ({navigation}) => {
     });
     const scale = scrollX.interpolate({
       inputRange,
-      outputRange: [0.6, 1, 0.6],
+      outputRange: [0.9, 1, 0.9],
     });
     return (
-      <Animated.View
-        style={[
-          {
-            width: SIZES.itemSize,
-            justifyContent: 'center',
-            alignItems: 'center',
-            opacity,
-            transform: [{scale}],
-          },
-        ]}>
+      <Animated.View style={{opacity, transform: [{scale}]}}>
+        <View style={styles.itemContainer}>
+          <McText style={[styles.title]} numberOfLines={1}>
+            {item.eventName}
+          </McText>
+          <McText body4>{item.date}</McText>
+
+          <View style={styles.itemContainerRow}>
+            <McText style={[styles.location]}>
+              <EvilIcons
+                name="location"
+                size={16}
+                color="white"
+                style={{marginRight: 5}}
+              />
+              {item.location}
+            </McText>
+            {/* <McText style={[styles.date]}>{item.date}</McText> */}
+          </View>
+        </View>
         <View
           style={{
-            marginTop: 10,
-            borderRadius: SIZES.radius,
-            shadowColor: COLORS.white,
-            shadowOpacity: 0.5,
-            shadowRadius: 10,
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-            padding: 2,
-            backgroundColor: 'white',
+            width: ITEM_SIZE,
+            alignItems: 'center',
+            paddingBottom: 120,
           }}>
           <TouchableOpacity
             activeOpacity={1}
@@ -88,15 +99,12 @@ const Home = ({navigation}) => {
                 uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
               }}
               style={{
-                height: 350,
-                width: SIZES.cardWidth,
+                height: ITEM_HEIGHT,
+                width: ITEM_WIDTH,
                 borderRadius: SIZES.radius,
               }}
             />
           </TouchableOpacity>
-        </View>
-        <View style={{marginTop: 20}}>
-          <McText body3>{item.eventName}</McText>
         </View>
       </Animated.View>
     );
@@ -104,58 +112,29 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Header Section */}
+      <View style={styles.headerContainer}>
+        <McText body4>EVENTS</McText>
+      </View>
       <ScrollView>
-        {/* Header Section */}
-        <View style={styles.headerContainer}>
-          <McText body4 style={{opacity: 0.5}}>
-            NOVEMBER 21, 9:10 PM
-          </McText>
-          <McText h1>EXPLORE</McText>
-        </View>
-        {/* Search Bar */}
-        <View style={styles.searchBarContainer}>
-          <View style={styles.searchBarItems}>
-            <McIcon source={icons.search} size={24} />
-            <TextInput
-              placeholder="Search"
-              placeholderTextColor={COLORS.gray1}
-              style={{
-                ...FONTS.h4,
-                color: COLORS.white,
-                width: '82%',
-                marginBottom: 5,
-              }}
-            />
-            <McIcon source={icons.filter} size={24} />
-          </View>
-        </View>
-        {/* Announcements */}
-        <View style={styles.announcementsHeader}>
-          <McText h3>ANNOUNCEMENTS</McText>
-        </View>
-        {/* Events */}
-        <View style={styles.eventHeader}>
-          <McText h3>EVENTS</McText>
-        </View>
-        <View>
-          <Animated.FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            bounces={false}
-            onScroll={Animated.event(
-              [{nativeEvent: {contentOffset: {x: scrollX}}}],
-              {useNativeDriver: true},
-            )}
-            contentContainerStyle={{paddingHorizontal: SIZES.itemSpacing}}
-            style={{flexGrow: 0}}
-            snapToInterval={SIZES.itemSize}
-            decelerationRate="fast"
-            data={events.events}
-            keyExtractor={(item, index) => 'key' + index}
-            renderItem={eventCard}
-          />
-        </View>
-        <View style={{paddingBottom: 150}} />
+        <Animated.FlatList
+          data={events.events}
+          keyExtractor={(item, index) => 'key' + index}
+          renderItem={eventCard}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {x: scrollX}}}],
+            {useNativeDriver: true},
+          )}
+          horizontal
+          bounces={false}
+          showsHorizontalScrollIndicator={false}
+          snapToInterval={ITEM_SIZE}
+          decelerationRate="fast"
+          style={{flexGrow: 1}}
+          contentContainerStyle={{
+            paddingHorizontal: ITEM_SPACING,
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -164,40 +143,39 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: COLORS.black,
   },
-  /* Header */
-  headerContainer: {
-    padding: SIZES.padding,
-    alignItems: 'center',
-    justifyContent: 'center',
+  title: {
+    fontSize: 22,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: -1,
   },
-  /* Search Bar */
-  searchBarContainer: {
-    marginHorizontal: SIZES.padding,
-    height: 50,
-    backgroundColor: COLORS.input,
-    borderRadius: SIZES.radius,
-    justifyContent: 'center',
+  location: {
+    fontSize: 16,
   },
-  searchBarItems: {
+  date: {
+    fontSize: 12,
+  },
+  itemContainer: {
+    height: OVERFLOW_HEIGHT,
+    padding: SPACING * 2,
+    marginBottom: 25,
+  },
+  itemContainerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginLeft: 9,
-    marginRight: 15,
   },
-  /* Events */
-  eventHeader: {
-    marginHorizontal: SIZES.padding,
-    margin: 20,
-    alignItems: 'center',
+  overflowContainer: {
+    height: OVERFLOW_HEIGHT,
+    overflow: 'hidden',
   },
-  /* Announcements */
-  announcementsHeader: {
-    marginHorizontal: SIZES.padding,
-    margin: 20,
+  /* Header */
+  headerContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

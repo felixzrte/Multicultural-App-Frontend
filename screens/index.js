@@ -3,5 +3,6 @@ import Bookmark from './Bookmark';
 import Maps from './Maps';
 import EventDetails from './EventDetails';
 import Profile from './Profile';
+import Login from './Login';
 
-export {Home, Bookmark, Maps, EventDetails, Profile};
+export {Home, Bookmark, Maps, EventDetails, Profile, Login};
