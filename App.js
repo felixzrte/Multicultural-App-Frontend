@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
-import {EventDetails, Home, Place, Login} from './screens';
+import {EventDetails, Home, Place, Login, Merch} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -35,7 +35,7 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Login'}>
+        initialRouteName={'Merch'}>
         <Stack.Screen name="Login" component={Login} />
 
         <Stack.Screen name="Home" component={Tabs} />
@@ -47,6 +47,9 @@ export default function App() {
         <Stack.Screen name="EventDetails" component={EventDetails} />
 
         <Stack.Screen name="Profile" component={Tabs} />
+
+        <Stack.Screen name="Merch" component={Merch} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   ) : (
