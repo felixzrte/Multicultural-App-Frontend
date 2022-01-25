@@ -38,7 +38,10 @@ const Profile = () => {
           </View>
         </View>
         <View style={styles.infoContainer}>
-          <Text style={[styles.text, { fontWeight: '200', fontSize: 36 }]}>Input</Text>
+        <TextInput
+              placeholder="Full Name"
+              style={styles.TextInput}
+          />
           <TextInput
               placeholder="Your Email"
               style={styles.TextInput}
@@ -47,11 +50,11 @@ const Profile = () => {
 
         <View style={styles.button}>
           <LinearGradient
-            colors={['#34FFB9', '#34FFB9']}
+            colors={["#34FFB9", "#34FFB9"]}
             style={styles.saveButton}
           >
             <Text style={[styles.textSign, {
-              color: '#34FFB9'
+              color: "#34FFB9"
             }]}>Save</Text>
           </LinearGradient>
         </View>
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue',
     color: '#f8f8ff',
     fontWeight: '200',
-    fontSize: 14,
+    fontSize: 20,
   },
   button: {
     alignItems: 'center',
