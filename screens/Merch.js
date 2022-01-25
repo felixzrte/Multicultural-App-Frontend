@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -10,6 +10,7 @@ import {
     ImageBackground,
     Image,
     Animated,
+    StatusBar,
   } from 'react-native';
 
   import {SafeAreaView} from 'react-native-safe-area-context';
@@ -20,27 +21,29 @@ import {
   import {ceil} from 'react-native-reanimated';
   import {EvilIcons} from '@expo/vector-icons';
 
-const merch = () => {
-    const {
-        data: merch,
-        loading,
-        error,
-      } = useFetch('https://mcapp-api.herokuapp.com/api/v1/merchs');
-      /*
-        if (loading) {
-          return null;
-        }
-      */
-      if (error) {
-        console.log(error);
-      }
-      console.log(merch);
+  
+ const merch = () => {
+     const {
+         data: merch,
+         loading,
+         error,
+       } = useFetch('https://mcapp-api.herokuapp.com/api/v1/merchs');
+       /*
+         if (loading) {
+           return null;
+         }
+       */
+       if (error) {
+         console.log(error);
+       }
+       console.log(merch);
 
-  return (
-    <View>
-      <Text>Sample Text</Text>
-    </View>
-  );
-};
-const styles=StyleSheet.create({});
+   return (
+     <View>
+       <Text>Sample Text</Text>
+     </View>
+   );
+ };
+//add this back in
+//const styles=StyleSheet.create({});
 export default merch;
