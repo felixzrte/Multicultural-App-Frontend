@@ -60,6 +60,7 @@ const Home = ({navigation}) => {
       inputRange,
       outputRange: [0.9, 1, 0.9],
     });
+    
     return (
       <Animated.View style={{opacity, transform: [{scale}]}}>
         <View style={styles.itemContainer}>
