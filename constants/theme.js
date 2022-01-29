@@ -11,6 +11,8 @@ const CARD_WIDTH = width * 0.65;
 export const COLORS = {
   default: '#FFFFFF',
   primary: '#FFFFFF',
+  secondary: '#E5E7EB',
+  tertiary: '#1F2937',
   white: '#FFFFFF',
   black: '#000000',
   tabBar: '#121212',

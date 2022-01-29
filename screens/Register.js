@@ -31,28 +31,41 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 
-const Login = () => {
+const Register = () => {
   const [hidePassword, setHidePassword] = useState(true);
   const {height} = useWindowDimensions();
 
   return (
     <ScrollView>
       <StatusBar style="dark" />
-
       <StyledContainer>
         <Logo
           style={{height: height * 0.35}}
           resizeMode="cover"
           source={images.mcc}
         />
-        <SubTitle>Account Login</SubTitle>
+        <SubTitle>Account Registration</SubTitle>
         <Formik
-          initialValues={{email: '', password: ''}}
+          initialValues={{
+            fullName: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+          }}
           onSubmit={(values) => {
             console.log(values);
           }}>
           {({handleChange, handleBlur, handleSubmit, values}) => (
             <StyledFormArea>
+              <MyTextInput
+                label="Full Name"
+                icon="person"
+                placeholder="Felix Zarate"
+                placeholderTextColor={COLORS.gray}
+                onChangeText={handleChange('fullName')}
+                onBlur={handleBlur('fullName')}
+                value={values.fullName}
+              />
               <MyTextInput
                 label="Email Address"
                 icon="mail"
@@ -76,15 +89,28 @@ const Login = () => {
                 hidePassword={hidePassword}
                 setHidePassword={setHidePassword}
               />
+              <MyTextInput
+                label="Confirm Password"
+                icon="lock"
+                placeholder="* * * * * * * * * *"
+                placeholderTextColor={COLORS.gray}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={handleBlur('confirmPassword')}
+                value={values.confirmPassword}
+                secureTextEntry={hidePassword}
+                isPassword={true}
+                hidePassword={hidePassword}
+                setHidePassword={setHidePassword}
+              />
               <MsgBox>...</MsgBox>
               <StyledButton onPress={handleSubmit}>
-                <ButtonText>Login</ButtonText>
+                <ButtonText>Register</ButtonText>
               </StyledButton>
               <Line />
               <ExtraView>
-                <ExtraText>Don't Have An Account? </ExtraText>
+                <ExtraText>Already Have An Account? </ExtraText>
                 <TextLink>
-                  <TextLinkContent>Register</TextLinkContent>
+                  <TextLinkContent>Login</TextLinkContent>
                 </TextLink>
               </ExtraView>
             </StyledFormArea>
@@ -123,4 +149,4 @@ const MyTextInput = ({
   );
 };
 
-export default Login;
+export default Register;
