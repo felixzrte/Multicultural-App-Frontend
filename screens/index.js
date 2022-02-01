@@ -5,5 +5,6 @@ import EventDetails from './EventDetails';
 import Profile from './Profile';
 import Login from './Login';
 import Register from './Register';
+import Welcome from './Welcome';
 
-export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register};
+export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome};

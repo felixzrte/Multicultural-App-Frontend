@@ -28,70 +28,74 @@ import {
   ExtraView,
   TextLink,
   TextLinkContent,
+  InnerContainer,
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
+import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
   const {height} = useWindowDimensions();
 
   return (
-    <ScrollView>
-      <StatusBar style="dark" />
-
+    <KeyboardAvoidingWrapper>
       <StyledContainer>
-        <Logo
-          style={{height: height * 0.35}}
-          resizeMode="cover"
-          source={images.mcc}
-        />
-        <SubTitle>Account Login</SubTitle>
-        <Formik
-          initialValues={{email: '', password: ''}}
-          onSubmit={(values) => {
-            console.log(values);
-          }}>
-          {({handleChange, handleBlur, handleSubmit, values}) => (
-            <StyledFormArea>
-              <MyTextInput
-                label="Email Address"
-                icon="mail"
-                placeholder="example@gmail.com"
-                placeholderTextColor={COLORS.gray}
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values.email}
-                keyboardType="email-address"
-              />
-              <MyTextInput
-                label="Password"
-                icon="lock"
-                placeholder="* * * * * * * * * *"
-                placeholderTextColor={COLORS.gray}
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                value={values.password}
-                secureTextEntry={hidePassword}
-                isPassword={true}
-                hidePassword={hidePassword}
-                setHidePassword={setHidePassword}
-              />
-              <MsgBox>...</MsgBox>
-              <StyledButton onPress={handleSubmit}>
-                <ButtonText>Login</ButtonText>
-              </StyledButton>
-              <Line />
-              <ExtraView>
-                <ExtraText>Don't Have An Account? </ExtraText>
-                <TextLink>
-                  <TextLinkContent>Register</TextLinkContent>
-                </TextLink>
-              </ExtraView>
-            </StyledFormArea>
-          )}
-        </Formik>
+        <StatusBar style="dark" />
+        <InnerContainer>
+          <Logo
+            style={{height: height * 0.35}}
+            resizeMode="cover"
+            source={images.mcc}
+          />
+          <SubTitle>Account Login</SubTitle>
+          <Formik
+            initialValues={{email: '', password: ''}}
+            onSubmit={(values) => {
+              console.log(values);
+              navigation.navigate('Welcome');
+            }}>
+            {({handleChange, handleBlur, handleSubmit, values}) => (
+              <StyledFormArea>
+                <MyTextInput
+                  label="Email Address"
+                  icon="mail"
+                  placeholder="example@gmail.com"
+                  placeholderTextColor={COLORS.gray}
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values.email}
+                  keyboardType="email-address"
+                />
+                <MyTextInput
+                  label="Password"
+                  icon="lock"
+                  placeholder="* * * * * * * * * *"
+                  placeholderTextColor={COLORS.gray}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  value={values.password}
+                  secureTextEntry={hidePassword}
+                  isPassword={true}
+                  hidePassword={hidePassword}
+                  setHidePassword={setHidePassword}
+                />
+                <MsgBox>...</MsgBox>
+                <StyledButton onPress={handleSubmit}>
+                  <ButtonText>Login</ButtonText>
+                </StyledButton>
+                <Line />
+                <ExtraView>
+                  <ExtraText>Don't Have An Account? </ExtraText>
+                  <TextLink onPress={() => navigation.navigate('Register')}>
+                    <TextLinkContent>Register</TextLinkContent>
+                  </TextLink>
+                </ExtraView>
+              </StyledFormArea>
+            )}
+          </Formik>
+        </InnerContainer>
       </StyledContainer>
-    </ScrollView>
+    </KeyboardAvoidingWrapper>
   );
 };
 
