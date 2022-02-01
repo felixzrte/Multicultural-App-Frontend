@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import {View, Image, Text, TextInput, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import Constants from 'expo-constants';
 
@@ -7,13 +14,51 @@ const StatusBarHeight = Constants.StatusBarHeight;
 
 export const StyledContainer = styled.View`
   flex: 1;
-  padding: 20px;
+  padding: 10px;
+  padding-top: 15%;
   align-items: center;
+`;
+
+export const InnerContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
+`;
+export const WelcomeContainer = styled(InnerContainer)`
+  padding: 25px;
+  padding-top: 10px;
+  justify-content: center;
 `;
 export const Logo = styled.Image`
   width: 80%;
   max-width: 600px;
   max-height: 250px;
+`;
+export const Avatar = styled.Image`
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50px;
+  border-width: 2px;
+  border-color: #e8e8e8;
+  margin-vertical: 10px;
+`;
+export const WelcomeImage = styled.Image`
+  height: 50%;
+  min-width: 100%;
+`;
+export const PageTitle = styled.Text`
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: ${COLORS.blue};
+  padding: 10px;
+
+  ${(props) =>
+    props.welcome &&
+    `
+    font-size: 35px;
+  `}
 `;
 export const SubTitle = styled.Text`
   font-size: 15px;
@@ -21,6 +66,13 @@ export const SubTitle = styled.Text`
   letter-spacing: 1px;
   font-weight: bold;
   color: ${COLORS.tertiary};
+
+  ${(props) =>
+    props.welcome &&
+    `
+    margin-bottom: 5px;
+    font-weight
+  `}
 `;
 export const StyledFormArea = styled.View`
   width: 90%;
