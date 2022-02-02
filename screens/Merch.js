@@ -63,7 +63,6 @@ const Merch = ({navigation}) => {
     
     return (
       <Animated.View style={{opacity, transform: [{scale}]}}>
-        <Text>Test</Text>
         <View style={styles.itemContainer}>
           <McText style={[styles.title]} numberOfLines={1}>
             {item.merchItemName}
@@ -116,20 +115,16 @@ const Merch = ({navigation}) => {
       {/* Header Section */}
       <View style={styles.headerContainer}>
         <McText body4>Merch</McText>
-        <McText body4>{merchs.merchItemName}</McText>
       </View>
-      <ScrollView>
         <Animated.FlatList
-          data={merchs.merchs}
+          data={merchs.data.merchs}
           keyExtractor={(item, index) => 'key' + index}
           renderItem={merchCard}
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {x: scrollX}}}],
             {useNativeDriver: true},
           )}
-          horizontal
           bounces={false}
-          showsHorizontalScrollIndicator={false}
           snapToInterval={ITEM_SIZE}
           decelerationRate="fast"
           style={{flexGrow: 1}}
@@ -137,7 +132,6 @@ const Merch = ({navigation}) => {
             paddingHorizontal: ITEM_SPACING,
           }}
         />
-      </ScrollView>
     </SafeAreaView>
   );
 };
