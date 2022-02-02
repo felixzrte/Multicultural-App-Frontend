@@ -63,12 +63,12 @@ const Merch = ({navigation}) => {
     
     return (
       <Animated.View style={{opacity, transform: [{scale}]}}>
+        <Text>Test</Text>
         <View style={styles.itemContainer}>
           <McText style={[styles.title]} numberOfLines={1}>
             {item.merchItemName}
           </McText>
           <McText body4>{item.merchItemPrice}</McText>
-
           <View style={styles.itemContainerRow}>
             <McText style={[styles.location]}>
               <EvilIcons
@@ -77,9 +77,9 @@ const Merch = ({navigation}) => {
                 color="white"
                 style={{marginRight: 5}}
               />
-              {item.location}
+              {item.merchItemName}
             </McText>
-            {/* <McText style={[styles.date]}>{item.date}</McText> */}
+                        {/* <McText style={[styles.date]}>{item.date}</McText> */}
           </View>
         </View>
         <View
@@ -115,7 +115,8 @@ const Merch = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       {/* Header Section */}
       <View style={styles.headerContainer}>
-        <McText body4>Merchs</McText>
+        <McText body4>Merch</McText>
+        <McText body4>{merchs.merchItemName}</McText>
       </View>
       <ScrollView>
         <Animated.FlatList
