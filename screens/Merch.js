@@ -60,7 +60,7 @@ const Merch = ({navigation}) => {
       inputRange,
       outputRange: [0.9, 1, 0.9],
     });
-    
+
     return (
       <Animated.View style={{opacity, transform: [{scale}]}}>
         <View style={styles.itemContainer}>
@@ -78,7 +78,7 @@ const Merch = ({navigation}) => {
               />
               {item.merchItemName}
             </McText>
-                        {/* <McText style={[styles.date]}>{item.date}</McText> */}
+            {/* <McText style={[styles.date]}>{item.date}</McText> */}
           </View>
         </View>
         <View
@@ -116,22 +116,22 @@ const Merch = ({navigation}) => {
       <View style={styles.headerContainer}>
         <McText body4>Merch</McText>
       </View>
-        <Animated.FlatList
-          data={merchs.data.merchs}
-          keyExtractor={(item, index) => 'key' + index}
-          renderItem={merchCard}
-          onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {x: scrollX}}}],
-            {useNativeDriver: true},
-          )}
-          bounces={false}
-          snapToInterval={ITEM_SIZE}
-          decelerationRate="fast"
-          style={{flexGrow: 1}}
-          contentContainerStyle={{
-            paddingHorizontal: ITEM_SPACING,
-          }}
-        />
+      <Animated.FlatList
+        data={merchs.data.merchs}
+        keyExtractor={(item, index) => 'key' + index}
+        renderItem={merchCard}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
+          {useNativeDriver: true},
+        )}
+        bounces={false}
+        snapToInterval={ITEM_SIZE}
+        decelerationRate="fast"
+        style={{flexGrow: 1}}
+        contentContainerStyle={{
+          paddingHorizontal: ITEM_SPACING,
+        }}
+      />
     </SafeAreaView>
   );
 };
