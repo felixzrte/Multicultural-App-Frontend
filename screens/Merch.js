@@ -117,7 +117,7 @@ const Merch = ({navigation}) => {
         <McText body4>Merch</McText>
       </View>
       <Animated.FlatList
-        data={merchs.data.merchs}
+        data={merchs.merchs}
         keyExtractor={(item, index) => 'key' + index}
         renderItem={merchCard}
         onScroll={Animated.event(
