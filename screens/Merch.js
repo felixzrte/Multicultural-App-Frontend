@@ -28,12 +28,12 @@ const VISIBLE_ITEMS = 3;
 const ITEM_SIZE = SIZES.width * 0.8;
 const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
 
-const Home = ({navigation}) => {
+const Merch = ({navigation}) => {
   const {
-    data: events,
+    data: merchs,
     loading,
     error,
-  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/events');
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/merchs');
   /*
     if (loading) {
       return null;
@@ -42,11 +42,11 @@ const Home = ({navigation}) => {
   if (error) {
     console.log(error);
   }
-  console.log(events);
+  console.log(merchs);
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
-  const eventCard = ({item, index}) => {
+  const merchCard = ({item, index}) => {
     const inputRange = [
       (index - 1) * SIZES.itemSize,
       index * SIZES.itemSize,
@@ -65,10 +65,9 @@ const Home = ({navigation}) => {
       <Animated.View style={{opacity, transform: [{scale}]}}>
         <View style={styles.itemContainer}>
           <McText style={[styles.title]} numberOfLines={1}>
-            {item.eventName}
+            {item.merchItemName}
           </McText>
-          <McText body4>{item.date}</McText>
-
+          <McText body4>{item.merchItemPrice}</McText>
           <View style={styles.itemContainerRow}>
             <McText style={[styles.location]}>
               <EvilIcons
@@ -77,9 +76,9 @@ const Home = ({navigation}) => {
                 color="white"
                 style={{marginRight: 5}}
               />
-              {item.location}
+              {item.merchItemName}
             </McText>
-            {/* <McText style={[styles.date]}>{item.date}</McText> */}
+                        {/* <McText style={[styles.date]}>{item.date}</McText> */}
           </View>
         </View>
         <View
@@ -115,20 +114,17 @@ const Home = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       {/* Header Section */}
       <View style={styles.headerContainer}>
-        <McText body4>EVENTS</McText>
+        <McText body4>Merch</McText>
       </View>
-      <ScrollView>
         <Animated.FlatList
-          data={events.events}
+          data={merchs.data.merchs}
           keyExtractor={(item, index) => 'key' + index}
-          renderItem={eventCard}
+          renderItem={merchCard}
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {x: scrollX}}}],
             {useNativeDriver: true},
           )}
-          horizontal
           bounces={false}
-          showsHorizontalScrollIndicator={false}
           snapToInterval={ITEM_SIZE}
           decelerationRate="fast"
           style={{flexGrow: 1}}
@@ -136,7 +132,6 @@ const Home = ({navigation}) => {
             paddingHorizontal: ITEM_SPACING,
           }}
         />
-      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -145,7 +140,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: COLORS.black,
   },
   title: {
     fontSize: 22,
@@ -180,4 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Merch;
