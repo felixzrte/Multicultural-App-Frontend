@@ -19,7 +19,7 @@ import {COLORS} from './constants';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(true);
   const [assetsLoaded, setAssetLoaded] = useState(false);
 
   /* Loading custom fonts in async */
