@@ -72,9 +72,9 @@ const styles = StyleSheet.create({
 
   text: {
     fontFamily: 'HelveticaNeue',
-    color: '#f8f8ff',
-    fontWeight: '200',
-    fontSize: 36,
+    color: 'white',
+    fontWeight: '400',
+    fontSize: 40,
   },
 
   image: {
@@ -136,9 +136,9 @@ const styles = StyleSheet.create({
   },
   TextInput: {
     fontFamily: 'HelveticaNeue',
-    color: '#f8f8ff',
+    color: 'white',
     fontWeight: '200',
-    fontSize: 20,
+    fontSize: 30,
   },
   button: {
     alignItems: 'center',
