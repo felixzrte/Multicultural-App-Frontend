@@ -1,22 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-  ScrollView,
-  TextInput,
-  ImageBackground,
-  Image,
-  Animated,
-} from 'react-native';
-import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import styled from 'styled-components/native';
-import {McIcon, McText} from '../components';
+import {Text} from 'react-native';
+import {DiscoverContainer, Line, SubHeader} from '../constants/styles';
 import useFetch from '../useFetch';
 import AppleHeader from 'react-native-apple-header';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {StatusBar} from 'expo-status-bar';
+import {ScrollView} from 'react-native-gesture-handler';
+import ClubCard from '../components/ClubCard';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 
 const Home = ({navigation}) => {
   const {
@@ -35,13 +27,27 @@ const Home = ({navigation}) => {
   console.log(events);
 
   return (
-    <View>
-      <AppleHeader largeTitle="Discover" />
-      <Text>Hello</Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <AppleHeader largeTitle="Discover" />
+        <DiscoverContainer>
+          <StatusBar />
+          <Line />
+        </DiscoverContainer>
+        <SubHeader>Clubs</SubHeader>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <ClubCard image={images.asa} />
+          <ClubCard image={images.asu} />
+          <ClubCard image={images.bsu} />
+          <ClubCard image={images.csa} />
+          <ClubCard image={images.isa} />
+          <ClubCard image={images.lal} />
+          <ClubCard image={images.mcc} />
+        </ScrollView>
+        <SubHeader>Events</SubHeader>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Home;

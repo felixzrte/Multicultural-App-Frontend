@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const AuthStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Merch"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
