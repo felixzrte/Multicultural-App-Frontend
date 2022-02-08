@@ -8,16 +8,19 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
-import {EventDetails, Home, Place,} from './screens';
+import {EventDetails, Home, Place, Login, Merch} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
+import AuthStack from './navigation/AuthStack';
+import RootStack from './navigation/RootStack';
 
-import Tabs from './navigation/Tabs';
 import {customFonts} from './constants';
+import {COLORS} from './constants';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [auth, setAuth] = useState(true);
   const [assetsLoaded, setAssetLoaded] = useState(false);
 
   /* Loading custom fonts in async */
@@ -31,24 +34,9 @@ export default function App() {
   });
   return assetsLoaded ? (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName={'Home'}>
-        <Stack.Screen name="Home" component={Tabs} />
-
-        <Stack.Screen name="Bookmark" component={Tabs} />
-
-        <Stack.Screen name="Maps" component={Tabs} />
-
-        <Stack.Screen name="EventDetails" component={EventDetails} />
-
-        <Stack.Screen name="Profile" component={Tabs} />
-      </Stack.Navigator>
+      {auth ? <RootStack /> : <AuthStack />}
     </NavigationContainer>
   ) : (
     <ActivityIndicator size="small" />
   );
 }
-

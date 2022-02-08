@@ -32,8 +32,9 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
+import {NavigationContainer} from '@react-navigation/native';
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
   const {height} = useWindowDimensions();
 
@@ -47,15 +48,28 @@ const Login = ({navigation}) => {
             resizeMode="cover"
             source={images.mcc}
           />
-          <SubTitle>Account Login</SubTitle>
+          <SubTitle>Account Registration</SubTitle>
           <Formik
-            initialValues={{email: '', password: ''}}
+            initialValues={{
+              fullName: '',
+              email: '',
+              password: '',
+              confirmPassword: '',
+            }}
             onSubmit={(values) => {
               console.log(values);
-              navigation.navigate('Welcome');
             }}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <StyledFormArea>
+                <MyTextInput
+                  label="Full Name"
+                  icon="person"
+                  placeholder="Felix Zarate"
+                  placeholderTextColor={COLORS.gray}
+                  onChangeText={handleChange('fullName')}
+                  onBlur={handleBlur('fullName')}
+                  value={values.fullName}
+                />
                 <MyTextInput
                   label="Email Address"
                   icon="mail"
@@ -79,15 +93,28 @@ const Login = ({navigation}) => {
                   hidePassword={hidePassword}
                   setHidePassword={setHidePassword}
                 />
+                <MyTextInput
+                  label="Confirm Password"
+                  icon="lock"
+                  placeholder="* * * * * * * * * *"
+                  placeholderTextColor={COLORS.gray}
+                  onChangeText={handleChange('confirmPassword')}
+                  onBlur={handleBlur('confirmPassword')}
+                  value={values.confirmPassword}
+                  secureTextEntry={hidePassword}
+                  isPassword={true}
+                  hidePassword={hidePassword}
+                  setHidePassword={setHidePassword}
+                />
                 <MsgBox>...</MsgBox>
                 <StyledButton onPress={handleSubmit}>
-                  <ButtonText>Login</ButtonText>
+                  <ButtonText>Register</ButtonText>
                 </StyledButton>
                 <Line />
                 <ExtraView>
-                  <ExtraText>Don't Have An Account? </ExtraText>
-                  <TextLink onPress={() => navigation.navigate('Register')}>
-                    <TextLinkContent>Register</TextLinkContent>
+                  <ExtraText>Already Have An Account? </ExtraText>
+                  <TextLink onPress={() => navigation.navigate('Login')}>
+                    <TextLinkContent>Login</TextLinkContent>
                   </TextLink>
                 </ExtraView>
               </StyledFormArea>
@@ -127,4 +154,4 @@ const MyTextInput = ({
   );
 };
 
-export default Login;
+export default Register;

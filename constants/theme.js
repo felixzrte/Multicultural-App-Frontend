@@ -9,8 +9,10 @@ const ITEM_SPACING = (width - ITEM_SIZE) / 2;
 const CARD_WIDTH = width * 0.65;
 
 export const COLORS = {
-  default: '#FFFFFF',
+  default: '#000000',
   primary: '#FFFFFF',
+  secondary: '#E5E7EB',
+  tertiary: '#1F2937',
   white: '#FFFFFF',
   black: '#000000',
   tabBar: '#121212',
@@ -18,7 +20,7 @@ export const COLORS = {
   blue: '#4096FE',
   gray: '#878787',
   gray1: '#666666',
-  lightGray: '#dedede',
+  lightGray: '#F9FBFC',
   transparentBlack: 'rgba(0, 0, 0, 0.2)',
   transparentBlack1: 'rgba(0, 0, 0, 0.5)',
 };
