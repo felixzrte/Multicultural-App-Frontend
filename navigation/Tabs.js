@@ -26,7 +26,7 @@ const Tabs = () => {
           borderTopRightRadius: SIZES.radius,
           backgroundColor: COLORS.tabBar,
           borderTopColor: 'transparent',
-          height: '12%',
+          height: '9%',
         },
       }}>
       <Tab.Screen

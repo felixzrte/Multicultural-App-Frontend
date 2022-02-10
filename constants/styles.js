@@ -154,3 +154,14 @@ export const TextLinkContent = styled.Text`
   color: ${COLORS.blue};
   font-size: 15px;
 `;
+
+// Discover Page
+export const DiscoverContainer = styled.View`
+  padding-horizontal: 16px;
+`;
+export const SubHeader = styled.Text`
+  font-size: 24;
+  font-weight: 600;
+  padding-horizontal: 16px;
+  padding-bottom: 8px;
+`;
