@@ -10,4 +10,4 @@ import Welcome from './Welcome';
 //import Discover from './Discover';
 import Suggestion from './Suggestion';
 
-export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome, Suggestion};
+export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome, Suggestion, Merch};
