@@ -23,12 +23,11 @@ import {EvilIcons} from '@expo/vector-icons';
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
 const ITEM_WIDTH = SIZES.width * .9;
-const ITEM_HEIGHT = ITEM_WIDTH * 1.7;
+const ITEM_HEIGHT = ITEM_WIDTH * 1.2;
 const VISIBLE_ITEMS = 3;
 const ITEM_SIZE = SIZES.width * 1;
 const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
 
-//var base64Icon = 'https://loveincorporated.blob.core.windows.net/contentimages/gallery/70bc81c8-b277-407d-8c3a-5c1a3e501732-4-hamburger.jpg';
   const Merch = ({navigation}) => {
   const {
     data: merchs,
@@ -65,9 +64,6 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
     return (
       <Animated.View style={{opacity, transform: [{scale}]}}>
         <View style={styles.itemContainer}>
-          <McText style={[styles.title]} numberOfLines={1}>
-            {item.merchItemName}
-          </McText>
           <View style={styles.itemContainerRow}>
             <McText style={[styles.location]}>
               <EvilIcons
@@ -100,6 +96,8 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
                 borderRadius: SIZES.radius,
               }}
             />
+            <View style={styles.headerContainer}><McText style={[styles.merchText]} numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.merchText]} numberOfLines={1}>{item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -138,6 +136,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    fontSize: 22,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: -1,
+  },
+  merchText: {
     fontSize: 22,
     fontWeight: '900',
     textTransform: 'uppercase',
