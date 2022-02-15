@@ -28,12 +28,12 @@ const Asa = () => {
     <SafeAreaView>
     <ScrollView >
     <McText alignItem="center" justifyContent="center" h1 style={{marginBottom: 20}}>
-            Asa
+            Asian Studen Association (ASA)
     </McText>
     <ClubCard image={images.asa} />
-    <View style={{ backgroundColor: "white", flex:1, marginLeft: 10, marginRight: 10, borderWidth: 0.5,
+    <View style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
     borderRadius: 10}}>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginBottom:20, marginTop:20}}>
     <SubHeader> Description </SubHeader>
     <McText body3 > 
     Student organizations whose missions are tied
@@ -45,7 +45,7 @@ const Asa = () => {
     </View>
     <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Mission Statement </SubHeader>
-    <McText body3> 
+    <McText body3 style={{marginBottom: 20}}> 
     "It is the mission of the Messiah University Multicultural Council
     to serve the entire student body through our efforts to improve campus
     life for all ethnic minority students. We seek to bring unification
