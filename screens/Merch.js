@@ -84,7 +84,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
           <TouchableOpacity
             activeOpacity={1}
             onPress={() =>
-              navigation.navigate('EventDetails', {
+              navigation.navigate('Product', {
                 item: item,
               })
             }>
