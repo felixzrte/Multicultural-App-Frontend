@@ -9,24 +9,33 @@ import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
+
 /*
 
 how about keeping a container around the body/text and having the background be gradient
+
+add your own custom text and avatar to styles.js
+to replace
+McText
+ClubCard
+maybe Mctext body & h1
 */
 
 const Asa = () => {
 
   return (
+    <View style={{ backgroundColor: "#808080", flex:1}} space={5}> 
     <SafeAreaView>
-    <ScrollView>
-    <AppleHeader largeTitle="Asa" alignItems="center"/>
-    <ClubCard image={images.asa} />
-    <McText alignItem="center" h1 style={{marginBottom: 20}}>
+    <ScrollView >
+    <McText alignItem="center" justifyContent="center" h1 style={{marginBottom: 20}}>
             Asa
     </McText>
-    <View alignItems="center">
+    <ClubCard image={images.asa} />
+    <View style={{ backgroundColor: "white", flex:1, marginLeft: 10, marginRight: 10, borderWidth: 0.5,
+    borderRadius: 10}}>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Description </SubHeader>
-    <McText body3> 
+    <McText body3 > 
     Student organizations whose missions are tied
     to the work of Multicultural Programs (MP) through their focus
     on racial, ethnic, and cultural celebration and reconciliation
@@ -34,7 +43,7 @@ const Asa = () => {
     support and advisement of both MP and Student Government Association. 
     </McText>
     </View>
-    <View alignItems="center">
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Mission Statement </SubHeader>
     <McText body3> 
     "It is the mission of the Messiah University Multicultural Council
@@ -46,8 +55,10 @@ const Asa = () => {
     uphold the value of our understanding and our differences."
     </McText>
     </View>
+    </View>
     </ScrollView>
     </SafeAreaView>
+    </View>
   );
 };
 
