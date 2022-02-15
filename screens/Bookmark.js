@@ -24,11 +24,10 @@ maybe Mctext body & h1
 const Asa = () => {
 
   return (
-    <View style={{ backgroundColor: "red", flex:1, marginBottom: 50}} space={5}> 
+    <View style={{ flex:1, marginBottom: 50}} space={5}> 
     <SafeAreaView>
     <ScrollView >
-    <View flex="0" style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
-    borderRadius: 10, marginBottom:20}}>
+    <View flex="0" style={{ flex:1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
     <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15}}>
          Asian Student Association (ASA)
     </McText>
@@ -40,10 +39,10 @@ const Asa = () => {
       />
       </View>
 
-    <View style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
+    <View style={{  borderWidth: 0.5,
     borderRadius: 10}}>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginBottom:20, marginTop:20}}>
-    <SubHeader> Description </SubHeader>
+    <SubHeader style={{marginTop:20}}> Description </SubHeader>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
     <McText body3 > 
     Student organizations whose missions are tied
     to the work of Multicultural Programs (MP) through their focus
@@ -52,8 +51,8 @@ const Asa = () => {
     support and advisement of both MP and Student Government Association. 
     </McText>
     </View>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Mission Statement </SubHeader>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 15, marginRight: 15}}>
     <McText body3 style={{marginBottom: 20}}> 
     "It is the mission of the Messiah University Multicultural Council
     to serve the entire student body through our efforts to improve campus
@@ -64,9 +63,9 @@ const Asa = () => {
     uphold the value of our understanding and our differences."
     </McText>
     </View>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Contact Info </SubHeader>
-    <McText body3 style={{marginBottom: 20}}> 
+    <View  flex="0" style={{ flex: 1, }}>
+    <McText body3 style={{marginBottom: 20, marginLeft: 20, marginRight: 20}}> 
     For more information, please contact: multiculturalcouncil@messiah.edu.
     </McText>
     </View>

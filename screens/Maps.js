@@ -68,12 +68,12 @@ const Place = () => {
 
     <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
     <SubHeader> Contact Info </SubHeader>
-    </View>
-    </View>
-    <View>
     <StyledButton>
         <ButtonText>Send</ButtonText>
     </StyledButton>
+    </View>
+    </View>
+    <View>
     </View>
     </ScrollView>
     </SafeAreaView>
