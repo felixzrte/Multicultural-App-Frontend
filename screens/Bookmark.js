@@ -24,25 +24,25 @@ maybe Mctext body & h1
 const Asa = () => {
 
   return (
-    <View style={{ flex:1, marginBottom: 50}} space={5}> 
+    <View style={{backgroundColor: "#0277bd", flex:1, marginBottom: 50}} space={5}> 
     <SafeAreaView>
     <ScrollView >
     <View flex="0" style={{ flex:1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
     <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15}}>
-         Asian Student Association (ASA)
+         Multi-Cultural Council (MCC)
     </McText>
     </View>
-    <View tyle={{marginBottom: 15, marginTop: 15, marginLeft:15}}>
+    <View style={{ marginBottom: 15, marginTop: 15, marginLeft:10}}>
     <Image
+        backgroundColor="white"
         style={styles.image2}
-        source={images.asa}
+        source={images.mcc}
       />
       </View>
 
-    <View style={{  borderWidth: 0.5,
-    borderRadius: 10}}>
+    <View style={{ backgroundColor: "white", borderWidth: 0, borderRadius: 10}}>
     <SubHeader style={{marginTop:20}}> Description </SubHeader>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
+    <View alignItems="center" justifyContent="center" flex="0" style={{  flex: 1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
     <McText body3 > 
     Student organizations whose missions are tied
     to the work of Multicultural Programs (MP) through their focus
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
 image2: {
     width: 200,
     height: 200,
-    borderRadius: 200 / 2,
+    borderRadius: 225 / 2,
     overflow: "hidden",
-    borderWidth: 3,
+    borderWidth: .25,
     borderColor: "black",
     alignItems: "center",
     marginLeft: 225/2,
