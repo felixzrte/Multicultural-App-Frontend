@@ -24,13 +24,22 @@ maybe Mctext body & h1
 const Asa = () => {
 
   return (
-    <View style={{ backgroundColor: "#808080", flex:1}} space={5}> 
+    <View style={{ backgroundColor: "#0578B4", flex:1, marginBottom: 50}} space={5}> 
     <SafeAreaView>
     <ScrollView >
-    <McText alignItem="center" justifyContent="center" h1 style={{marginBottom: 20}}>
-            Asian Studen Association (ASA)
+    <View flex="0" style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
+    borderRadius: 10, marginBottom:20}}>
+    <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15}}>
+         Asian Student Association (ASA)
     </McText>
-    <ClubCard image={images.asa} />
+    </View>
+    <View tyle={{marginBottom: 15, marginTop: 15, marginLeft:15}}>
+    <Image
+        style={styles.image2}
+        source={images.asa}
+      />
+      </View>
+
     <View style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
     borderRadius: 10}}>
     <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginBottom:20, marginTop:20}}>
@@ -62,4 +71,17 @@ const Asa = () => {
   );
 };
 
+const styles = StyleSheet.create({
+image2: {
+    width: 200,
+    height: 200,
+    borderRadius: 200 / 2,
+    overflow: "hidden",
+    borderWidth: 3,
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: 225/2,
+    marginBottom: 150/5,
+  }
+});
 export default Asa;
