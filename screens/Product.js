@@ -12,6 +12,9 @@ import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+const ITEM_WIDTH = SIZES.width * .9;
+const ITEM_HEIGHT = ITEM_WIDTH * .7;
+
 const Product = ({route, navigation}) => {
   const {item} = route.params;
 
@@ -29,14 +32,17 @@ const Product = ({route, navigation}) => {
               {item.merchItemName}
             </McText>
             <Image
-              style={styles.tinyLogo}
-              source={{uri: 'data:image/jpeg;base64,' + item.pic}}
+              source={{uri: item.pic}}
+              style={{
+                height: ITEM_HEIGHT,
+                width: ITEM_WIDTH,
+                borderRadius: SIZES.radius,
+              }}
             />
             <McText body2 style={{marginTop: 20}}>
-              Club: {item.merchItemPrice}
+              Price: {item.merchItemPrice}
             </McText>
-            <McText body3> Synopsis: </McText>
-            <McText body4> {item.contactEmail}</McText>
+            <McText body3> Email: {item.contactEmail}</McText>
           </View>
           <View
             style={styles.product}
@@ -55,7 +61,6 @@ const Product = ({route, navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: COLORS.black,
   },
   center: {
     alignItems: 'center',
@@ -80,9 +85,6 @@ const styles = StyleSheet.create({
   heading: {
     fontWeight: 'bold',
     color: 'white',
-  },
-  product: {
-    backgroundColor: '#18191A',
   },
   tinyLogo: {
     width: 350,

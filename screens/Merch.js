@@ -89,7 +89,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
               })
             }>
             <Image
-              source={{uri: 'data:image/jpeg;base64,' + item.pic}}
+              source={{uri: item.pic}}
               style={{
                 height: ITEM_HEIGHT,
                 width: ITEM_WIDTH,
