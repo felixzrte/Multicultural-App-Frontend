@@ -24,7 +24,7 @@ maybe Mctext body & h1
 const Asa = () => {
 
   return (
-    <View style={{ backgroundColor: "#0578B4", flex:1, marginBottom: 50}} space={5}> 
+    <View style={{ backgroundColor: "red", flex:1, marginBottom: 50}} space={5}> 
     <SafeAreaView>
     <ScrollView >
     <View flex="0" style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
@@ -62,6 +62,12 @@ const Asa = () => {
     University Community. In all things we will uplift Jesus as the head of
     our council and the Body of Christ. We pursue love. We embrace unity. We
     uphold the value of our understanding and our differences."
+    </McText>
+    </View>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
+    <SubHeader> Contact Info </SubHeader>
+    <McText body3 style={{marginBottom: 20}}> 
+    For more information, please contact: multiculturalcouncil@messiah.edu.
     </McText>
     </View>
     </View>
