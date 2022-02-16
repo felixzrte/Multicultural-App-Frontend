@@ -27,10 +27,6 @@ const Product = ({route, navigation}) => {
             style={styles.product}
             paddingVertical={50}
             paddingHorizontal={100}>
-            <View style={styles.center}><McText h1 style={{marginBottom: 30}}>Product</McText></View>
-            <McText h2 style={{marginBottom: 10}}>
-              {item.merchItemName}
-            </McText>
             <Image
               source={{uri: item.pic}}
               style={{
@@ -39,9 +35,8 @@ const Product = ({route, navigation}) => {
                 borderRadius: SIZES.radius,
               }}
             />
-            <McText body2 style={{marginTop: 20}}>
-              Price: {item.merchItemPrice}
-            </McText>
+            <McText h2 style={{marginBottom: 0}}>{item.merchItemName}</McText>
+            <McText body2 style={{marginTop: 0}}>Price: {item.merchItemPrice}</McText>
             <McText body3> Email: {item.contactEmail}</McText>
           </View>
           <View
