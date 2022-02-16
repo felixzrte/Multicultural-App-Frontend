@@ -18,15 +18,14 @@ import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
-import {EvilIcons} from '@expo/vector-icons';
 
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
-const ITEM_WIDTH = SIZES.width * .9;
-const ITEM_HEIGHT = ITEM_WIDTH * 1.2;
+const ITEM_WIDTH = SIZES.width * .8;
+const ITEM_HEIGHT = ITEM_WIDTH;
 const VISIBLE_ITEMS = 3;
-const ITEM_SIZE = SIZES.width * 1;
-const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
+const ITEM_SIZE = SIZES.width * .9;
+const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
 
   const Merch = ({navigation}) => {
   const {
@@ -45,7 +44,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
   console.log(merchs);
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
-
+  
   const merchCard = ({item, index}) => {
     const inputRange = [
       (index - 1) * SIZES.itemSize,
@@ -62,23 +61,15 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
     });
 
     return (
+      <View style={styles.itemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
-        <View style={styles.itemContainer}>
           <View style={styles.itemContainerRow}>
             <McText style={[styles.location]}>
-              <EvilIcons
-                name="location"
-                size={16}
-                color="white"
-                style={{marginRight: 5}}
-              />
             </McText>
             {/* <McText style={[styles.date]}>{item.date}</McText> */}
           </View>
-        </View>
         <View
           style={{
-            width: ITEM_SIZE,
             alignItems: 'center',
           }}>
           <TouchableOpacity
@@ -96,11 +87,12 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
                 borderRadius: SIZES.radius,
               }}
             />
-            <View style={styles.headerContainer}><McText style={[styles.merchText]} numberOfLines={1}>{item.merchItemName}</McText></View>
-            <View style={styles.headerContainer}><McText style={[styles.merchText]} numberOfLines={1}>{item.merchItemPrice}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>$ {item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
       </Animated.View>
+      </View>
     );
   };
 
@@ -110,6 +102,8 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
       <View style={styles.headerContainer}>
         <McText body4>Merch</McText>
       </View>
+      <McText style={[styles.title]}>Products</McText>
+      <View style={styles.pleaseCenter}>
       <Animated.FlatList
         data={merchs.merchs}
         keyExtractor={(item, index) => 'key' + index}
@@ -126,6 +120,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
           paddingHorizontal: ITEM_SPACING,
         }}
       />
+      </View>
     </SafeAreaView>
   );
 };
@@ -144,8 +139,13 @@ const styles = StyleSheet.create({
   merchText: {
     fontSize: 22,
     fontWeight: '900',
-    textTransform: 'uppercase',
     letterSpacing: -1,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: '900',
+    letterSpacing: -1,
+    padding: SPACING * 2,
   },
   location: {
     fontSize: 16,
@@ -153,10 +153,14 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 12,
   },
+  productText:{
+    fontSize: 22,
+    letterSpacing: 1,
+  },
   itemContainer: {
-    height: OVERFLOW_HEIGHT,
-    padding: SPACING * 2,
-    marginBottom: 25,
+    backgroundColor: '#d3d3d3',
+    marginBottom: 10,
+    borderRadius: 10,
   },
   itemContainerRow: {
     flexDirection: 'row',
