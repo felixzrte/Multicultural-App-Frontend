@@ -87,8 +87,8 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
                 borderRadius: SIZES.radius,
               }}
             />
-            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>{item.merchItemName}</McText></View>
-            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>$ {item.merchItemPrice}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.productNameText]} numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>${item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -156,6 +156,11 @@ const styles = StyleSheet.create({
   productText:{
     fontSize: 22,
     letterSpacing: 1,
+  },
+  productNameText:{
+    fontSize: 22,
+    letterSpacing: 1,
+    fontWeight: 'bold',
   },
   itemContainer: {
     backgroundColor: '#d3d3d3',
