@@ -28,7 +28,7 @@ const Asa = () => {
     <SafeAreaView>
     <ScrollView >
     <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
-    <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%"}}>
+    <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%", color:"white"}}>
          Multi-Cultural Council (MCC)
     </McText>
     </View>
