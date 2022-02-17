@@ -15,6 +15,8 @@ import { LinearGradient } from 'react-native-svg';
 import { Button } from 'native-base';
 
 const UpdateProfile = () => {
+  const [userData, setUserData] = useState(null);
+  
   return (
     <View style={styles.action}>
       <FontAwesome name='user-o' color='#333333' size={20} />
