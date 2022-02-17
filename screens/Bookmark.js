@@ -24,25 +24,24 @@ maybe Mctext body & h1
 const Asa = () => {
 
   return (
-    <View style={{backgroundColor: "#0277bd", flex:1, marginBottom: 50}} space={5}> 
+    <View style={{backgroundColor: "#0277bd"}}> 
     <SafeAreaView>
     <ScrollView >
-    <View flex="0" style={{ flex:1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
-    <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15}}>
+    <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
+    <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%"}}>
          Multi-Cultural Council (MCC)
     </McText>
     </View>
-    <View style={{ marginBottom: 15, marginTop: 15, marginLeft:10}}>
+
     <Image
         backgroundColor="white"
         style={styles.image2}
         source={images.mcc}
       />
-      </View>
 
-    <View style={{ backgroundColor: "white", borderWidth: 0, borderRadius: 10}}>
-    <SubHeader style={{marginTop:20}}> Description </SubHeader>
-    <View alignItems="center" justifyContent="center" flex="0" style={{  flex: 1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
+    <View style={styles.container}>
+    <SubHeader style={{marginTop:"5%"}}> Description </SubHeader>
+    <View alignItems="center" justifyContent="center" style={{  flex: 1, marginLeft: "5%", marginRight: "5%", marginBottom:"5%"}}>
     <McText body3 > 
     Student organizations whose missions are tied
     to the work of Multicultural Programs (MP) through their focus
@@ -52,8 +51,8 @@ const Asa = () => {
     </McText>
     </View>
     <SubHeader> Mission Statement </SubHeader>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 15, marginRight: 15}}>
-    <McText body3 style={{marginBottom: 20}}> 
+    <View alignItems="center" justifyContent="center" style={{  marginLeft: "5%", marginRight: "5%"}}>
+    <McText body3 style={{marginBottom: "5%"}}> 
     "It is the mission of the Messiah University Multicultural Council
     to serve the entire student body through our efforts to improve campus
     life for all ethnic minority students. We seek to bring unification
@@ -64,8 +63,8 @@ const Asa = () => {
     </McText>
     </View>
     <SubHeader> Contact Info </SubHeader>
-    <View  flex="0" style={{ flex: 1, }}>
-    <McText body3 style={{marginBottom: 20, marginLeft: 20, marginRight: 20}}> 
+    <View  style={{  marginLeft: "5%", marginRight: "5%"}}>
+    <McText body3 style={{marginBottom: "20%"}}> 
     For more information, please contact: multiculturalcouncil@messiah.edu.
     </McText>
     </View>
@@ -77,16 +76,23 @@ const Asa = () => {
 };
 
 const styles = StyleSheet.create({
+container:{
+    backgroundColor: "white",
+    borderWidth: 0,
+    borderRadius: 10,
+    borderBottomRightRadius:0,
+    borderBottomLeftRadius:0,
+  },
 image2: {
     width: 200,
     height: 200,
     borderRadius: 225 / 2,
     overflow: "hidden",
-    borderWidth: .25,
+    borderWidth: 0,
     borderColor: "black",
     alignItems: "center",
-    marginLeft: 225/2,
-    marginBottom: 150/5,
+    marginLeft: "25%",
+    marginBottom: "10%",
   }
 });
 export default Asa;

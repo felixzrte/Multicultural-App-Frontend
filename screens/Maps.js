@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, Button, Alert, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, Text, Button, Alert, TouchableOpacity, TextInput} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
@@ -29,49 +29,31 @@ import {
 } from '../constants/styles';
 
 
-/*
-
-how about keeping a container around the body/text and having the background be gradient
-
-add your own custom text and avatar to styles.js
-to replace
-McText
-ClubCard
-maybe Mctext body & h1
-*/
-
-const Place = () => {
+const Suggestions = () => {
 
   return (
-    <View style={{ backgroundColor: "red", flex:1, marginBottom: 50}} space={5}> 
+    <View> 
     <SafeAreaView>
     <ScrollView >
-    <View flex="0" style={{ backgroundColor: "white", flex:1, borderWidth: 0.5,
-    borderRadius: 15, marginBottom:20, marginTop:20, marginLeft: 15, marginRight:15 }}>
-    <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15, marginTop: 20}}>
+
+    <View style={styles.header}>
+    <McText h1 style={{marginBottom: "1%", marginLeft:"4%"}}>
          Suggestions
     </McText>
+    <SubHeader> Description: </SubHeader>
     </View>
 
-    <View style={{ backgroundColor: "white", flex:1, marginLeft: 15, marginRight: 15, borderWidth: 0.5,
-    borderRadius: 10}}>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginBottom:20, marginTop:20}}>
-    <SubHeader> Description </SubHeader>
-    <McText body3 > 
-    Student organizations whose missions are tied
-    to the work of Multicultural Programs (MP) through their focus
-    on racial, ethnic, and cultural celebration and reconciliation
-    gather together to form a common Multicultural Council under the
-    support and advisement of both MP and Student Government Association. 
-    </McText>
-    </View>
+      <View style={{marginTop:50, marginBottom:30,}}>
+      <SubHeader> Enter your Suggestion: </SubHeader>
+      </View>
+        <TextInput
+        style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5,marginLeft: "5%", marginRight:"5%", alignItems: "center", padding:"5%" }}
+      />
 
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10}}>
-    <SubHeader> Contact Info </SubHeader>
-    <StyledButton>
-        <ButtonText>Send</ButtonText>
-    </StyledButton>
-    </View>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ width:"95%", marginLeft: "4%", marginRight: "10%", marginTop:"70%", marginBottom:"30%"}}>
+    <TouchableOpacity style={styles.button}>
+        <Text>Send</Text>
+      </TouchableOpacity>
     </View>
     <View>
     </View>
@@ -82,17 +64,24 @@ const Place = () => {
 };
 
 const styles = StyleSheet.create({
-image2: {
-    width: 200,
-    height: 200,
-    borderRadius: 200 / 2,
-    overflow: "hidden",
-    borderWidth: 3,
-    borderColor: "black",
+  button: {
     alignItems: "center",
-    marginLeft: 225/2,
-    marginBottom: 150/5,
-  },
+    backgroundColor: "#89CFF0",
+    padding: "7%",
+    borderRadius: 15,
+    paddingHorizontal: "30%"
 
+  },
+  header: {
+    flex:1,
+    borderColor: "black",
+    borderWidth: .25,
+    borderRadius: 15,
+    marginBottom:"8%",
+    marginTop:"15%",
+    borderTopRightRadius:0,
+    borderTopLeftRadius:0,
+    borderTopColor:"white"
+  },
 });
-export default Place;
+export default Suggestions;

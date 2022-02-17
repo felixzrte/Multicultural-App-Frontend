@@ -1,82 +1,92 @@
-import React, { useState } from 'react';
-import {FlatList, SafeAreaView, StatusBar, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-//import { CustomFlatlist } from '../components';
+import React from 'react';
+import {View, StyleSheet, Image, Text, Button, Alert, TouchableOpacity, TextInput} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ScrollView} from 'react-native-gesture-handler';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import AppleHeader from 'react-native-apple-header';
+import {StatusBar} from 'expo-status-bar';
+import ClubCard from '../components/ClubCard';
+import {McIcon, McText, CustomButton} from '../components';
+import {
+  StyledContainer,
+  Logo,
+  SubTitle,
+  StyledFormArea,
+  LeftIcon,
+  RightIcon,
+  StyledTextInput,
+  ButtonText,
+  StyledButton,
+  StyledInputLabel,
+  MsgBox,
+  Line,
+  ExtraText,
+  ExtraView,
+  TextLink,
+  TextLinkContent,
+  InnerContainer,
+  SubHeader,
+} from '../constants/styles';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Multicultural Council',
-    desciption:  'Student organizations whose missions are tied to the work of Multicultural Programs.',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Black Studen Union',
-    desciption:  'Black Student Union is a club that strives to create a safe space for its black population on campus, while also opening up the space for others to engage with and learn about black culture.',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Asian Student Union',
-    desciption:  'Asian Student Association strives to convey to the greater Messiah University community what it is like to live in America as an Asian.',
-  },
-];
 
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
-    <Text style={[styles.description, textColor]}>{description}</Text>
-  </TouchableOpacity>
-);
+/*
 
-const Suggestion = () => {
-  const [selectedId, setSelectedId] = useState(null);
+how about keeping a container around the body/text and having the background be gradient
 
-  const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#121112" : "#f6edf7";
-    const color = item.id === selectedId ? 'black' : 'white';
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
-    );
-  };
+add your own custom text and avatar to styles.js
+to replace
+McText
+ClubCard
+maybe Mctext body & h1
+*/
 
+const Suggestions = () => {
 
   return (
-    <View style={ styles.container, { flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={styles.header}>Suggestions</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
+    <View style={{ backgroundColor: "white", flex:1, marginBottom: 50}} space={5}> 
+    <SafeAreaView>
+    <ScrollView >
+    <View flex="0" style={{ flex:1, borderColor:"black", borderWidth: 0.5, borderRadius: 20, marginBottom:20}}>
+    <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15, marginTop: 20}}>
+         Suggestions
+    </McText>
+    </View>
+        <SubHeader> Enter your Suggestion: </SubHeader>
+        <TextInput
+        style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5, flex:5,marginLeft: 15, marginRight: 15, alignItems: "center", alignContent: "center"}}
       />
+
+    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop:20}}>
+    <TouchableOpacity style={styles.button}>
+        <Text>Press Here</Text>
+      </TouchableOpacity>
+    </View>
+    <View>
+    </View>
+    </ScrollView>
+    </SafeAreaView>
     </View>
   );
 };
 
-//StyleSheets
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+image2: {
+    width: 200,
+    height: 200,
+    borderRadius: 200 / 2,
+    overflow: "hidden",
+    borderWidth: 3,
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: 225/2,
+    marginBottom: 150/5,
   },
-  item: {
+  button: {
+    alignItems: "center",
+    backgroundColor: "#89CFF0",
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 25,
-  },
-  description: {
-    fontSize: 16,
-  },
-  header: {
-    flex: 1,
-    fontSize: 32,
+    borderRadius: 15,
+
   },
 });
-export default Suggestion;
+export default Suggestions;
