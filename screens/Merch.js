@@ -18,17 +18,16 @@ import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
-import {EvilIcons} from '@expo/vector-icons';
 
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
-const ITEM_WIDTH = SIZES.width * 0.76;
-const ITEM_HEIGHT = ITEM_WIDTH * 1.7;
+const ITEM_WIDTH = SIZES.width * .8;
+const ITEM_HEIGHT = ITEM_WIDTH;
 const VISIBLE_ITEMS = 3;
-const ITEM_SIZE = SIZES.width * 0.8;
-const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
+const ITEM_SIZE = SIZES.width * .9;
+const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
 
-const Merch = ({navigation}) => {
+  const Merch = ({navigation}) => {
   const {
     data: merchs,
     loading,
@@ -45,7 +44,7 @@ const Merch = ({navigation}) => {
   console.log(merchs);
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
-
+  
   const merchCard = ({item, index}) => {
     const inputRange = [
       (index - 1) * SIZES.itemSize,
@@ -54,59 +53,46 @@ const Merch = ({navigation}) => {
     ];
     const opacity = scrollX.interpolate({
       inputRange,
-      outputRange: [0.4, 1, 0.4],
+      outputRange: [1, 1, 1],
     });
     const scale = scrollX.interpolate({
       inputRange,
-      outputRange: [0.9, 1, 0.9],
+      outputRange: [1, 1, 1],
     });
 
     return (
+      <View style={styles.itemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
-        <View style={styles.itemContainer}>
-          <McText style={[styles.title]} numberOfLines={1}>
-            {item.merchItemName}
-          </McText>
-          <McText body4>{item.merchItemPrice}</McText>
           <View style={styles.itemContainerRow}>
             <McText style={[styles.location]}>
-              <EvilIcons
-                name="location"
-                size={16}
-                color="white"
-                style={{marginRight: 5}}
-              />
-              {item.merchItemName}
             </McText>
             {/* <McText style={[styles.date]}>{item.date}</McText> */}
           </View>
-        </View>
         <View
           style={{
-            width: ITEM_SIZE,
             alignItems: 'center',
-            paddingBottom: 120,
           }}>
           <TouchableOpacity
             activeOpacity={1}
             onPress={() =>
-              navigation.navigate('EventDetails', {
+              navigation.navigate('Product', {
                 item: item,
               })
             }>
             <Image
-              source={{
-                uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
-              }}
+              source={{uri: item.pic}}
               style={{
                 height: ITEM_HEIGHT,
                 width: ITEM_WIDTH,
                 borderRadius: SIZES.radius,
               }}
             />
+            <View style={styles.headerContainer}><McText style={[styles.productNameText]} numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>${item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
       </Animated.View>
+      </View>
     );
   };
 
@@ -116,6 +102,8 @@ const Merch = ({navigation}) => {
       <View style={styles.headerContainer}>
         <McText body4>Merch</McText>
       </View>
+      <McText style={[styles.title]}>Products</McText>
+      <View style={styles.pleaseCenter}>
       <Animated.FlatList
         data={merchs.merchs}
         keyExtractor={(item, index) => 'key' + index}
@@ -124,7 +112,7 @@ const Merch = ({navigation}) => {
           [{nativeEvent: {contentOffset: {x: scrollX}}}],
           {useNativeDriver: true},
         )}
-        bounces={false}
+        bounces={true}
         snapToInterval={ITEM_SIZE}
         decelerationRate="fast"
         style={{flexGrow: 1}}
@@ -132,6 +120,7 @@ const Merch = ({navigation}) => {
           paddingHorizontal: ITEM_SPACING,
         }}
       />
+      </View>
     </SafeAreaView>
   );
 };
@@ -147,16 +136,36 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: -1,
   },
+  merchText: {
+    fontSize: 22,
+    fontWeight: '900',
+    letterSpacing: -1,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: '900',
+    letterSpacing: -1,
+    padding: SPACING * 2,
+  },
   location: {
     fontSize: 16,
   },
   date: {
     fontSize: 12,
   },
+  productText:{
+    fontSize: 22,
+    letterSpacing: 1,
+  },
+  productNameText:{
+    fontSize: 22,
+    letterSpacing: 1,
+    fontWeight: 'bold',
+  },
   itemContainer: {
-    height: OVERFLOW_HEIGHT,
-    padding: SPACING * 2,
-    marginBottom: 25,
+    backgroundColor: '#d3d3d3',
+    marginBottom: 10,
+    borderRadius: 10,
   },
   itemContainerRow: {
     flexDirection: 'row',
