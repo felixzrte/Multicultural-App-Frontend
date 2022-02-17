@@ -1,82 +1,87 @@
-import React, { useState } from 'react';
-import {FlatList, SafeAreaView, StatusBar, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-//import { CustomFlatlist } from '../components';
+import React from 'react';
+import {View, StyleSheet, Image, Text, Button, Alert, TouchableOpacity, TextInput} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ScrollView} from 'react-native-gesture-handler';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import AppleHeader from 'react-native-apple-header';
+import {StatusBar} from 'expo-status-bar';
+import ClubCard from '../components/ClubCard';
+import {McIcon, McText, CustomButton} from '../components';
+import {
+  StyledContainer,
+  Logo,
+  SubTitle,
+  StyledFormArea,
+  LeftIcon,
+  RightIcon,
+  StyledTextInput,
+  ButtonText,
+  StyledButton,
+  StyledInputLabel,
+  MsgBox,
+  Line,
+  ExtraText,
+  ExtraView,
+  TextLink,
+  TextLinkContent,
+  InnerContainer,
+  SubHeader,
+} from '../constants/styles';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Multicultural Council',
-    desciption:  'Student organizations whose missions are tied to the work of Multicultural Programs.',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Black Studen Union',
-    desciption:  'Black Student Union is a club that strives to create a safe space for its black population on campus, while also opening up the space for others to engage with and learn about black culture.',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Asian Student Union',
-    desciption:  'Asian Student Association strives to convey to the greater Messiah University community what it is like to live in America as an Asian.',
-  },
-];
 
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
-    <Text style={[styles.description, textColor]}>{description}</Text>
-  </TouchableOpacity>
-);
-
-const Suggestion = () => {
-  const [selectedId, setSelectedId] = useState(null);
-
-  const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#121112" : "#f6edf7";
-    const color = item.id === selectedId ? 'black' : 'white';
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
-    );
-  };
-
+const Suggestions = () => {
 
   return (
-    <View style={ styles.container, { flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={styles.header}>Suggestions</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
+    <View> 
+    <SafeAreaView>
+    <ScrollView >
+
+    <View style={styles.header}>
+    <McText h1 style={{marginBottom: "1%", marginLeft:"4%"}}>
+         Suggestions
+    </McText>
+    <SubHeader> Description: </SubHeader>
+    </View>
+
+      <View style={{marginTop:50, marginBottom:30,}}>
+      <SubHeader> Enter your Suggestion: </SubHeader>
+      </View>
+        <TextInput
+        style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5,marginLeft: "5%", marginRight:"5%", alignItems: "center", padding:"5%" }}
       />
+
+    <View alignItems="center" justifyContent="center" flex="0" style={{ width:"95%", marginLeft: "4%", marginRight: "10%", marginTop:"70%", marginBottom:"30%"}}>
+    <TouchableOpacity style={styles.button}>
+        <Text>Send</Text>
+      </TouchableOpacity>
+    </View>
+    <View>
+    </View>
+    </ScrollView>
+    </SafeAreaView>
     </View>
   );
 };
 
-//StyleSheets
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 25,
-  },
-  description: {
-    fontSize: 16,
+  button: {
+    alignItems: "center",
+    backgroundColor: "#89CFF0",
+    padding: "7%",
+    borderRadius: 15,
+    paddingHorizontal: "30%"
+
   },
   header: {
-    flex: 1,
-    fontSize: 32,
+    flex:1,
+    borderColor: "black",
+    borderWidth: .25,
+    borderRadius: 15,
+    marginBottom:"8%",
+    marginTop:"15%",
+    borderTopRightRadius:0,
+    borderTopLeftRadius:0,
+    borderTopColor:"white"
   },
 });
-export default Suggestion;
+export default Suggestions;
