@@ -6,7 +6,7 @@ import {
   BottomTabBar,
 } from '@react-navigation/bottom-tabs';
 
-import {Bookmark, Home, Maps, Profile} from '../screens';
+import {Bookmark, Home, Maps, Profile, Suggestion} from '../screens';
 import {COLORS, FONTS, icons, SIZES} from '../constants';
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +26,7 @@ const Tabs = () => {
           borderTopRightRadius: SIZES.radius,
           backgroundColor: COLORS.tabBar,
           borderTopColor: 'transparent',
-          height: '12%',
+          height: '9%',
         },
       }}>
       <Tab.Screen

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#18191A',
   },
   tinyLogo: {
-    width: 350,
+    width: 200,
     height: 200,
   },
 });
