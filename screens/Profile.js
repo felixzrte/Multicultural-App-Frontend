@@ -65,10 +65,7 @@ const Profile = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000000',
-  },
+  
 
   text: {
     fontFamily: 'HelveticaNeue',
