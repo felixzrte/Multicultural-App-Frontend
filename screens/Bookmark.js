@@ -21,7 +21,7 @@ ClubCard
 maybe Mctext body & h1
 */
 
-const Asa = () => {
+const Bookmark = () => {
 
   return (
     <View style={{backgroundColor: "#0277bd"}}> 
@@ -44,16 +44,5 @@ container:{
     borderBottomRightRadius:0,
     borderBottomLeftRadius:0,
   },
-image2: {
-    width: 200,
-    height: 200,
-    borderRadius: 225 / 2,
-    overflow: "hidden",
-    borderWidth: 0,
-    borderColor: "black",
-    alignItems: "center",
-    marginLeft: "25%",
-    marginBottom: "10%",
-  }
 });
-export default Asa;
+export default Bookmark;
