@@ -9,5 +9,6 @@ import Register from './Register';
 import Welcome from './Welcome';
 //import Discover from './Discover';
 import Suggestion from './Suggestion';
+import Transition from './Transition';
 
-export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome, Suggestion, Merch};
+export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome, Suggestion, Merch, Transition};
