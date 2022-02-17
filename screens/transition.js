@@ -16,12 +16,12 @@ const Transition = () => {
     <View> 
     <SafeAreaView>
     <ScrollView >
-    <View style={{ flex:1, marginLeft: "10%", marginRight: "10%", marginTop: "30%"}}>
+    <View style={{ flex:1, marginLeft: "10%", marginRight: "10%", marginTop: "50%"}}>
     <McText h1 style={{ marginTop: "20%", marginLeft:"10%"}}>
          Thank you for your feedback!
     </McText>
     </View>
-    <View alignItems="center"style={{ marginLeft: "10%", marginRight: "10%", marginTop:"20%"}}>
+    <View style={{ marginLeft: "15%", marginRight: "15%", marginTop:"10%"}}>
     <TouchableOpacity style={styles.button}>
         <Text>Continue</Text>
       </TouchableOpacity>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#89CFF0",
     padding: "10%",
     borderRadius: 15,
-    paddingHorizontal: "30%",
+    paddingHorizontal: "10%",
 
   },
 });
