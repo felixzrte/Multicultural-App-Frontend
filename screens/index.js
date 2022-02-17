@@ -11,5 +11,17 @@ import Suggestion from './Suggestion';
 import Transition from './Transition';
 import Product from './Product';
 
-export {Home, Bookmark, Maps, EventDetails, Profile, Login, Register, Welcome, Suggestion, Merch, Transition, Product};
-
+export {
+  Home,
+  Bookmark,
+  Maps,
+  EventDetails,
+  Profile,
+  Login,
+  Register,
+  Welcome,
+  Suggestion,
+  Merch,
+  Transition,
+  Product,
+};
