@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {EventDetails, Home, Merch} from '../screens';
+import {EventDetails, Home, Merch, UpdateProfile} from '../screens';
 import {COLORS} from '../constants';
 import Tabs from './Tabs';
 
@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const AuthStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Update"
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
@@ -28,6 +28,7 @@ const AuthStack = () => {
       <Stack.Screen name="EventDetails" component={EventDetails} />
       <Stack.Screen name="Profile" component={Tabs} />
       <Stack.Screen name="Merch" component={Merch} />
+      <Stack.Screen name="Update" component={UpdateProfile} />
     </Stack.Navigator>
   );
 };
