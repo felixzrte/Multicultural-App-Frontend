@@ -1,43 +1,73 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {useState} from 'react';
+
 import {
   StyleSheet,
   View,
-  Text,
-  TextInput,
   SafeAreaView,
   Image,
-  ScrollView,
+  Title,
+  Caption,
+  Text,
+  TouchableRipple,
 } from 'react-native';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
-import {LinearGradient} from 'react-native-svg';
-import {Button} from 'native-base';
+import { LinearGradient } from 'react-native-svg';
+import Profile from './Profile';
 
 const UpdateProfile = () => {
-  const [userData, setUserData] = useState(null);
-
   return (
-    <View style={styles.action}>
-      <FontAwesome name="user-o" color="#333333" size={20} />
-      <TextInput
-        placeholder="First Name"
-        placeholderTextColor={'#666666'}
-        autoCorrect={false}
-        value={userData ? userData.fName : ''}
-        onChangeText={(txt) => setUserData({...userData, fName: txt})}
-        style={styles.textInput}
-      />
-      <FormButton buttonTitle="Update" onPress={() => {}} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.userInfoSection}>
+         <View style={styles.profileImage}>
+            <Image
+              source={require('../assets/images/mcc.png')}
+              style={styles.image}
+              resizeMode="center"
+            />
+           
+          </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000000',
-  },
-});
+  
 
+  text: {
+    fontFamily: 'HelveticaNeue',
+    color: 'white',
+    fontWeight: '400',
+    fontSize: 40,
+  },
+  userInfoSection:{
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  profileImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    overflow: 'hidden',
+  },
+  image: {
+    flex: 1,
+    width: undefined,
+    height: undefined,
+  },
+  title: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 24,
+    marginHorizontal: 16,
+  },
+  caption: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  
+});
 export default UpdateProfile;
