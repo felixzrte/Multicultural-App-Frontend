@@ -21,7 +21,7 @@ ClubCard
 maybe Mctext body & h1
 */
 
-const Mcc = () => {
+const Lal = () => {
 
   return (
     <View style={{backgroundColor: "#0277bd"}}> 
@@ -95,4 +95,4 @@ image2: {
     marginBottom: "10%",
   }
 });
-export default Mcc;
+export default Lal;

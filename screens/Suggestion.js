@@ -29,33 +29,32 @@ import {
 } from '../constants/styles';
 
 
-const Suggestions = () => {
+const Suggestion = () => {
 
   return (
-    <View> 
+    <View style={{backgroundColor: "#0277bd"}}> 
     <SafeAreaView>
     <ScrollView >
-
+    <View style={{backgroundColor: "white"}}>
     <View style={styles.header}>
-    <McText h1 style={{marginBottom: "1%", marginLeft:"4%"}}>
+    <McText h1 style={{ marginTop: "7%", marginLeft:"5%", marginBottom:"10%", color:"white"}}>
          Suggestions
     </McText>
-    <SubHeader> Description: </SubHeader>
     </View>
-
-      <View style={{marginTop:50, marginBottom:30,}}>
+    </View>
+    <View style={{backgroundColor:"white", marginBottom:"10%"}}>
+      <View style={{marginTop:"50%", marginBottom:"10%",alignItems: 'center', justifyContent: 'center'}}>
       <SubHeader> Enter your Suggestion: </SubHeader>
       </View>
         <TextInput
         style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5,marginLeft: "5%", marginRight:"5%", alignItems: "center", padding:"5%" }}
       />
 
-    <View alignItems="center" justifyContent="center" flex="0" style={{ width:"95%", marginLeft: "4%", marginRight: "10%", marginTop:"70%", marginBottom:"30%"}}>
+    <View alignItems="center" justifyContent="center" style={{ width:"95%", marginLeft: "3%", marginRight: "10%", marginTop:"15%", marginBottom:"50%"}}>
     <TouchableOpacity style={styles.button}>
         <Text>Send</Text>
       </TouchableOpacity>
     </View>
-    <View>
     </View>
     </ScrollView>
     </SafeAreaView>
@@ -73,15 +72,13 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    flex:1,
     borderColor: "black",
     borderWidth: .25,
-    borderRadius: 15,
-    marginBottom:"8%",
-    marginTop:"15%",
+    borderRadius: 25,
     borderTopRightRadius:0,
     borderTopLeftRadius:0,
-    borderTopColor:"white"
+    borderTopColor:"#0277bd",
+    backgroundColor: "#0277bd"
   },
 });
-export default Suggestions;
+export default Suggestion;

@@ -10,16 +10,7 @@ import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
 
-/*
 
-how about keeping a container around the body/text and having the background be gradient
-
-add your own custom text and avatar to styles.js
-to replace
-McText
-ClubCard
-maybe Mctext body & h1
-*/
 
 const Bookmark = () => {
 
@@ -44,5 +35,16 @@ container:{
     borderBottomRightRadius:0,
     borderBottomLeftRadius:0,
   },
+image2: {
+    width: 200,
+    height: 200,
+    borderRadius: 225 / 2,
+    overflow: "hidden",
+    borderWidth: 0,
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: "25%",
+    marginBottom: "10%",
+  }
 });
 export default Bookmark;

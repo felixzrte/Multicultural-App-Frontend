@@ -10,16 +10,7 @@ import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
 
-/*
 
-how about keeping a container around the body/text and having the background be gradient
-
-add your own custom text and avatar to styles.js
-to replace
-McText
-ClubCard
-maybe Mctext body & h1
-*/
 
 const Place = () => {
 
