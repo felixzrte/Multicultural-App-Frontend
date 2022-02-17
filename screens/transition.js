@@ -10,29 +10,18 @@ import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
 
-/*
-
-how about keeping a container around the body/text and having the background be gradient
-
-add your own custom text and avatar to styles.js
-to replace
-McText
-ClubCard
-maybe Mctext body & h1
-*/
-
-const transition = () => {
+const Transition = () => {
 
   return (
-    <View style={{ flex:1, marginBottom: 50}} space={5}> 
+    <View> 
     <SafeAreaView>
     <ScrollView >
-    <View flex="0" style={{ flex:1, marginLeft: 15, marginRight: 15, marginBottom:20}}>
-    <McText h1 style={{marginBottom: 20, marginTop: 50, marginLeft:15}}>
+    <View style={{ flex:1, marginLeft: "10%", marginRight: "10%", marginTop: "30%"}}>
+    <McText h1 style={{ marginTop: "20%", marginLeft:"10%"}}>
          Thank you for your feedback!
     </McText>
     </View>
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop:20}}>
+    <View alignItems="center"style={{ marginLeft: "10%", marginRight: "10%", marginTop:"20%"}}>
     <TouchableOpacity style={styles.button}>
         <Text>Continue</Text>
       </TouchableOpacity>
@@ -45,23 +34,13 @@ const transition = () => {
 };
 
 const styles = StyleSheet.create({
-image2: {
-    width: 200,
-    height: 200,
-    borderRadius: 225 / 2,
-    overflow: "hidden",
-    borderWidth: .25,
-    borderColor: "black",
-    alignItems: "center",
-    marginLeft: 225/2,
-    marginBottom: 150/5,
-  },
   button: {
     alignItems: "center",
     backgroundColor: "#89CFF0",
-    padding: 20,
+    padding: "10%",
     borderRadius: 15,
+    paddingHorizontal: "30%",
 
   },
 });
-export default transition;
+export default Transition;

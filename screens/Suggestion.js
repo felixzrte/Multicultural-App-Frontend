@@ -29,36 +29,30 @@ import {
 } from '../constants/styles';
 
 
-/*
-
-how about keeping a container around the body/text and having the background be gradient
-
-add your own custom text and avatar to styles.js
-to replace
-McText
-ClubCard
-maybe Mctext body & h1
-*/
-
 const Suggestions = () => {
 
   return (
-    <View style={{ backgroundColor: "white", flex:1, marginBottom: 50}} space={5}> 
+    <View> 
     <SafeAreaView>
     <ScrollView >
-    <View flex="0" style={{ flex:1, borderColor:"black", borderWidth: 0.5, borderRadius: 20, marginBottom:20}}>
-    <McText h1 style={{marginBottom: 20, marginTop: 20, marginLeft:15, marginTop: 20}}>
+
+    <View style={styles.header}>
+    <McText h1 style={{marginBottom: "1%", marginLeft:"4%"}}>
          Suggestions
     </McText>
+    <SubHeader> Description: </SubHeader>
     </View>
-        <SubHeader> Enter your Suggestion: </SubHeader>
+
+      <View style={{marginTop:50, marginBottom:30,}}>
+      <SubHeader> Enter your Suggestion: </SubHeader>
+      </View>
         <TextInput
-        style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5, flex:5,marginLeft: 15, marginRight: 15, alignItems: "center", alignContent: "center"}}
+        style={{borderRadius: 15, borderColor:"black", borderWidth: 0.5,marginLeft: "5%", marginRight:"5%", alignItems: "center", padding:"5%" }}
       />
 
-    <View alignItems="center" justifyContent="center" flex="0" style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop:20}}>
+    <View alignItems="center" justifyContent="center" flex="0" style={{ width:"95%", marginLeft: "4%", marginRight: "10%", marginTop:"70%", marginBottom:"30%"}}>
     <TouchableOpacity style={styles.button}>
-        <Text>Press Here</Text>
+        <Text>Send</Text>
       </TouchableOpacity>
     </View>
     <View>
@@ -70,23 +64,24 @@ const Suggestions = () => {
 };
 
 const styles = StyleSheet.create({
-image2: {
-    width: 200,
-    height: 200,
-    borderRadius: 200 / 2,
-    overflow: "hidden",
-    borderWidth: 3,
-    borderColor: "black",
-    alignItems: "center",
-    marginLeft: 225/2,
-    marginBottom: 150/5,
-  },
   button: {
     alignItems: "center",
     backgroundColor: "#89CFF0",
-    padding: 20,
+    padding: "7%",
     borderRadius: 15,
+    paddingHorizontal: "30%"
 
+  },
+  header: {
+    flex:1,
+    borderColor: "black",
+    borderWidth: .25,
+    borderRadius: 15,
+    marginBottom:"8%",
+    marginTop:"15%",
+    borderTopRightRadius:0,
+    borderTopLeftRadius:0,
+    borderTopColor:"white"
   },
 });
 export default Suggestions;
