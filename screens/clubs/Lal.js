@@ -21,10 +21,10 @@ ClubCard
 maybe Mctext body & h1
 */
 
-const Lal = () => {
+const Lal= () => {
 
   return (
-    <View style={{backgroundColor: "#0277bd"}}> 
+    <View style={{backgroundColor: "#3524a3"}}> 
     <SafeAreaView>
     <ScrollView >
     <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
