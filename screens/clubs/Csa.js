@@ -29,43 +29,39 @@ const Csa = () => {
     <ScrollView >
     <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
     <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%", color:"white"}}>
-         Multi-Cultural Council (MCC)
+         Caribbean Student Association (CSA)
     </McText>
     </View>
 
     <Image
         backgroundColor="white"
         style={styles.image2}
-        source={images.mcc}
+        source={images.csa}
       />
 
     <View style={styles.container}>
     <SubHeader style={{marginTop:"5%"}}> Description </SubHeader>
     <View alignItems="center" justifyContent="center" style={{  flex: 1, marginLeft: "5%", marginRight: "5%", marginBottom:"5%"}}>
     <McText body3 > 
-    Student organizations whose missions are tied
-    to the work of Multicultural Programs (MP) through their focus
-    on racial, ethnic, and cultural celebration and reconciliation
-    gather together to form a common Multicultural Council under the
-    support and advisement of both MP and Student Government Association. 
+    The Caribbean Student Association seeks to provide a safe space for Caribbean students, students
+    of Caribbean decent, as well as education to those interested in learning more about the Caribbean
+    culture. We plan to facilitate this goal through meetings and exciting events throughout the year
+    to foster a community that becomes appreciative of the West Indian Community. We hope that through
+    Christ, members can become more than an association, but a family in a positive, fresh, environment.
     </McText>
     </View>
     <SubHeader> Mission Statement </SubHeader>
     <View alignItems="center" justifyContent="center" style={{  marginLeft: "5%", marginRight: "5%"}}>
     <McText body3 style={{marginBottom: "5%"}}> 
-    "It is the mission of the Messiah University Multicultural Council
-    to serve the entire student body through our efforts to improve campus
-    life for all ethnic minority students. We seek to bring unification
-    amongst our organizations and knowledge of our cultures to the Messiah
-    University Community. In all things we will uplift Jesus as the head of
-    our council and the Body of Christ. We pursue love. We embrace unity. We
-    uphold the value of our understanding and our differences."
+    "To develop our members to be future leaders of the Caribbean
+    community and build positive relationships between the 
+    Caribbean countries and the world."
     </McText>
     </View>
     <SubHeader> Contact Info </SubHeader>
     <View  style={{  marginLeft: "5%", marginRight: "5%"}}>
     <McText body3 style={{marginBottom: "20%"}}> 
-    For more information, please contact: multiculturalcouncil@messiah.edu.
+    For more information, please contact: csa@messiah.edu.
     </McText>
     </View>
     </View>
