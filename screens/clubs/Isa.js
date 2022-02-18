@@ -24,7 +24,7 @@ maybe Mctext body & h1
 const Isa = () => {
 
   return (
-    <View style={{backgroundColor: "#0277bd"}}> 
+    <View style={{backgroundColor: "#b81667"}}> 
     <SafeAreaView>
     <ScrollView >
     <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
@@ -53,7 +53,7 @@ const Isa = () => {
     </McText>
     </View>
     <SubHeader> Mission Statement </SubHeader>
-    <View alignItems="center" justifyContent="center" style={{  marginLeft: "5%", marginRight: "5%"}}>
+    <View alignItems="center" justifyContent="center" style={{  marginLeft: "3.83958%", marginRight: "6%"}}>
     <McText body3 style={{marginBottom: "5%"}}> 
     "ISA/MuKappa serves as a main support system for international students and missionary kids,
      providing them with a home away from home. The organization consists of international students
