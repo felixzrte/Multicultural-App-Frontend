@@ -4,178 +4,211 @@ import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
+  Text,
+  TextInput,
   SafeAreaView,
   Image,
-  Title,
-  Caption,
-  Text,
-  FlatList,
-  Modal,
+  ScrollView,
   TouchableOpacity,
-  TextInput,
+  ImageBackground,
+  Button,
+  Platform,
+  Icon,
 } from 'react-native';
-import {Ionicons, MaterialIcons} from '@expo/vector-icons';
+
+import {FontAwesome, Ionicons, MaterialIcons} from '@expo/vector-icons';
 import { LinearGradient } from 'react-native-svg';
-import Profile from './Profile';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 
-const DATA = [
-  {id: 1, text: 'Name'},
-  {id: 2, text: 'Email'},
-  {id: 3, text: 'Password'},
-]
 
-const UpdateProfile = () => {
-  const [data, setdata] = useState(DATA)
-  const [isRender, setisRender] = useState(false);
-  const [isModalVisible, setisModalVisible] = useState(false);
-  const [inputText, setinputText] = useState();
-  const [editItem, seteditItem] = useState();
-
-  const onPressItem = (item) => {
-    setisModalVisible(true);
-    setinputText(item.text)
-    seteditItem(item.id)
-  }
-  
-
-  const renderItem = ({item, index}) => {
+const EditProfile = () => {
   return (
-    <TouchableOpacity
-      style={styles.item}
-      onPress={() => onPressItem(item)}
-    >
-      <Text style={styles.text}>{item.text}</Text>
-    </TouchableOpacity>
-  )
-  }
-
-  const handleEditItem = (editItem) => {
-    const newData = data.map(item => {
-      if (item.id == editItem) {
-        item.text = inputText;
-        return item;
-      }
-      return item;
-    })
-    setdata(newData);
-    setisRender(!isRender);
-  }
-
-  const onPressSaveEdit = () => {
-    handleEditItem(editItem); //save input text to data
-    setisModalVisible(false); // close modal
-  }
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.userInfoSection}>
-         <View style={styles.profileImage}>
+    <SafeAreaView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.titleBar}>
+          <Ionicons name="ios-arrow-back" size={24} color="#52575D" />
+        </View>
+        <View style={{alignSelf: 'center'}}>
+          <View style={styles.profileImage}>
             <Image
               source={require('../assets/images/mcc.png')}
               style={styles.image}
               resizeMode="center"
             />
-          </View>
-          <FlatList
-            data={data}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderItem}
-            extraData={isRender}
-          />
-          <Modal
-            animationType='fade'
-            visible={isModalVisible}
-            onRequestClose={() => setisModalVisible(false)}
-          > 
-            <View style={styles.modalView}>
-              <Text style={styles.text}>
-                Change Text: 
-              </Text>
-            <TextInput
-                style={styles.textInput}
-                onChangeText={(text) => setinputText(text)}
-                defaultValue={inputText}
-                editable={true}
-                multiline={false}
-                maxLength={100}
-
-              />
-            <TouchableOpacity
-                onPress={() => onPressSaveEdit()}
-                style={styles.touchableSave} >
-                <Text style={styles.text}>
-                  Save
-                </Text>
-              </TouchableOpacity>
-
             </View>
-
-          </Modal>
-          
-      </View>
+          </View>
+          <View>
+            </View>
+          <View style={styles.container}>
+            <View style={{margin:20}}>
+                <View style={{alignItems: 'center'}}>
+              <TouchableOpacity onPress={() => {}}>
+                <View style={{
+                    height: 20,
+                    width: 70,
+                    borderRadius:15,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                </View>
+              </TouchableOpacity>
+              <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
+                John Doe
+              </Text>
+              <View style={styles.action}>
+                <FontAwesome name="user-o" size={20} />
+                <TextInput
+                    placeholder='First Name'
+                    placeholderTextColor='#666666'
+                    autoCorrect={false}
+                    style={styles.textInput}
+                />
+              </View>
+              <View style={styles.action}>
+                <FontAwesome name="user-o" size={20} />
+                <TextInput
+                    placeholder='Last Name'
+                    placeholderTextColor='#666666'
+                    autoCorrect={false}
+                    style={styles.textInput}
+                />
+              </View>
+              <View style={styles.action}>
+                <FontAwesome name="envelope-o" size={20} />
+                <TextInput
+                    placeholder='Email'
+                    placeholderTextColor='#666666'
+                    keyboardType='email-address'
+                    autoCorrect={false}
+                    style={styles.textInput}
+                />
+              </View>
+              <View style={styles.action}>
+                <FontAwesome name="lock" size={20} />
+                <TextInput
+                    label="Update password"
+                    placeholder=" * * * * * * * * * *"
+                    placeholderTextColor='#666666'
+                    autoCorrect={false}
+                    style={styles.textInput}
+                />
+              </View>
+              <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+                <Text styles={styles.panelButtonTitle}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   
-
+  container: {
+    flex: 1,
+    justifyContent:'center',
+  },
   text: {
     fontFamily: 'HelveticaNeue',
     color: 'black',
-    alignItems:'flex-start',
-    fontSize: 20,
-    borderBottomWidth: 1,
-    marginLeft: 10,
-    marginVertical: 50,
-  },
-  userInfoSection:{
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: 16,
-  },
-  profileImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    overflow: 'hidden',
+    fontWeight: '400',
+    fontSize: 40,
   },
   image: {
     flex: 1,
     width: undefined,
     height: undefined,
   },
-  container: {
-    flex: 1,
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    marginHorizontal: 16,
   },
-  item: {
+
+  profileImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    overflow: 'hidden',
+  },
+  commandButton: {
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#FF6347',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  panel: {
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 20,
+  },
+  header: {
+    backgroundColor: '#ffffff',
+    shadowColor: '#333333',
+    shadowOffset: {width: -1, height: -3},
+    shadowRadius: 2,
+    shadowOpacity: 0.4,
+    paddingTop: 20,
+    borderTopRightRadius:20,
+    borderTopLeftRadius: 20,
+  },
+  panelHeader:{
+    alignItems: 'center',
+  },
+  panelHandle: {
+    width: 40,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#00000040',
+    marginBottom: 10,
+  },
+  panelTitle: {
+    fontSize: 27,
+    height: 35,
+  },
+  panelSubtitle: {
+    fontSize: 14,
+    color: 'gray',
+    height: 30,
+  },
+  panelButton: {
+    padding: 13,
+    borderRadius: 10,
+    backgroundColor: '#FF6347',
+    alignItems: 'center',
+    marginVertical: 7,
+  },
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  action: {
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: 'grey',
-    alignItems: 'flex-start'
+    borderBottomColor: '#f2f2f2',
+    paddingBottom: 5,
   },
-  textInput:{
-    width: '70%',
-    height: 70,
-    borderColor: 'grey',
-    borderWidth: 1,
-    fontSize: 25
+  actionError: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#FF0000',
+    paddingBottom: 5,
   },
-  touchableSave:{
-    backgroundColor: 'blue',
-    paddingHorizontal: 25,
-    alignItems: 'center',
-    marginTop: 20
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : -12,
+    paddingLeft: 10,
+    color: '#05375a',
   },
-  TouchableOpacity:{
-    backgroundColor: 'blue',
-    paddingHorizontal: 100,
-    alignItems: 'center',
-    marginTop: 20
-  },
-  modalView: {
-    flex:1,
-    alignItems: 'center',
-  }
+ 
 });
-export default UpdateProfile;
+
+export default EditProfile;
