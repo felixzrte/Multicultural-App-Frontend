@@ -24,7 +24,7 @@ maybe Mctext body & h1
 const Bsu = () => {
 
   return (
-    <View style={{backgroundColor: "#53deed"}}> 
+    <View style={{backgroundColor: "#0277bd"}}> 
     <SafeAreaView>
     <ScrollView >
     <View style={{ marginLeft: "5%", marginRight:"5%", marginBottom:"5%"}}>
