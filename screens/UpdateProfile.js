@@ -98,7 +98,7 @@ const EditProfile = ({navigation}) => {
                 <FontAwesome name="lock" size={20} />
                 <TextInput
                     label="Update password"
-                    placeholder=" * * * * * * * * * *"
+                    placeholder=" password"
                     placeholderTextColor='#666666'
                     autoCorrect={false}
                     style={styles.textInput}
