@@ -1,6 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-
 import {
   StyleSheet,
   View,
@@ -14,14 +13,26 @@ import {
   Button,
   Platform,
   Icon,
+  ExtraView,
+  TextLink,
+  TextLinkContent,
+  useWindowDimensions,
+  StyledButton,
+  ButtonText,
+  StyledFormArea,
+  Avatar,
+  Line,
 } from 'react-native';
-
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {FontAwesome, Ionicons, MaterialIcons} from '@expo/vector-icons';
 import { LinearGradient } from 'react-native-svg';
+import {NavigationContainer} from '@react-navigation/native';
 
 
 
-const EditProfile = () => {
+const EditProfile = ({navigation}) => {
+  const {height} = useWindowDimensions();
+
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -93,9 +104,19 @@ const EditProfile = () => {
                     style={styles.textInput}
                 />
               </View>
-              <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-                <Text styles={styles.panelButtonTitle}>Submit</Text>
+              <TouchableOpacity style={styles.commandButton} onPress={() => {navigation.navigate('Login');
+            }}>
+                <Text styles={styles.panelButtonTitle}>Logout</Text>
               </TouchableOpacity>
+             {/*  <StyledFormArea>
+            <Line />
+            <StyledButton
+              onPress={() => {
+                navigation.navigate('Login');
+              }}>
+              <ButtonText>Logout</ButtonText>
+            </StyledButton>
+          </StyledFormArea> */}
             </View>
           </View>
         </View>
