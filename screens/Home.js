@@ -164,7 +164,7 @@ const Home = ({navigation}) => {
           }}>
           <TouchableOpacity
             style={{margin: 20}}
-            onPress={() => navigation.navigate('')}>
+            onPress={() => navigation.navigate('Merch')}>
             <McText color={'white'} h2>
               Merch
             </McText>
