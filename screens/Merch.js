@@ -18,7 +18,7 @@ import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
-import styles from '../components/ContainerSpacing.js';
+import styles from '../components/MerchProductStyles';
 
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
