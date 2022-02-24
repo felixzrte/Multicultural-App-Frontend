@@ -12,7 +12,7 @@ import {
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import styles from '../components/ContainerSpacing.js';
+import styles from '../components/MerchProductStyles.js';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
