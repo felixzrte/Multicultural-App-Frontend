@@ -1,32 +1,45 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import {StatusBar, View, Image, FlatList} from 'react-native';
+import {McText, McAvatar} from '../components';
+import {LinearGradient} from 'expo-linear-gradient';
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-  ScrollView,
-  TextInput,
-  ImageBackground,
-  Image,
-  Animated,
-} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import styled from 'styled-components/native';
-import {McIcon, McText} from '../components';
+  Container,
+  HeaderSection,
+  Header2Section,
+  BannerSection,
+  Line,
+  ClubItemBox,
+  BigClubLogo,
+  EventItemBox,
+} from '../constants/styles';
+import React from 'react';
+import {COLORS, images, dummyData} from '../constants';
 import useFetch from '../useFetch';
-import {ceil} from 'react-native-reanimated';
-import {EvilIcons} from '@expo/vector-icons';
-
-const OVERFLOW_HEIGHT = 70;
-const SPACING = 10;
-const ITEM_WIDTH = SIZES.width * 0.76;
-const ITEM_HEIGHT = ITEM_WIDTH * 1.7;
-const VISIBLE_ITEMS = 3;
-const ITEM_SIZE = SIZES.width * 0.8;
-const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+const renderClubItem = ({item, index}) => {
+  return (
+    <ClubItemBox
+      style={{
+        marginLeft: index === 0 ? 16 : 0,
+        marginRight: index === dummyData.Clubs.length - 1 ? 16 : 10,
+      }}>
+      <TouchableOpacity>
+        <BigClubLogo source={item.logo} />
+      </TouchableOpacity>
+    </ClubItemBox>
+  );
+};
+const renderEventItem = ({item, index}) => {
+  return (
+    <EventItemBox
+      style={{
+        marginLeft: index === 0 ? 16 : 0,
+        marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+      }}>
+      <McText body4>{item.eventName}</McText>
+    </EventItemBox>
+  );
+};
 
 const Home = ({navigation}) => {
   const {
@@ -43,140 +56,127 @@ const Home = ({navigation}) => {
     console.log(error);
   }
   console.log(events);
-
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-
-  const eventCard = ({item, index}) => {
-    const inputRange = [
-      (index - 1) * SIZES.itemSize,
-      index * SIZES.itemSize,
-      (index + 1) * SIZES.itemSize,
-    ];
-    const opacity = scrollX.interpolate({
-      inputRange,
-      outputRange: [0.4, 1, 0.4],
-    });
-    const scale = scrollX.interpolate({
-      inputRange,
-      outputRange: [0.9, 1, 0.9],
-    });
-    return (
-      <Animated.View style={{opacity, transform: [{scale}]}}>
-        <View style={styles.itemContainer}>
-          <McText style={[styles.title]} numberOfLines={1}>
-            {item.eventName}
+  return (
+    <Container>
+      <ScrollView
+        contentContainerStyle={{}}
+        style={{}}
+        showsVerticalScrollIndicator={false}>
+        <StatusBar hidden={false} barStyle={'dark-content'} />
+        {/* Header Section */}
+        <HeaderSection>
+          <McText h1>Discover</McText>
+          <McText style={{marginTop: 10}} body4 color="gray">
+            Explore all the Multicultural Clubs have to offer!
           </McText>
-          <McText body4>{item.date}</McText>
-
-          <View style={styles.itemContainerRow}>
-            <McText style={[styles.location]}>
-              <EvilIcons
-                name="location"
-                size={16}
-                color="white"
-                style={{marginRight: 5}}
-              />
-              {item.location}
-            </McText>
-            {/* <McText style={[styles.date]}>{item.date}</McText> */}
-          </View>
+          <Line />
+        </HeaderSection>
+        {/* Banner Section */}
+        <BannerSection>
+          <LinearGradient
+            colors={['#4C4478', '#0C0C69']}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            style={{
+              height: 150,
+              borderRadius: 16,
+              backgroundColor: 'green',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+            }}>
+            <View
+              style={{width: 175, margin: 20, justifyContent: 'space-between'}}>
+              <McText h2 color="white">
+                Stay tuned for the big announcment
+              </McText>
+              <McText body3 color="white">
+                Tomorrow @7pm
+              </McText>
+            </View>
+          </LinearGradient>
+        </BannerSection>
+        {/* Clubs Section */}
+        <Header2Section>
+          <McText h2>Multicultural Clubs </McText>
+        </Header2Section>
+        <View>
+          <FlatList
+            keyExtractor={(item) => 'club' + item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{}}
+            data={dummyData.Clubs}
+            renderItem={renderClubItem}
+          />
         </View>
-        <View
+        {/* Events Section */}
+        <Header2Section>
+          <McText h2>Upcoming Events</McText>
+        </Header2Section>
+        <View>
+          <FlatList
+            data={events.events}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{}}
+            keyExtractor={(item, index) => 'key' + index}
+            renderItem={renderEventItem}
+          />
+        </View>
+        {/* Features Section */}
+        <Header2Section>
+          <McText h2>More Features</McText>
+        </Header2Section>
+        <LinearGradient
+          colors={['#4C4478', '#0C0C69']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
           style={{
-            width: ITEM_SIZE,
-            alignItems: 'center',
-            paddingBottom: 120,
+            height: 110,
+            borderRadius: 16,
+            marginHorizontal: 16,
+            marginTop: 10,
           }}>
           <TouchableOpacity
-            activeOpacity={1}
-            onPress={() =>
-              navigation.navigate('EventDetails', {
-                item: item,
-              })
-            }>
-            <Image
-              source={{
-                uri: 'https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=800&q=80',
-              }}
-              style={{
-                height: ITEM_HEIGHT,
-                width: ITEM_WIDTH,
-                borderRadius: SIZES.radius,
-              }}
-            />
+            style={{margin: 20}}
+            onPress={() => navigation.navigate('')}>
+            <McText color={'white'} h2>
+              Suggestions
+            </McText>
+            <McText color={'white'} body3>
+              Leave a suggestion on what you want to see in the MCC!
+            </McText>
           </TouchableOpacity>
-        </View>
-      </Animated.View>
-    );
-  };
-
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* Header Section */}
-      <View style={styles.headerContainer}>
-        <McText body4>EVENTS</McText>
-      </View>
-      <ScrollView>
-        <Animated.FlatList
-          data={events.events}
-          keyExtractor={(item, index) => 'key' + index}
-          renderItem={eventCard}
-          onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {x: scrollX}}}],
-            {useNativeDriver: true},
-          )}
-          horizontal
-          bounces={false}
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={ITEM_SIZE}
-          decelerationRate="fast"
-          style={{flexGrow: 1}}
-          contentContainerStyle={{
-            paddingHorizontal: ITEM_SPACING,
-          }}
-        />
+        </LinearGradient>
+        <LinearGradient
+          colors={['#4C4478', '#0C0C69']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          style={{
+            height: 110,
+            borderRadius: 16,
+            marginHorizontal: 16,
+            marginTop: 10,
+          }}>
+          <TouchableOpacity
+            style={{margin: 20}}
+            onPress={() => navigation.navigate('Merch')}>
+            <McText color={'white'} h2>
+              Merch
+            </McText>
+            <McText color={'white'} body3>
+              Explore all the club merchandise we are selling this semester!
+            </McText>
+          </TouchableOpacity>
+        </LinearGradient>
+        <View style={{marginTop: 100}} />
       </ScrollView>
-    </SafeAreaView>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: COLORS.black,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-    letterSpacing: -1,
-  },
-  location: {
-    fontSize: 16,
-  },
-  date: {
-    fontSize: 12,
-  },
-  itemContainer: {
-    height: OVERFLOW_HEIGHT,
-    padding: SPACING * 2,
-    marginBottom: 25,
-  },
-  itemContainerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  overflowContainer: {
-    height: OVERFLOW_HEIGHT,
-    overflow: 'hidden',
-  },
-  /* Header */
-  headerContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Home;

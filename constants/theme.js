@@ -9,7 +9,7 @@ const ITEM_SPACING = (width - ITEM_SIZE) / 2;
 const CARD_WIDTH = width * 0.65;
 
 export const COLORS = {
-  default: '#FFFFFF',
+  default: '#000000',
   primary: '#FFFFFF',
   secondary: '#E5E7EB',
   tertiary: '#1F2937',

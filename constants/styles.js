@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import Constants from 'expo-constants';
@@ -153,4 +154,47 @@ export const TextLink = styled.TouchableOpacity`
 export const TextLinkContent = styled.Text`
   color: ${COLORS.blue};
   font-size: 15px;
+`;
+
+// Discover Page
+export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
+export const HeaderSection = styled.View`
+  height: 30px;
+  margin: 0px 16px;
+  justify-content: space-between;
+`;
+export const Header2Section = styled.View`
+  height: 30px;
+  margin: 23px 16px 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const BannerSection = styled.View`
+  height: 180px;
+  margin: 25px 16px 0px;
+`;
+export const ClubItemBox = styled.View`
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: ${COLORS.lightGray};
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+`;
+export const BigClubLogo = styled.Image`
+  width: 50px;
+  height: 55px;
+`;
+export const EventItemBox = styled.View`
+  width: 130px;
+  height: 180px;
+  border-radius: 10px;
+  background-color: ${COLORS.lightGray};
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
 `;

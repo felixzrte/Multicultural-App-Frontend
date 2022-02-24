@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
+import {EventDetails, Home, Place, Login, Merch} from './screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStack from './navigation/AuthStack';
@@ -19,7 +20,7 @@ import {COLORS} from './constants';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(true);
   const [assetsLoaded, setAssetLoaded] = useState(false);
 
   /* Loading custom fonts in async */
