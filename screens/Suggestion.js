@@ -22,7 +22,6 @@ const Suggestion = () => {
   return (
     <View style={{backgroundColor: '#0277bd'}}>
       <SafeAreaView>
-        <ScrollView>
           <View style={{backgroundColor: 'white'}}>
             <View style={styles.header}>
               <McText
@@ -74,7 +73,6 @@ const Suggestion = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </ScrollView>
       </SafeAreaView>
     </View>
   );
