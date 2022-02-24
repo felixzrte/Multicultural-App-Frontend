@@ -1,82 +1,101 @@
-import React, { useState } from 'react';
-import {FlatList, SafeAreaView, StatusBar, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-//import { CustomFlatlist } from '../components';
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Multicultural Council',
-    desciption:  'Student organizations whose missions are tied to the work of Multicultural Programs.',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Black Studen Union',
-    desciption:  'Black Student Union is a club that strives to create a safe space for its black population on campus, while also opening up the space for others to engage with and learn about black culture.',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Asian Student Union',
-    desciption:  'Asian Student Association strives to convey to the greater Messiah University community what it is like to live in America as an Asian.',
-  },
-];
-
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
-    <Text style={[styles.description, textColor]}>{description}</Text>
-  </TouchableOpacity>
-);
+import React from 'react';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Button,
+  Alert,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ScrollView} from 'react-native-gesture-handler';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import AppleHeader from 'react-native-apple-header';
+import {StatusBar} from 'expo-status-bar';
+import ClubCard from '../components/ClubCard';
+import {McIcon, McText, CustomButton} from '../components';
+import {SubHeader} from '../constants/styles';
 
 const Suggestion = () => {
-  const [selectedId, setSelectedId] = useState(null);
-
-  const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#121112" : "#f6edf7";
-    const color = item.id === selectedId ? 'black' : 'white';
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
-    );
-  };
-
-
   return (
-    <View style={ styles.container, { flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={styles.header}>Suggestions</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
-      />
+    <View style={{backgroundColor: '#0277bd'}}>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={{backgroundColor: 'white'}}>
+            <View style={styles.header}>
+              <McText
+                h1
+                style={{
+                  marginTop: '7%',
+                  marginLeft: '5%',
+                  marginBottom: '10%',
+                  color: 'white',
+                }}>
+                Suggestions
+              </McText>
+            </View>
+          </View>
+          <View style={{backgroundColor: 'white', marginBottom: '10%'}}>
+            <View
+              style={{
+                marginTop: '50%',
+                marginBottom: '10%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <SubHeader> Enter your Suggestion: </SubHeader>
+            </View>
+            <TextInput
+              style={{
+                borderRadius: 15,
+                borderColor: 'black',
+                borderWidth: 0.5,
+                marginLeft: '5%',
+                marginRight: '5%',
+                alignItems: 'center',
+                padding: '5%',
+              }}
+            />
+
+            <View
+              alignItems="center"
+              justifyContent="center"
+              style={{
+                width: '95%',
+                marginLeft: '3%',
+                marginRight: '10%',
+                marginTop: '15%',
+                marginBottom: '50%',
+              }}>
+              <TouchableOpacity style={styles.button}>
+                <Text>Send</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 };
 
-//StyleSheets
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 25,
-  },
-  description: {
-    fontSize: 16,
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#89CFF0',
+    padding: '7%',
+    borderRadius: 15,
+    paddingHorizontal: '30%',
   },
   header: {
-    flex: 1,
-    fontSize: 32,
+    borderColor: 'black',
+    borderWidth: 0.25,
+    borderRadius: 25,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopColor: '#0277bd',
+    backgroundColor: '#0277bd',
   },
 });
 export default Suggestion;

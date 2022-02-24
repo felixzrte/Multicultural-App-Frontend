@@ -1,81 +1,51 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView, Image} from 'react-native';
-import { Button, NativeBaseProvider, Center, Box, Heading, FlatList, HStack, VStack, Spacer, Avatar, Text, AspectRatio} from "native-base";
+import {View, StyleSheet, Image, Text} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ScrollView} from 'react-native-gesture-handler';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import {DiscoverContainer, Line, SubHeader} from '../constants/styles';
+import AppleHeader from 'react-native-apple-header';
+import {StatusBar} from 'expo-status-bar';
+import ClubCard from '../components/ClubCard';
+import {McIcon, McText} from '../components';
 
-const Place = () => {
+const Bookmark = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Button>Click Me</Button>
-        <Image
-              style={styles.tinyLogo}
-              source={{
-                uri: 'https://loveincorporated.blob.core.windows.net/contentimages/gallery/70bc81c8-b277-407d-8c3a-5c1a3e501732-4-hamburger.jpg',
-              }}
-            />
+    <View style={{backgroundColor: '#0277bd'}}>
+      <SafeAreaView>
+        <McText
+          h1
+          style={{
+            marginBottom: '5%',
+            marginTop: '10%',
+            marginLeft: '5%',
+            color: 'white',
+          }}>
+          Bookmark
+        </McText>
+      </SafeAreaView>
     </View>
   );
 };
 
-//Style's Section
 const styles = StyleSheet.create({
-  app: {
-    backgroundColor: '#6200ee'
-    ,position: 'relative'
-
+  container: {
+    backgroundColor: 'white',
+    borderWidth: 0,
+    borderRadius: 10,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
   },
-  back: {
-    backgroundColor: 'white'
-
-  },
-  heading: {
-    color: 'black'
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
+  image2: {
+    width: 200,
+    height: 200,
+    borderRadius: 225 / 2,
+    overflow: 'hidden',
+    borderWidth: 0,
+    borderColor: 'black',
+    alignItems: 'center',
+    marginLeft: '25%',
+    marginBottom: '10%',
   },
 });
-
-export default () => {
-  return (
-    <NativeBaseProvider>
-      <Center flex={1}>
-        <Place />
-      </Center>
-    </NativeBaseProvider>
-  )
-}
-/*
-    <ScrollView horizontal={true} >
-    <Box>
-      <AspectRatio ratio={16 / 9}>
-    <Image
-            roundedTop="lg"
-            source={{
-              uri: "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg",
-            }}
-            alt="ProfileImage"
-          />
-        </AspectRatio>
-      </Box>
-      </ScrollView>
-
-   <HStack space={3} justifyContent="center">
-    <Image
-    source={{ uri: "https://wallpaperaccess.com/full/317501.jpg", }}
-    width={45}
-    height={75}
-   />
-    <Image
-    source={{ uri: "https://wallpaperaccess.com/full/317501.jpg", }}
-    width={45}
-    height={75}
-    />
-      <Image
-    source={{ uri: "https://wallpaperaccess.com/full/317501.jpg", }}
-    width={45}
-    height={75}
-   />
-    </HStack>
-
-*/
+export default Bookmark;
