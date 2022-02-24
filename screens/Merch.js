@@ -18,6 +18,7 @@ import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
+import styles from '../components/ContainerSpacing.js';
 
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
@@ -61,12 +62,10 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
     });
 
     return (
-      <View style={styles.itemContainer}>
+      <View style={styles.merchItemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
-          <View style={styles.itemContainerRow}>
-            <McText style={[styles.location]}>
-            </McText>
-            {/* <McText style={[styles.date]}>{item.date}</McText> */}
+          <View>
+            <McText></McText>
           </View>
         <View
           style={{
@@ -87,8 +86,8 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
                 borderRadius: SIZES.radius,
               }}
             />
-            <View style={styles.headerContainer}><McText style={[styles.productNameText]} numberOfLines={1}>{item.merchItemName}</McText></View>
-            <View style={styles.headerContainer}><McText style={[styles.productText]} numberOfLines={1}>${item.merchItemPrice}</McText></View>
+            <View style={styles.headerContainer}><McText body1  numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText body2 numberOfLines={1}>${item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -102,7 +101,6 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
       <View style={styles.headerContainer}>
         <McText body4>Merch</McText>
       </View>
-      <McText style={[styles.title]}>Products</McText>
       <View style={styles.pleaseCenter}>
       <Animated.FlatList
         data={merchs.merchs}
@@ -124,63 +122,5 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-    letterSpacing: -1,
-  },
-  merchText: {
-    fontSize: 22,
-    fontWeight: '900',
-    letterSpacing: -1,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '900',
-    letterSpacing: -1,
-    padding: SPACING * 2,
-  },
-  location: {
-    fontSize: 16,
-  },
-  date: {
-    fontSize: 12,
-  },
-  productText:{
-    fontSize: 22,
-    letterSpacing: 1,
-  },
-  productNameText:{
-    fontSize: 22,
-    letterSpacing: 1,
-    fontWeight: 'bold',
-  },
-  itemContainer: {
-    backgroundColor: '#d3d3d3',
-    marginBottom: 10,
-    borderRadius: 10,
-  },
-  itemContainerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  overflowContainer: {
-    height: OVERFLOW_HEIGHT,
-    overflow: 'hidden',
-  },
-  /* Header */
-  headerContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Merch;

@@ -12,6 +12,7 @@ import {
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import styles from '../components/ContainerSpacing.js';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
@@ -22,7 +23,7 @@ const Product = ({route, navigation}) => {
   return (
       <ScrollView>
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
-              <View style={styles.itemContainer}>
+              <View style={styles.productItemContainer}>
             <Image
               source={{uri: item.pic}}
               style={{
@@ -56,60 +57,5 @@ const Product = ({route, navigation}) => {
       </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  itemContainer: {
-    backgroundColor: '#d3d3d3',
-    marginBottom: 10,
-    borderRadius: 40,
-    borderTopRightRadius:0,
-    borderTopLeftRadius:0,
-  },
-  leftMargin: {
-    marginLeft: 25,
-  },
-  center: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 12,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: '#4C9A2A',
-  },
-  descText: {
-    fontSize: 14,
-    letterSpacing: 0,
-    color: 'black',
-  },
-  bottomText: {
-    fontSize: 14,
-    letterSpacing: 0,
-    color: 'black',
-    marginBottom: 30,
-  },
-  buttonText: {
-    fontSize: 14,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  heading: {
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  tinyLogo: {
-    width: 350,
-    height: 200,
-  },
-});
 
 export default Product;
