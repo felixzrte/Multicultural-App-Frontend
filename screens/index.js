@@ -25,6 +25,5 @@ export {
   Merch,
   Transition,
   Product,
-  Merch,
   UpdateProfile,
 };
