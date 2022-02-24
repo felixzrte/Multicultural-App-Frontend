@@ -9,43 +9,42 @@ import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
+
+
+
 const Bookmark = () => {
+
   return (
-    <View style={{backgroundColor: '#0277bd'}}>
-      <SafeAreaView>
-        <McText
-          h1
-          style={{
-            marginBottom: '5%',
-            marginTop: '10%',
-            marginLeft: '5%',
-            color: 'white',
-          }}>
-          Bookmark
-        </McText>
-      </SafeAreaView>
+    <View style={{backgroundColor: "#0277bd"}}> 
+    <SafeAreaView>
+    <ScrollView >
+    <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%", color:"white"}}>
+         Book
+    </McText>
+    </ScrollView>
+    </SafeAreaView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
+container:{
+    backgroundColor: "white",
     borderWidth: 0,
     borderRadius: 10,
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 0,
+    borderBottomRightRadius:0,
+    borderBottomLeftRadius:0,
   },
-  image2: {
+image2: {
     width: 200,
     height: 200,
     borderRadius: 225 / 2,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderWidth: 0,
-    borderColor: 'black',
-    alignItems: 'center',
-    marginLeft: '25%',
-    marginBottom: '10%',
-  },
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: "25%",
+    marginBottom: "10%",
+  }
 });
 export default Bookmark;
