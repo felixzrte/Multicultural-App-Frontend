@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
   StyleSheet,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
 import { LinearGradient } from 'react-native-svg';
+
 
 const Profile = () => {
   return (
@@ -57,7 +58,12 @@ const Profile = () => {
               color: "#34FFB9"
             }]}>Save</Text>
           </LinearGradient>
+          <TouchableOpacity style={styles.commandButton} onPress={() => {navigation.navigate('Login');
+            }}>
+                <Text styles={styles.panelButtonTitle}>Logout</Text>
+              </TouchableOpacity>
         </View>
+
 
       </ScrollView>
     </SafeAreaView>
@@ -157,4 +163,3 @@ const styles = StyleSheet.create({
 });
 
 export default Profile;
-
