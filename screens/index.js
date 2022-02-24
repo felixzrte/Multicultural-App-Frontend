@@ -10,6 +10,7 @@ import Welcome from './Welcome';
 import Suggestion from './Suggestion';
 import Transition from './Transition';
 import Product from './Product';
+import UpdateProfile from './UpdateProfile';
 
 export {
   Home,
@@ -24,4 +25,6 @@ export {
   Merch,
   Transition,
   Product,
+  Merch,
+  UpdateProfile,
 };
