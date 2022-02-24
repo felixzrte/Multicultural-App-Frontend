@@ -2,8 +2,6 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {EventDetails, Home, Merch, Product, Suggestion} from '../screens';
-import {EventDetails, Home, Merch, Product, Suggestion, 
-Asa, Asu, Bsu, Csa, Isa, Lal, Mcc} from '../screens';
 import {COLORS} from '../constants';
 import Tabs from './Tabs';
 
@@ -12,7 +10,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Suggestion"
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
