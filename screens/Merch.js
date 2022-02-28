@@ -46,6 +46,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
   
+  
   const merchCard = ({item, index}) => {
     const inputRange = [
       (index - 1) * SIZES.itemSize,
@@ -61,6 +62,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
       outputRange: [1, 1, 1],
     });
 
+    if(item.deletedStatus == false)
     return (
       <View style={styles.merchItemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
@@ -95,6 +97,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
     );
   };
 
+  
   return (
     <SafeAreaView style={styles.container}>
       {/* Header Section */}
