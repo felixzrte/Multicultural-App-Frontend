@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -12,17 +12,21 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import {AppleHeader} from 'react-native-apple-header';
+import AppleHeader from 'react-native-apple-header';
 import {StatusBar} from 'expo-status-bar';
-import {ClubCard} from '../components/ClubCard';
+import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton} from '../components';
 import {SubHeader} from '../constants/styles';
 
+
+
+
 const Suggestion = () => {
+
   return (
     <View style={{backgroundColor: '#0277bd'}}>
       <SafeAreaView>
-      <View style={{backgroundColor: 'white'}}>
+          <View style={{backgroundColor: 'white'}}>
             <View style={styles.header}>
               <McText
                 h1
@@ -35,8 +39,17 @@ const Suggestion = () => {
                 Suggestions
               </McText>
             </View>
-            
-
+          </View>
+                <View style={{backgroundColor: 'white', marginBottom: '10%'}}>
+            <View
+              style={{
+                marginTop: '50%',
+                marginBottom: '10%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              
+            </View>
             <TextInput
               style={{
                 borderRadius: 15,
@@ -48,6 +61,7 @@ const Suggestion = () => {
                 padding: '5%',
               }}
             />
+
             <View
               alignItems="center"
               justifyContent="center"
@@ -63,29 +77,29 @@ const Suggestion = () => {
               </TouchableOpacity>
             </View>
           </View>
-      </SafeAreaView>
+    </SafeAreaView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
+container:{
+    backgroundColor: "white",
     borderWidth: 0,
     borderRadius: 10,
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 0,
+    borderBottomRightRadius:0,
+    borderBottomLeftRadius:0,
   },
-  image2: {
+image2: {
     width: 200,
     height: 200,
     borderRadius: 225 / 2,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderWidth: 0,
-    borderColor: 'black',
-    alignItems: 'center',
-    marginLeft: '25%',
-    marginBottom: '10%',
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: "25%",
+    marginBottom: "10%",
   },
   button: {
     alignItems: 'center',
