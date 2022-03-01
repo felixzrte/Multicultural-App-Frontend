@@ -30,7 +30,6 @@ const RootStack = () => {
       <Stack.Screen name="Merch" component={Merch} />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
-      <Stack.Screen name="Asu" component={Suggestion} />
     </Stack.Navigator>
   );
 };
