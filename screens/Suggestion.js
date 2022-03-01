@@ -44,12 +44,20 @@ const Suggestion = () => {
             <View
               style={{
                 marginTop: '50%',
-                marginBottom: '10%',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              
             </View>
+            <McText
+                h2
+                style={{
+                  marginTop: '7%',
+                  marginLeft: '25%',
+                  marginBottom: '10%',
+                  color: 'black',
+                }}>
+                Enter a Suggestion:
+              </McText>
             <TextInput
               style={{
                 borderRadius: 15,
