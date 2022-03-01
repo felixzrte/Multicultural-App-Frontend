@@ -1,15 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
   StyleSheet,
   View,
   Text,
+  TextInput,
   SafeAreaView,
   Image,
   ScrollView,
 } from 'react-native';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
+import { LinearGradient } from 'react-native-svg';
+
 
 const Profile = () => {
   return (
@@ -32,40 +35,49 @@ const Profile = () => {
           </View>
           <View style={styles.active} />
           <View style={styles.add}>
-            <Ionicons
-              name="ios-add"
-              size={48}
-              color="#DFD8C8"
-              style={{marginTop: 6, marginLeft: 2}}
-            />
+            <Ionicons name="ios-add" size={48} color="#DFD8C8" style={{marginTop: 6, marginLeft: 2}}></Ionicons>
           </View>
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>MCC</Text>
-          <Text style={styles.text}>Admin</Text>
+        <TextInput
+              placeholder="Full Name"
+              style={styles.TextInput}
+          />
+          <TextInput
+              placeholder="Your Email"
+              style={styles.TextInput}
+          />
         </View>
-        <View style={styles.statsContainer}>
-          <View style={styles.statsBox}>
-            <Text> Yahh </Text>
-            <Text> Text </Text>
-          </View>
+
+        <View style={styles.button}>
+          <LinearGradient
+            colors={["#34FFB9", "#34FFB9"]}
+            style={styles.saveButton}
+          >
+            <Text style={[styles.textSign, {
+              color: "#34FFB9"
+            }]}>Save</Text>
+          </LinearGradient>
+          <TouchableOpacity style={styles.commandButton} onPress={() => {navigation.navigate('Login');
+            }}>
+                <Text styles={styles.panelButtonTitle}>Logout</Text>
+              </TouchableOpacity>
         </View>
+
+
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000000',
-  },
+  
 
   text: {
     fontFamily: 'HelveticaNeue',
-    color: '#f8f8ff',
-    fontWeight: '200',
-    fontSize: 36,
+    color: 'white',
+    fontWeight: '400',
+    fontSize: 40,
   },
 
   image: {
@@ -111,7 +123,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    width: 0,
+    width: 60,
     height: 60,
     borderRadius: 30,
     alignItems: 'center',
@@ -125,7 +137,29 @@ const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: 'row',
   },
+  TextInput: {
+    fontFamily: 'HelveticaNeue',
+    color: 'white',
+    fontWeight: '200',
+    fontSize: 30,
+  },
+  button: {
+    alignItems: 'center',
+    marginTop: 50
+  },
+  saveButton: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+
+  textSign: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+
 });
 
 export default Profile;
-
