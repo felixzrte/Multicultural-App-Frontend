@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View,
-  Pressable,
+  // Pressable,
   ScrollView,
   Text,
   StyleSheet,
