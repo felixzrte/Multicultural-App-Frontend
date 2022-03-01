@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Update"
       initialRouteName="Suggestion"
       screenOptions={{
         headerStyle: {
@@ -31,10 +30,8 @@ const RootStack = () => {
       <Stack.Screen name="Profile" component={Tabs} />
       <Stack.Screen name="Merch" component={Merch} />
       <Stack.Screen name="Product" component={Product} />
-      <Stack.Screen name="Suggestion" component={Suggestion} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
-      <Stack.Screen name="Asu" component={Suggestion} />
-
+      <Stack.Screen name="Suggestion" component={Suggestion} />
     </Stack.Navigator>
   );
 };
