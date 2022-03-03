@@ -88,7 +88,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
                 borderRadius: SIZES.radius,
               }}
             />
-            <View style={styles.headerContainer}><McText body1  numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText body1 numberOfLines={1}>{item.merchItemName}</McText></View>
             <View style={styles.headerContainer}><McText body2 numberOfLines={1}>${item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
