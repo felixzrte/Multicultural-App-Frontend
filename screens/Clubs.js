@@ -33,20 +33,84 @@ const Clubs = ({navigation}) => {
     
       const scrollX = React.useRef(new Animated.Value(0)).current;
 
-      if(item.deletedStatus == false)
+      const ClubsCard = ({item, index}) => {
+        const inputRange = [
+          (index - 1) * SIZES.itemSize,
+          index * SIZES.itemSize,
+          (index + 1) * SIZES.itemSize,
+        ];
+        const opacity = scrollX.interpolate({
+          inputRange,
+          outputRange: [1, 1, 1],
+        });
+        const scale = scrollX.interpolate({
+          inputRange,
+          outputRange: [1, 1, 1],
+        });
 
+        if(item.deletedStatus == false)
         return (
-             <View style={{backgroundColor: "#0277bd"}}> 
-           <SafeAreaView>
-            <ScrollView >
-            <McText h1 style={{marginBottom: "5%", marginTop: "10%", marginLeft:"5%", color:"white"}}>
-               Clubs
-            </McText>
-            </ScrollView>
-           </SafeAreaView>
+          <View style={styles.clubsItemContainer}>
+          <Animated.View style={{opacity, transform: [{scale}]}}>
+              <View>
+                <McText></McText>
               </View>
-  );
-};
+            <View
+              style={{
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity
+                activeOpacity={1}
+                onPress={() =>
+                  navigation.navigate('Product', {
+                    item: item,
+                  })
+                }>
+                <Image
+                  source={{uri: item.pic}}
+                  style={{
+                    height: ITEM_HEIGHT,
+                    width: ITEM_WIDTH,
+                    borderRadius: SIZES.radius,
+                  }}
+                />
+                <View style={styles.headerContainer}><McText body1  numberOfLines={1}>{item.ClubsItemName}</McText></View>
+                <View style={styles.headerContainer}><McText body2 numberOfLines={1}>${item.ClubsItemPrice}</McText></View>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+          </View>
+        );
+      };
+    
+      
+      return (
+        <SafeAreaView style={styles.container}>
+          {/* Header Section */}
+          <View style={styles.headerContainer}>
+            <McText body4>Merch</McText>
+          </View>
+          <View style={styles.pleaseCenter}>
+          <Animated.FlatList
+            data={merchs.merchs}
+            keyExtractor={(item, index) => 'key' + index}
+            renderItem={ClubsCard}
+            onScroll={Animated.event(
+              [{nativeEvent: {contentOffset: {x: scrollX}}}],
+              {useNativeDriver: true},
+            )}
+            bounces={true}
+            snapToInterval={ITEM_SIZE}
+            decelerationRate="fast"
+            style={{flexGrow: 1}}
+            contentContainerStyle={{
+              paddingHorizontal: ITEM_SPACING,
+            }}
+          />
+          </View>
+        </SafeAreaView>
+      );
+    };
 
 
 export default Clubs;
