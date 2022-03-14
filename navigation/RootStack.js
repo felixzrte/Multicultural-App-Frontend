@@ -13,6 +13,7 @@ const RootStack = () => {
     <Stack.Navigator
       initialRouteName="Suggestion"
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: 'transparent',
         },
