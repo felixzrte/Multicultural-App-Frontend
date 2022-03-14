@@ -12,6 +12,7 @@ const RootStack = () => {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: 'transparent',
         },
