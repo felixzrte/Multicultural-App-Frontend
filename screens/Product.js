@@ -57,5 +57,4 @@ const Product = ({route, navigation}) => {
       </ScrollView>
   );
 };
-
 export default Product;
