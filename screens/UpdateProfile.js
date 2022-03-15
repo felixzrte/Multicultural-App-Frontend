@@ -30,7 +30,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 
 
-const Profile = ({navigation}) => {
+const UpdateProfile = ({navigation}) => {
   const {height} = useWindowDimensions();
 
   return (
@@ -232,4 +232,4 @@ const styles = StyleSheet.create({
  
 });
 
-export default Profile;
+export default UpdateProfile;
