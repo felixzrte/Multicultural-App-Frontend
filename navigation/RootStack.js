@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {EventDetails, Home, Merch, Product, Suggestion, 
-Asa, Asu, Bsu, Csa, Isa, Lal, Mcc,Profile,UpdateProfile,Events} from '../screens';
+Asa, Asu, Bsu, Csa, Isa, Lal, Mcc,Profile,UpdateProfile} from '../screens';
 import {COLORS} from '../constants';
 import Tabs from './Tabs';
 
@@ -27,7 +27,6 @@ const RootStack = () => {
       <Stack.Screen name="Bookmark" component={Tabs} />
       <Stack.Screen name="Maps" component={Tabs} />
       <Stack.Screen name="EventDetails" component={EventDetails} />
-      <Stack.Screen name="Events" component={Events} />
       <Stack.Screen name="Profile" component={Tabs} />
       <Stack.Screen name="Merch" component={Merch} />
       <Stack.Screen name="Product" component={Product} />
