@@ -63,6 +63,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
     });
 
     return (
+      
       <View style={styles.merchItemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
           <View>
