@@ -37,7 +37,7 @@ const Product = ({route, navigation}) => {
             <View style={styles.leftMargin}>
             <McText h1>{item.merchItemName}</McText>
             <McText></McText>
-            <McText h2>${item.merchItemPrice}</McText>
+            <McText body2>${item.merchItemPrice}</McText>
             <McText></McText>
             <McText h2>About This Product</McText>
             <McText></McText>

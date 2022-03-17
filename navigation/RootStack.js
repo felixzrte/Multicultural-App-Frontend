@@ -13,6 +13,7 @@ const RootStack = () => {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: 'transparent',
         },
@@ -32,7 +33,7 @@ const RootStack = () => {
       <Stack.Screen name="Merch" component={Merch} />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
-      <Stack.Screen name="Asu" component={Suggestion} />
+      <Stack.Screen name="Suggestion" component={Suggestion} />
     </Stack.Navigator>
   );
 };
