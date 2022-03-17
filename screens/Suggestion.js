@@ -18,11 +18,14 @@ import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton} from '../components';
 import {SubHeader} from '../constants/styles';
 
+
+
+
 const Suggestion = () => {
+
   return (
     <View style={{backgroundColor: '#0277bd'}}>
       <SafeAreaView>
-        <ScrollView>
           <View style={{backgroundColor: 'white'}}>
             <View style={styles.header}>
               <McText
@@ -37,16 +40,24 @@ const Suggestion = () => {
               </McText>
             </View>
           </View>
-          <View style={{backgroundColor: 'white', marginBottom: '10%'}}>
+                <View style={{backgroundColor: 'white', marginBottom: '10%'}}>
             <View
               style={{
                 marginTop: '50%',
-                marginBottom: '10%',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <SubHeader> Enter your Suggestion: </SubHeader>
             </View>
+            <McText
+                h2
+                style={{
+                  marginTop: '7%',
+                  marginLeft: '25%',
+                  marginBottom: '10%',
+                  color: 'black',
+                }}>
+                Enter a Suggestion:
+              </McText>
             <TextInput
               style={{
                 borderRadius: 15,
@@ -74,13 +85,30 @@ const Suggestion = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </ScrollView>
-      </SafeAreaView>
+    </SafeAreaView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+container:{
+    backgroundColor: "white",
+    borderWidth: 0,
+    borderRadius: 10,
+    borderBottomRightRadius:0,
+    borderBottomLeftRadius:0,
+  },
+image2: {
+    width: 200,
+    height: 200,
+    borderRadius: 225 / 2,
+    overflow: "hidden",
+    borderWidth: 0,
+    borderColor: "black",
+    alignItems: "center",
+    marginLeft: "25%",
+    marginBottom: "10%",
+  },
   button: {
     alignItems: 'center',
     backgroundColor: '#89CFF0',
