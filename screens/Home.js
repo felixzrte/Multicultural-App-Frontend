@@ -16,17 +16,27 @@ import React from 'react';
 import {COLORS, images, dummyData} from '../constants';
 import useFetch from '../useFetch';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+
 const renderClubItem = ({item, index}) => {
   return (
+    
+    <TouchableOpacity
+      activeOpacity={1}
+      onPress={() => navigation.navigate('Merch',{
+        item: item,
+      })
+      }>
     <ClubItemBox
       style={{
         marginLeft: index === 0 ? 16 : 0,
         marginRight: index === dummyData.Clubs.length - 1 ? 16 : 10,
       }}>
       <TouchableOpacity>
-        <BigClubLogo source={item.logo} />
+      <BigClubLogo source={item.logo} />
       </TouchableOpacity>
+        
     </ClubItemBox>
+    </TouchableOpacity>
   );
 };
 const renderEventItem = ({item, index}) => {
