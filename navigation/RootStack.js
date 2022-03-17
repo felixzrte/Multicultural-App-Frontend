@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Suggestion"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
