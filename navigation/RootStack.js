@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ClubsPage"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
@@ -27,8 +27,8 @@ const RootStack = () => {
       <Stack.Screen name="Bookmark" component={Tabs} />
       <Stack.Screen name="Maps" component={Tabs} />
       <Stack.Screen name="EventDetails" component={EventDetails} />
-      <Stack.Screen name="ClubsPage" component={ClubsPage} />
       <Stack.Screen name="Profile" component={Tabs} />
+      <Stack.Screen name="ClubsPage" component={ClubsPage} />
       <Stack.Screen name="Merch" component={Merch} />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
