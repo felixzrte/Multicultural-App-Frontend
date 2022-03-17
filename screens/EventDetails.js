@@ -23,8 +23,29 @@ const EventDetails = ({route, navigation}) => {
   return (
       <ScrollView>
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
+          <View style={styles.productItemContainer}>
+            <Image
+              source={{uri: item.image}}
+              style={{
+                height: ITEM_HEIGHT,
+                width: ITEM_WIDTH,
+                borderRadius: SIZES.radius,
+              }}
+            />
+            </View>
+          </View>
+        <View style={styles.leftMargin}>
+        <McText h1>{item.club}</McText>
         <McText h1>{item.eventName}</McText>
-
+        <McText h2>About This Event</McText>
+        <McText></McText>
+        <McText style={styles.descText}>{item.desc}</McText>
+        <McText></McText>
+        <McText style={styles.descText} >{item.date}</McText>
+        <McText style={styles.descText} >{item.location}</McText>
+        <McText style={styles.descText} >{item.attendence}</McText>
+        <McText style={styles.descText} >{item.favorite}</McText>
+        <McText style={styles.bottomText}>{item.extraNotes}</McText>
         </View>
       </ScrollView>
   );
