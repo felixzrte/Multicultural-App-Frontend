@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {EventDetails, Home, Merch, Product, Suggestion, 
+import {EventDetails, Sample, Home, Merch, Product, Suggestion, 
 Asa, Asu, Bsu, Csa, Isa, Lal, Mcc,Profile,UpdateProfile} from '../screens';
 import {COLORS} from '../constants';
 import Tabs from './Tabs';
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Suggestion"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         headerStyle: {
@@ -33,6 +33,7 @@ const RootStack = () => {
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
+      <Stack.Screen name="Sample" component={Sample} />
     </Stack.Navigator>
   );
 };
