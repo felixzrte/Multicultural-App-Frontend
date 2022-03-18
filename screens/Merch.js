@@ -62,7 +62,6 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
       outputRange: [1, 1, 1],
     });
 
-    if(item.deletedStatus == false)
     return (
       <View style={styles.merchItemContainer}>
       <Animated.View style={{opacity, transform: [{scale}]}}>
@@ -88,7 +87,7 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
                 borderRadius: SIZES.radius,
               }}
             />
-            <View style={styles.headerContainer}><McText body1  numberOfLines={1}>{item.merchItemName}</McText></View>
+            <View style={styles.headerContainer}><McText h1 numberOfLines={1}>{item.merchItemName}</McText></View>
             <View style={styles.headerContainer}><McText body2 numberOfLines={1}>${item.merchItemPrice}</McText></View>
           </TouchableOpacity>
         </View>
