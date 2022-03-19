@@ -25,7 +25,7 @@ const EventDetails = ({route, navigation}) => {
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
           <View style={styles.productItemContainer}>
             <Image
-              source={{uri: item.image}}
+              source={{uri: item.image}} 
               style={{
                 height: ITEM_HEIGHT,
                 width: ITEM_WIDTH,
