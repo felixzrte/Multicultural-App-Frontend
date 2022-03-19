@@ -25,7 +25,7 @@ const Home = ({navigation}) => {
       <TouchableOpacity
               activeOpacity={1}
               onPress={() =>
-                navigation.navigate('EventDetails', {
+                navigation.navigate('ClubsPage', {
                   item: item,
                 })
               }>
