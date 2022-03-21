@@ -17,6 +17,7 @@ import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton} from '../components';
 import {SubHeader} from '../constants/styles';
+import styles from '../components/SuggestionStyles.js';
 
 
 
@@ -78,7 +79,7 @@ const Suggestion = () => {
                 marginLeft: '3%',
                 marginRight: '10%',
                 marginTop: '15%',
-                marginBottom: '50%',
+                marginBottom: '60%',
               }}>
               <TouchableOpacity style={styles.button}>
                 <Text>Send</Text>
@@ -90,40 +91,5 @@ const Suggestion = () => {
   );
 };
 
-const styles = StyleSheet.create({
-container:{
-    backgroundColor: "white",
-    borderWidth: 0,
-    borderRadius: 10,
-    borderBottomRightRadius:0,
-    borderBottomLeftRadius:0,
-  },
-image2: {
-    width: 200,
-    height: 200,
-    borderRadius: 225 / 2,
-    overflow: "hidden",
-    borderWidth: 0,
-    borderColor: "black",
-    alignItems: "center",
-    marginLeft: "25%",
-    marginBottom: "10%",
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#89CFF0',
-    padding: '7%',
-    borderRadius: 15,
-    paddingHorizontal: '30%',
-  },
-  header: {
-    borderColor: 'black',
-    borderWidth: 0.25,
-    borderRadius: 25,
-    borderTopRightRadius: 0,
-    borderTopLeftRadius: 0,
-    borderTopColor: '#0277bd',
-    backgroundColor: '#0277bd',
-  },
-});
+
 export default Suggestion;
