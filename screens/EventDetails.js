@@ -35,8 +35,7 @@ const EventDetails = ({route, navigation}) => {
             </View>
           </View>
         <View style={styles.leftMargin}>
-        <McText h1>Club: {item.club}</McText>
-        <McText h1> Event Name: {item.eventName}</McText>
+        <McText h1> {item.eventName}</McText>
         <McText></McText>
         <McText h2>About This Event</McText>
         <McText></McText>
