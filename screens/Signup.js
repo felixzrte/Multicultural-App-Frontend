@@ -21,7 +21,7 @@ import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
-import { showMessage } from 'react-native-flash-message';
+import {showMessage} from 'react-native-flash-message';
 
 const Signup = ({navigation}) => {
   const {height} = useWindowDimensions();
@@ -84,7 +84,7 @@ const Signup = ({navigation}) => {
             resizeMode="cover"
             source={images.mcc}
           />
-          <SubTitle>Account Login</SubTitle>
+          <SubTitle>Create An Account</SubTitle>
           <StyledFormArea>
             <CustomInput
               label="Full Name"
@@ -100,6 +100,7 @@ const Signup = ({navigation}) => {
               placeholderTextColor={COLORS.gray}
               keyboardType="email-address"
               onChangeText={(email) => updateState({email})}
+              autoCapitalize={false}
             />
             <CustomInput
               label="Password"
@@ -130,9 +131,9 @@ const Signup = ({navigation}) => {
             />
             <Line />
             <ExtraView>
-              <ExtraText>Don't Have An Account? </ExtraText>
-              <TextLink onPress={() => navigation.navigate('Signup')}>
-                <TextLinkContent>Register</TextLinkContent>
+              <ExtraText>Already Have An Account? </ExtraText>
+              <TextLink onPress={() => navigation.navigate('Signin')}>
+                <TextLinkContent>Login</TextLinkContent>
               </TextLink>
             </ExtraView>
           </StyledFormArea>

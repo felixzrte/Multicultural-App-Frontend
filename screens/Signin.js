@@ -85,6 +85,7 @@ const Signin = ({navigation}) => {
               placeholderTextColor={COLORS.gray}
               keyboardType="email-address"
               onChangeText={(email) => updateState({email})}
+              autoCapitalize={false}
             />
             <CustomInput
               label="Password"
