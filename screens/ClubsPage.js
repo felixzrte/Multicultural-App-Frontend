@@ -20,8 +20,23 @@ const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
 const ClubsPage = ({route, navigation}) => {
-  const {item} = route.params;
+  const {
+    data: clubs,
+    loading,
+    error,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubspage');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (error) {
+    console.log(error);
+  }
+  console.log(clubs);
 
+  const scrollX = React.useRef(new Animated.Value(0)).current;
+  
   return (
       <ScrollView>
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
@@ -47,5 +62,6 @@ const ClubsPage = ({route, navigation}) => {
       </ScrollView>
   );
 };
+
 
 export default ClubsPage;
