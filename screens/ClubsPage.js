@@ -27,7 +27,7 @@ const ClubsPage = ({route, navigation}) => {
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
           <View style={styles.productItemContainer}>
             <Image
-              source={{uri: item.logoImage}} // it says name of image in club model
+              source={{uri: item.image}} // it says name of image in club model
               style={{
                 height: ITEM_HEIGHT,
                 width: ITEM_WIDTH,
