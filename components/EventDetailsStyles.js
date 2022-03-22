@@ -40,7 +40,7 @@ export default StyleSheet.create({
       descText: {
         fontSize: 14,
         letterSpacing: 0,
-        color: 'black',
+        color: 'white',
         marginBottom: 15,
         marginTop: 15,
         marginLeft: 5,
@@ -49,7 +49,7 @@ export default StyleSheet.create({
       dText: {
         fontSize: 14,
         letterSpacing: 0,
-        color: 'black',
+        color: 'white',
         marginBottom: 15,
         marginTop: 15,
       },
@@ -57,7 +57,7 @@ export default StyleSheet.create({
         marginBottom: 10,
         borderRadius: 40,
         borderColor: 'black',
-        backgroundColor: '#89CFF0',
+        backgroundColor: '#30106B',
         alignItems: 'center', 
         justifyContent: 'center',
         marginRight: 15,
@@ -66,7 +66,7 @@ export default StyleSheet.create({
       bottomText: {
         fontSize: 14,
         letterSpacing: 0,
-        color: 'black',
+        color: 'white',
         marginBottom: 15,
         marginTop: 15,
       },
