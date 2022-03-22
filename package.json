@@ -20,6 +20,7 @@
     "expo-linear-gradient": "~10.0.3",
     "expo-status-bar": "~1.1.0",
     "formik": "^2.2.9",
+    "moment": "^2.29.1",
     "native-base": "^3.2.2",
     "nvm": "^0.0.4",
     "radium": "^0.26.1",
