@@ -11,15 +11,45 @@ import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+const ITEM_WIDTH = SIZES.width * 1;
+const ITEM_HEIGHT = ITEM_WIDTH * 1;
+
 const ClubsPage = ({route, navigation}) => {
   const {item} = route.params;
 
   return (
-   <SafeAreaView>
-       
-   </SafeAreaView>
+    <ScrollView>
+      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.productItemContainer}>
+          <Image
+            source={{uri: item.image}}
+            style={{
+              height: ITEM_HEIGHT,
+              width: ITEM_WIDTH,
+              borderRadius: SIZES.radius,
+            }}
+          />
+        </View>
+      </View>
+      <View style={styles.leftMargin}>
+        <McText h1>{item.club}</McText>
+        <McText h1>{item.eventName}</McText>
+        <McText />
+        <McText h2>About This Event</McText>
+        <McText />
+        <McText style={styles.descText}>{item.desc}</McText>
+        <McText />
+        <McText style={styles.descText}>{item.date}</McText>
+        <McText style={styles.descText}>{item.location}</McText>
+        <McText style={styles.descText}>{item.attendence}</McText>
+        <McText style={styles.descText}>{item.favorite}</McText>
+        <McText style={styles.bottomText}>
+          {' '}
+          Extra Notes: {item.extraNotes}
+        </McText>
+      </View>
+    </ScrollView>
   );
-
 };
 
 const styles = StyleSheet.create({
