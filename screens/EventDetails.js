@@ -18,15 +18,16 @@ import moment from 'moment';
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
+
 const EventDetails = ({route, navigation}) => {
   const {item} = route.params;
 
-  var inputDate = "2018-12-26T05:00:29";
+    var inputDate = "item.date";
 
-  var outputDate = moment(inputDate).format("dddd, MMM DD at HH:mm a");
+    var outputDate = moment(inputDate).format("dddd, MMM DD at HH:mm a");
 
-
-  console.log(outputDate);
+  
+    console.log(outputDate);
 
   return (
       <ScrollView>
