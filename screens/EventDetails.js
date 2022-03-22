@@ -21,20 +21,20 @@ const EventDetails = ({route, navigation}) => {
   const {item} = route.params;
 
   return (
-    <ScrollView>
-      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
-        <View style={styles.productItemContainer}>
-          <Image
-            source={{uri: item.image}}
-            style={{
-              height: ITEM_HEIGHT,
-              width: ITEM_WIDTH,
-              borderRadius: SIZES.radius,
-            }}
-          />
-        </View>
-      </View>
-      <View style={styles.leftMargin}>
+      <ScrollView>
+        <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
+          <View style={styles.productItemContainer}>
+            <Image
+              source={{uri: item.image}} 
+              style={{
+                height: ITEM_HEIGHT,
+                width: ITEM_WIDTH,
+                borderRadius: SIZES.radius,
+              }}
+            />
+            </View>
+          </View>
+        <View style={styles.leftMargin}>
         <McText h1>Club: {item.club}</McText>
         <McText h1> Event Name: {item.eventName}</McText>
         <McText />
