@@ -12,8 +12,11 @@ import {
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
+<<<<<<< Updated upstream
 import styles from '../components/EventDetailsStyles.js';
 import moment from 'moment'; 
+=======
+>>>>>>> Stashed changes
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;

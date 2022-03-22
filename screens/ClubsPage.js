@@ -41,7 +41,8 @@ const ClubsPage = ({route, navigation}) => {
         <McText></McText>
         <McText styles={styles.primaryColor} h2>About This Club</McText>
         <McText> </McText>
-        <McText style={styles.descText}> {item.bio}</McText>
+        <View style={{alignItems:'center'}}>
+        <McText style={styles.descText}> Mission Statement: Our goal is to bring the world to you guys on campus. </McText></View>
         <McText></McText>
         </View>
       </ScrollView>
