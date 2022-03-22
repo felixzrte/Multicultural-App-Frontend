@@ -25,6 +25,7 @@ const EventDetails = ({route, navigation}) => {
 
   var outputDate = moment(inputDate).format("dddd, MMM DD at HH:mm a");
 
+
   console.log(outputDate);
 
   return (
