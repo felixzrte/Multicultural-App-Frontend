@@ -9,7 +9,6 @@ export async function getHeaders() {
   let userData = await AsyncStorage.getItem('userData');
   if (userData) {
     userData = JSON.parse(userData);
-    //console.log(userData.accessToken, 'header')
     return {
       authorization: `${userData.token}`,
     };
@@ -51,7 +50,7 @@ export async function apiReq(
       })
       .catch((error) => {
         console.log(error);
-        console.log(error && error.response, 'the error respne');
+        console.log(error && error.response, 'the error response');
         if (error && error.response && error.response.status === 401) {
           clearUserData();
           // NavigationService.resetNavigation();
@@ -70,9 +69,9 @@ export async function apiReq(
             return rej({
               ...error.response.data,
               msg: error.response.data.message || 'Network Error',
-            });;
+            });
           }
-          return rej(error.response.data);;
+          return rej(error.response.data);
         } else {
           return rej({message: 'Network Error', msg: 'Network Error'});
         }

@@ -190,8 +190,8 @@ export const BigClubLogo = styled.Image`
   height: 55px;
 `;
 export const EventItemBox = styled.View`
-  width: 130px;
-  height: 180px;
+  width: 180px;
+  height: 250px;
   border-radius: 10px;
   background-color: ${COLORS.lightGray};
   justify-content: center;

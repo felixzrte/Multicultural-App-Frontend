@@ -19,9 +19,6 @@ import { Center } from 'native-base';
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
-const ITEM_WIDTH = SIZES.width * 1;
-const ITEM_HEIGHT = ITEM_WIDTH * 1;
-
 const ClubsPage = ({route, navigation}) => {
   const {item} = route.params;
 

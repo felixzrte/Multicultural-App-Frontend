@@ -10,10 +10,11 @@ const Stack = createStackNavigator();
 export default function Route() {
   const userData = useSelector((state) => state.auth.userData);
   console.log('user data', userData);
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        {true ? AuthStack(Stack) : RootStack(Stack)}
+        {!!userData && userData?.token ? RootStack(Stack) : RootStack(Stack)}
       </Stack.Navigator>
     </NavigationContainer>
   );

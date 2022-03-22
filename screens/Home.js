@@ -21,17 +21,17 @@ const Home = ({navigation}) => {
   const renderClubItem = ({item, index}) => {
     return (
       <TouchableOpacity
-              activeOpacity={1}
-              onPress={() =>
-                navigation.navigate('ClubsPage', {
-                  item: item,
-                })
-              }>
-      <ClubItemBox
-        style={{
-          marginLeft: index === 0 ? 16 : 0,
-          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
-        }}>
+        activeOpacity={1}
+        onPress={() =>
+          navigation.navigate('ClubsPage', {
+            item: item,
+          })
+        }>
+        <ClubItemBox
+          style={{
+            marginLeft: index === 0 ? 16 : 0,
+            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+          }}>
           <BigClubLogo source={item.logo} />
         </ClubItemBox>
       </TouchableOpacity>
