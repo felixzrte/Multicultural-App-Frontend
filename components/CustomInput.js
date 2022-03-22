@@ -1,33 +1,40 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import {
+  LeftIcon,
+  StyledInputLabel,
+  StyledTextInput,
+  RightIcon,
+} from '../constants/styles';
+import {Octicons, Ionicons} from '@expo/vector-icons';
 
-const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
+const CustomInput = ({
+  label,
+  icon,
+  isPassword,
+  hidePassword,
+  setHidePassword,
+  ...props
+}) => {
   return (
-    <View style={styles.container}>
-      <TextInput
-        value={value}
-        onChangeText={setValue}
-        placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
-        style={styles.input}
-      />
+    <View>
+      <LeftIcon>
+        <Octicons name={icon} size={30} color={COLORS.blue} />
+      </LeftIcon>
+      <StyledInputLabel>{label}</StyledInputLabel>
+      <StyledTextInput {...props} />
+      {isPassword && (
+        <RightIcon onPress={() => setHidePassword(!hidePassword)}>
+          <Ionicons
+            name={hidePassword ? 'md-eye-off' : 'md-eye'}
+            size={30}
+            color={COLORS.gray}
+          />
+        </RightIcon>
+      )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.white,
-    width: '100%',
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingVertical: 13,
-    paddingHorizontal: 10,
-    marginVertical: 5,
-  },
-  input: {},
-});
 
 export default CustomInput;

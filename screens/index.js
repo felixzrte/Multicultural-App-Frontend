@@ -12,7 +12,8 @@ import Transition from './Transition';
 import Product from './Product';
 import ClubsPage from './ClubsPage';
 import UpdateProfile from './UpdateProfile';
-
+import Signup from './Signup';
+import Signin from './Signin';
 
 export {
   Home,
@@ -29,4 +30,6 @@ export {
   Product,
   ClubsPage,
   UpdateProfile,
+  Signin,
+  Signup,
 };

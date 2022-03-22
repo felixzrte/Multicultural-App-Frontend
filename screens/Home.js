@@ -17,9 +17,7 @@ import {COLORS, images, dummyData} from '../constants';
 import useFetch from '../useFetch';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
-
 const Home = ({navigation}) => {
-
   const renderClubItem = ({item, index}) => {
     return (
       <TouchableOpacity
@@ -35,7 +33,7 @@ const Home = ({navigation}) => {
           marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
         }}>
           <BigClubLogo source={item.logo} />
-      </ClubItemBox>
+        </ClubItemBox>
       </TouchableOpacity>
     );
   };
@@ -43,21 +41,19 @@ const Home = ({navigation}) => {
   const renderEventItem = ({item, index}) => {
     return (
       <TouchableOpacity
-              activeOpacity={1}
-              onPress={() =>
-                navigation.navigate('EventDetails', {
-                  item: item,
-                })
-              }>
-      <EventItemBox
-        style={{
-          marginLeft: index === 0 ? 16 : 0,
-          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
-        }}>
-             
-                      <McText body4>{item.eventName}</McText>
-
-      </EventItemBox>
+        activeOpacity={1}
+        onPress={() =>
+          navigation.navigate('EventDetails', {
+            item: item,
+          })
+        }>
+        <EventItemBox
+          style={{
+            marginLeft: index === 0 ? 16 : 0,
+            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+          }}>
+          <McText body4>{item.eventName}</McText>
+        </EventItemBox>
       </TouchableOpacity>
     );
   };
@@ -76,6 +72,7 @@ const Home = ({navigation}) => {
     console.log(error);
   }
   console.log(events);
+
   return (
     <Container>
       <ScrollView

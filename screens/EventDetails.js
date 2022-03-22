@@ -37,18 +37,21 @@ const EventDetails = ({route, navigation}) => {
         <View style={styles.leftMargin}>
         <McText h1>Club: {item.club}</McText>
         <McText h1> Event Name: {item.eventName}</McText>
-        <McText></McText>
+        <McText />
         <McText h2>About This Event</McText>
-        <McText></McText>
+        <McText />
         <McText style={styles.descText}> Description: {item.desc}</McText>
-        <McText></McText>
-        <McText style={styles.descText} > Date and Time: {item.date}</McText>
-        <McText style={styles.descText} > Location: {item.location}</McText>
-        <McText style={styles.descText} > Attendence: {item.attendence}</McText>
-        <McText style={styles.descText} > Favorite: {item.favorite}</McText>
-        <McText style={styles.bottomText}> Extra Notes: {item.extraNotes}</McText>
-        </View>
-      </ScrollView>
+        <McText />
+        <McText style={styles.descText}> Date and Time: {item.date}</McText>
+        <McText style={styles.descText}> Location: {item.location}</McText>
+        <McText style={styles.descText}> Attendence: {item.attendence}</McText>
+        <McText style={styles.descText}> Favorite: {item.favorite}</McText>
+        <McText style={styles.bottomText}>
+          {' '}
+          Extra Notes: {item.extraNotes}
+        </McText>
+      </View>
+    </ScrollView>
   );
 };
 
