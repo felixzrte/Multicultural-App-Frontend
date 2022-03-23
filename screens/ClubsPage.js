@@ -15,16 +15,18 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/MerchProductStyles.js';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { Center } from 'native-base';
+import useFetch from '../useFetch';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
 const ClubsPage = ({route, navigation}) => {
+  const {item} = route.params;
   const {
-    data: clubs,
+    data: club,
     loading,
     error,
-  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubspage');
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/club');
   /*
     if (loading) {
       return null;
@@ -33,10 +35,8 @@ const ClubsPage = ({route, navigation}) => {
   if (error) {
     console.log(error);
   }
-  console.log(clubs);
+  console.log(club);
 
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-  
   return (
       <ScrollView>
         <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
@@ -62,6 +62,7 @@ const ClubsPage = ({route, navigation}) => {
       </ScrollView>
   );
 };
+
 
 
 export default ClubsPage;
