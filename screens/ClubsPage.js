@@ -35,6 +35,7 @@ const ClubsPage = ({route, navigation}) => {
   if (error) {
     console.log(error);
   }
+  
   console.log(club);
 
   return (
