@@ -15,12 +15,27 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/MerchProductStyles.js';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { Center } from 'native-base';
+import useFetch from '../useFetch';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
 const ClubsPage = ({route, navigation}) => {
   const {item} = route.params;
+  const {
+    data: club,
+    loading,
+    error,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/club');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (error) {
+    console.log(error);
+  }
+  console.log(club);
 
   return (
       <ScrollView>
@@ -47,5 +62,7 @@ const ClubsPage = ({route, navigation}) => {
       </ScrollView>
   );
 };
+
+
 
 export default ClubsPage;
