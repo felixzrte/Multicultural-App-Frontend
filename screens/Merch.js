@@ -96,6 +96,7 @@ const Merch = ({navigation}) => {
           <McText style={{marginTop: 10}} body4 color="gray">
             Explore all the different club merchandise!
           </McText>
+          
           <Line />
         </HeaderSection>
         <View style={{marginTop: 60}}>
