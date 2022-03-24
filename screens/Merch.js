@@ -95,7 +95,9 @@ const Merch = ({navigation}) => {
           <McText h1>Merch</McText>
           <View style={{flexDirection:'row'}}>
             <McText style={{marginTop: 10, textAlign:'left'}} body4 color="gray">Explore all the different club merchandise!</McText>
-            <McText style={{marginTop: 0, textAlign:'right', position: 'absolute', right: 0}} h1 color="gray">+</McText>
+            
+            <McText onPress={() => navigation.navigate('AddMerch')} style={{marginTop: 0, textAlign:'right', position: 'absolute', right: 0}} h1 color="gray">+</McText>
+            
           </View>
           <Line />
         </HeaderSection>
