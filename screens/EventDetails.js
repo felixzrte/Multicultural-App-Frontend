@@ -14,6 +14,7 @@ import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/EventDetailsStyles.js';
 import moment from 'moment'; 
+//import pencil from '../constants/images.js';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;

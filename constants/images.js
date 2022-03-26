@@ -7,6 +7,7 @@ const csa = require('../assets/images/csa.jpeg');
 const isa = require('../assets/images/isa.png');
 const lal = require('../assets/images/lal.png');
 const beach = require('../assets/images/beach.png');
+//const pencil = require('../assets/icons/pencil.png');
 
 export default {
   profile_pic,
@@ -18,4 +19,5 @@ export default {
   isa,
   lal,
   beach,
+//  pencil,
 };
