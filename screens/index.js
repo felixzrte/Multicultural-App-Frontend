@@ -5,6 +5,7 @@ import EventDetails from './EventDetails';
 import Profile from './Profile';
 import Login from './Login';
 import Merch from './Merch';
+import AddMerch from './AddMerch';
 import Register from './Register';
 import Welcome from './Welcome';
 import Suggestion from './Suggestion';
@@ -26,6 +27,7 @@ export {
   Welcome,
   Suggestion,
   Merch,
+  AddMerch,
   Transition,
   Product,
   ClubsPage,

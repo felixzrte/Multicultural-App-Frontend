@@ -1,6 +1,6 @@
-import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, useWindowDimensions} from 'react-native';
 import React, {useState} from 'react';
-import {CustomButton, CustomInput, CustomInputNoPadding} from '../components';
+import {CustomButton, CustomInput, McIcon, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
   InnerContainer,
@@ -15,6 +15,9 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
+  HeaderSection,
+  Container,
+  StyledTextInputNoPadding
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
@@ -23,7 +26,8 @@ import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
-const Signup = ({navigation}) => {
+
+const AddMerch = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
@@ -33,7 +37,6 @@ const Signup = ({navigation}) => {
     password: '',
     confirmPassword: '',
   });
-
   const {isLoading, email, password, fullName, confirmPassword} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
 
@@ -75,54 +78,36 @@ const Signup = ({navigation}) => {
   };
 
   return (
+    <Container>
+      <ScrollView>
+        <HeaderSection>
+          <McText h1>Merch</McText>
+            <View style={{flexDirection:'row'}}>
+              <McText style={{marginTop: 10, textAlign:'left'}} body4 color="gray">Add a new article of club merchandise!</McText>
+            </View>
+            <Line />
+          </HeaderSection>
+
     <KeyboardAvoidingWrapper>
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <Logo
-            style={{height: height * 0.35}}
-            resizeMode="cover"
-            source={images.mcc}
-          />
           <SubTitle>Create An Account</SubTitle>
           <StyledFormArea>
+            <McText>Item Name</McText>
+            <StyledTextInputNoPadding placeholder="Enter Item Name Here"></StyledTextInputNoPadding>
             <CustomInput
-              label="Full Name"
-              icon="person"
-              placeholder="Felix Zarate"
+              label="Item Name"
+              
               placeholderTextColor={COLORS.gray}
-              onChangeText={(fullName) => updateState({fullName})}
-            />
-            <CustomInput
-              label="Email Address"
-              icon="mail"
-              placeholder="example@gmail.com"
-              placeholderTextColor={COLORS.gray}
-              keyboardType="email-address"
-              onChangeText={(email) => updateState({email})}
               autoCapitalize={false}
             />
+            
             <CustomInput
-              label="Password"
-              icon="key"
-              placeholder="* * * * * * * * * *"
+              label="Email Address"
+              placeholder="example@gmail.com"
               placeholderTextColor={COLORS.gray}
-              secureTextEntry={hidePassword}
-              isPassword={true}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-              onChangeText={(password) => updateState({password})}
-            />
-            <CustomInput
-              label="Confirm Password"
-              icon="key"
-              placeholder="* * * * * * * * * *"
-              placeholderTextColor={COLORS.gray}
-              secureTextEntry={hidePassword}
-              isPassword={true}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-              onChangeText={(confirmPassword) => updateState({confirmPassword})}
+              autoCapitalize={false}
             />
             <CustomButton
               onPress={onSignup}
@@ -140,7 +125,9 @@ const Signup = ({navigation}) => {
         </InnerContainer>
       </StyledContainer>
     </KeyboardAvoidingWrapper>
+    </ScrollView>
+    </Container>
   );
 };
 
-export default Signup;
+export default AddMerch;
