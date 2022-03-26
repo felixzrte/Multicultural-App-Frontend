@@ -102,13 +102,13 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
   left: 15px;
-  top: 47%;
+  top: 48%;
   position: absolute;
   z-index: 1;
 `;
 export const RightIcon = styled.TouchableOpacity`
   right: 15px;
-  top: 47%;
+  top: 48%;
   position: absolute;
   z-index: 1;
 `;
@@ -190,8 +190,8 @@ export const BigClubLogo = styled.Image`
   height: 55px;
 `;
 export const EventItemBox = styled.View`
-  width: 130px;
-  height: 180px;
+  width: 180px;
+  height: 250px;
   border-radius: 10px;
   background-color: ${COLORS.lightGray};
   justify-content: center;

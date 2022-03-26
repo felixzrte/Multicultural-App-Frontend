@@ -17,25 +17,23 @@ import {COLORS, images, dummyData} from '../constants';
 import useFetch from '../useFetch';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
-
 const Home = ({navigation}) => {
-
   const renderClubItem = ({item, index}) => {
     return (
       <TouchableOpacity
-              activeOpacity={1}
-              onPress={() =>
-                navigation.navigate('ClubsPage', {
-                  item: item,
-                })
-              }>
-      <ClubItemBox
-        style={{
-          marginLeft: index === 0 ? 16 : 0,
-          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
-        }}>
+        activeOpacity={1}
+        onPress={() =>
+          navigation.navigate('ClubsPage', {
+            item: item,
+          })
+        }>
+        <ClubItemBox
+          style={{
+            marginLeft: index === 0 ? 16 : 0,
+            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+          }}>
           <BigClubLogo source={item.logo} />
-      </ClubItemBox>
+        </ClubItemBox>
       </TouchableOpacity>
     );
   };
@@ -43,21 +41,19 @@ const Home = ({navigation}) => {
   const renderEventItem = ({item, index}) => {
     return (
       <TouchableOpacity
-              activeOpacity={1}
-              onPress={() =>
-                navigation.navigate('EventDetails', {
-                  item: item,
-                })
-              }>
-      <EventItemBox
-        style={{
-          marginLeft: index === 0 ? 16 : 0,
-          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
-        }}>
-             
-                      <McText body4>{item.eventName}</McText>
-
-      </EventItemBox>
+        activeOpacity={1}
+        onPress={() =>
+          navigation.navigate('EventDetails', {
+            item: item,
+          })
+        }>
+        <EventItemBox
+          style={{
+            marginLeft: index === 0 ? 16 : 0,
+            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+          }}>
+          <McText body4>{item.eventName}</McText>
+        </EventItemBox>
       </TouchableOpacity>
     );
   };
@@ -76,6 +72,7 @@ const Home = ({navigation}) => {
     console.log(error);
   }
   console.log(events);
+
   return (
     <Container>
       <ScrollView
@@ -111,10 +108,10 @@ const Home = ({navigation}) => {
             <View
               style={{width: 175, margin: 20, justifyContent: 'space-between'}}>
               <McText h2 color="white">
-                Stay tuned for the big announcment
+                International Gala Auditions End Today!
               </McText>
               <McText body3 color="white">
-                Tomorrow @7pm
+                Ends @7pm
               </McText>
             </View>
           </LinearGradient>
