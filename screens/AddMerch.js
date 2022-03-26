@@ -1,25 +1,81 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import {View, Text, ScrollView, StyleSheet, useWindowDimensions} from 'react-native';
+import React, {useState} from 'react';
+import {CustomButton, CustomInput, CustomInputNoPadding} from '../components';
+import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
-  View,
-  Pressable,
-  ScrollView,
-  Text,
-  StyleSheet,
-  Image,
+  InnerContainer,
+  StyledContainer,
   Logo,
-  TextInput,
-} from 'react-native';
-import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+  SubTitle,
+  StyledFormArea,
+  StyledButton,
+  Line,
+  ExtraView,
+  ButtonText,
+  ExtraText,
+  TextLink,
+  TextLinkContent,
+  StyledTextInputNoPadding,
+} from '../constants/styles';
+import {StatusBar} from 'expo-status-bar';
 import {McIcon, McText} from '../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import styles from '../components/AddMerchStyles.js';
-import {HeaderSection, Line, Container} from '../constants/styles';
+import {COLORS, FONTS, icons, images, SIZES} from '../constants';
+import validator from '../utils/validation';
+import {showError} from '../utils/helperFunction';
+import actions from '../redux/actions';
+import {showMessage} from 'react-native-flash-message';
+import {HeaderSection, Container, StyledInputLabel, StyledTextInput} from '../constants/styles';
 
-const ITEM_WIDTH = SIZES.width * 1;
-const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
 const AddMerch = ({navigation}) => {
+  const {height} = useWindowDimensions();
+  const [hidePassword, setHidePassword] = useState(true);
+  const [state, setState] = useState({
+    isLoading: false,
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const {isLoading, email, password, fullName, confirmPassword} = state;
+  const updateState = (data) => setState(() => ({...state, ...data}));
+
+  const isValidData = () => {
+    const error = validator({
+      fullName,
+      email,
+      password,
+      confirmPassword,
+    });
+    if (error) {
+      showError(error);
+      return false;
+    }
+    return true;
+  };
+
+  const onSignup = async () => {
+    const checkValid = isValidData();
+    if (checkValid) {
+      updateState({isLoading: true});
+      try {
+        const res = await actions.signup({
+          name: fullName,
+          email,
+          password,
+          confirmPassword,
+        });
+        console.log('res for signup====>', res);
+        showMessage('Registered Successfully');
+        updateState({isLoading: false});
+        navigation.goBack();
+      } catch (error) {
+        console.log('error raised');
+        showError(error.message);
+        updateState({isLoading: false});
+      }
+    }
+  };
 
   return (
     <Container>
@@ -32,29 +88,42 @@ const AddMerch = ({navigation}) => {
             <Line />
           </HeaderSection>
 
-          <View style={{marginTop: 60}}>
-            <McText style={{textAlign:'center'}} body1>Enter Item Name:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Item Name Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Item Price:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Item Price Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Item Picture:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Item Picture Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Your Email:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Email Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Your Phone Number:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Phone Number Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Item Descriptoin:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Item Description Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Number of Small Sizes:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Number of Small Items Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Number of Medium Sizes:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Number of Medium Items Here"/>
-            <McText style={{textAlign:'center'}} body1>Enter Number of Large Sizes:</McText>
-            <TextInput secureTextEntry={true} style={styles.inputBox} placeholder="Enter Number of Large Items Here"/>
-
-
-          </View>
-      </ScrollView>
+    <KeyboardAvoidingWrapper>
+      <StyledContainer>
+        <StatusBar style="dark" />
+        <InnerContainer>
+          <SubTitle>Create An Account</SubTitle>
+          <StyledFormArea>
+            <CustomInputNoPadding
+              label="Item Name"
+              placeholder="Add Item Name Here"
+              placeholderTextColor={COLORS.gray}
+              autoCapitalize={false}
+            />
+            
+            <CustomInput
+              label="Email Address"
+              placeholder="example@gmail.com"
+              placeholderTextColor={COLORS.gray}
+              autoCapitalize={false}
+            />
+            <CustomButton
+              //onPress={onSignup}
+              isLoading={isLoading}
+              text="REGISTER"
+            />
+            <Line />
+            <ExtraView>
+              <ExtraText>Already Have An Account? </ExtraText>
+              <TextLink onPress={() => navigation.navigate('Signin')}>
+                <TextLinkContent>Login</TextLinkContent>
+              </TextLink>
+            </ExtraView>
+          </StyledFormArea>
+        </InnerContainer>
+      </StyledContainer>
+    </KeyboardAvoidingWrapper>
+    </ScrollView>
     </Container>
   );
 };
