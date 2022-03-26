@@ -11,6 +11,7 @@ import Suggestion from './Suggestion';
 import Transition from './Transition';
 import Product from './Product';
 import UpdateProfile from './UpdateProfile';
+import UpdateEvents from './UpdateEvents';
 
 
 export {
@@ -27,4 +28,5 @@ export {
   Transition,
   Product,
   UpdateProfile,
+  UpdateEvents,
 };

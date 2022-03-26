@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {EventDetails, Home, Merch, Product, Suggestion, 
-Asa, Asu, Bsu, Csa, Isa, Lal, Mcc,Profile,UpdateProfile} from '../screens';
+Asa, Asu, Bsu, Csa, Isa, Lal, Mcc,Profile,UpdateProfile,UpdateEvents} from '../screens';
 import {COLORS} from '../constants';
 import Tabs from './Tabs';
 
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="UpdateEvents"
       screenOptions={{
         headerShown: false,
         headerStyle: {
@@ -33,6 +33,7 @@ const RootStack = () => {
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
+      <Stack.Screen name="UpdateEvents" component={UpdateEvents}/>
     </Stack.Navigator>
   );
 };
