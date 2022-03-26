@@ -20,13 +20,13 @@ import useFetch from '../useFetch';
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
-const ClubsPage = ({route, navigation}) => {
+const Club = ({route, navigation}) => {
   const {item} = route.params;
   const {
     data: club,
     loading,
     error,
-  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/club');
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubs');
   /*
     if (loading) {
       return null;
@@ -57,7 +57,7 @@ const ClubsPage = ({route, navigation}) => {
         <McText></McText>
         <McText styles={styles.primaryColor} h2>About This Club</McText>
         <McText> </McText>
-        <McText style={styles.descText}> {item.bio}</McText>
+        <McText style={styles.descText}> {item.missionStatement}</McText>
         <McText></McText>
         </View>
       </ScrollView>
@@ -66,4 +66,4 @@ const ClubsPage = ({route, navigation}) => {
 
 
 
-export default ClubsPage;
+export default Club;
