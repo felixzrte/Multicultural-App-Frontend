@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
 import React, {useState} from 'react';
-import {CustomButton, CustomInput} from '../components';
+import {CustomButton, CustomInput, CustomInputNoPadding} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
   InnerContainer,

@@ -1,6 +1,6 @@
 import {View, Text, ScrollView, StyleSheet, useWindowDimensions} from 'react-native';
 import React, {useState} from 'react';
-import {CustomButton, CustomInput, CustomInputNoPadding} from '../components';
+import {CustomButton, CustomInput, McIcon, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
   InnerContainer,
@@ -15,16 +15,16 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
-  StyledTextInputNoPadding,
+  HeaderSection,
+  Container,
+  StyledTextInputNoPadding
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
-import {McIcon, McText} from '../components';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
-import {HeaderSection, Container, StyledInputLabel, StyledTextInput} from '../constants/styles';
 
 
 const AddMerch = ({navigation}) => {
@@ -94,9 +94,11 @@ const AddMerch = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Create An Account</SubTitle>
           <StyledFormArea>
-            <CustomInputNoPadding
+            <McText>Item Name</McText>
+            <StyledTextInputNoPadding placeholder="Enter Item Name Here"></StyledTextInputNoPadding>
+            <CustomInput
               label="Item Name"
-              placeholder="Add Item Name Here"
+              
               placeholderTextColor={COLORS.gray}
               autoCapitalize={false}
             />
@@ -108,7 +110,7 @@ const AddMerch = ({navigation}) => {
               autoCapitalize={false}
             />
             <CustomButton
-              //onPress={onSignup}
+              onPress={onSignup}
               isLoading={isLoading}
               text="REGISTER"
             />
