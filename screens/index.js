@@ -15,6 +15,9 @@ import Club from './Club';
 import UpdateProfile from './UpdateProfile';
 import Signup from './Signup';
 import Signin from './Signin';
+import AddAnnouncement from './AddAnnouncement';
+import AddClub from './AddClub';
+import AddEvent from './AddEvent';
 
 export {
   Home,
@@ -34,4 +37,7 @@ export {
   UpdateProfile,
   Signin,
   Signup,
+  AddAnnouncement,
+  AddClub,
+  AddEvent,
 };
