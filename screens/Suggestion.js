@@ -16,14 +16,10 @@ import AppleHeader from 'react-native-apple-header';
 import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton} from '../components';
-import {SubHeader} from '../constants/styles';
+import {SubHeader, Container, HeaderSection, Line} from '../constants/styles';
 import styles from '../components/SuggestionStyles.js';
 
-
-
-
 const Suggestion = () => {
-
   return (
     <View style={{backgroundColor: '#0277bd'}}>
       <SafeAreaView>
@@ -90,6 +86,5 @@ const Suggestion = () => {
     </View>
   );
 };
-
 
 export default Suggestion;

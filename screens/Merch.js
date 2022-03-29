@@ -19,16 +19,16 @@ import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
 import {ceil} from 'react-native-reanimated';
 import styles from '../components/MerchProductStyles';
-
+import {HeaderSection, Line, Container} from '../constants/styles';
 const OVERFLOW_HEIGHT = 70;
 const SPACING = 10;
-const ITEM_WIDTH = SIZES.width * .8;
+const ITEM_WIDTH = SIZES.width * 0.8;
 const ITEM_HEIGHT = ITEM_WIDTH;
 const VISIBLE_ITEMS = 3;
-const ITEM_SIZE = SIZES.width * .9;
-const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
+const ITEM_SIZE = SIZES.width * 0.9;
+const ITEM_SPACING = (SIZES.width - ITEM_SIZE) / 2;
 
-  const Merch = ({navigation}) => {
+const Merch = ({navigation}) => {
   const {
     data: merchs,
     loading,
@@ -44,84 +44,76 @@ const ITEM_SPACING = (SIZES.width - ITEM_SIZE) /2;
   }
   console.log(merchs);
 
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-  
-  
   const merchCard = ({item, index}) => {
-    const inputRange = [
-      (index - 1) * SIZES.itemSize,
-      index * SIZES.itemSize,
-      (index + 1) * SIZES.itemSize,
-    ];
-    const opacity = scrollX.interpolate({
-      inputRange,
-      outputRange: [1, 1, 1],
-    });
-    const scale = scrollX.interpolate({
-      inputRange,
-      outputRange: [1, 1, 1],
-    });
-
     return (
       <View style={styles.merchItemContainer}>
-      <Animated.View style={{opacity, transform: [{scale}]}}>
+        <View>
           <View>
-            <McText></McText>
+            <McText />
           </View>
-        <View
-          style={{
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity
-            activeOpacity={1}
-            onPress={() =>
-              navigation.navigate('Product', {
-                item: item,
-              })
-            }>
-            <Image
-              source={{uri: item.pic}}
-              style={{
-                height: ITEM_HEIGHT,
-                width: ITEM_WIDTH,
-                borderRadius: SIZES.radius,
-              }}
-            />
-            <View style={styles.headerContainer}><McText h1 numberOfLines={1}>{item.merchItemName}</McText></View>
-            <View style={styles.headerContainer}><McText body2 numberOfLines={1}>${item.merchItemPrice}</McText></View>
-          </TouchableOpacity>
+          <View
+            style={{
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() =>
+                navigation.navigate('Product', {
+                  item: item,
+                })
+              }>
+              <Image
+                source={{uri: item.pic}}
+                style={{
+                  height: ITEM_HEIGHT,
+                  width: ITEM_WIDTH,
+                  borderRadius: SIZES.radius,
+                }}
+              />
+              <View style={styles.headerContainer}>
+                <McText h1 numberOfLines={1}>
+                  {item.merchItemName}
+                </McText>
+              </View>
+              <View style={styles.headerContainer}>
+                <McText body2 color={COLORS.gray1} numberOfLines={1}>
+                  ${item.merchItemPrice}
+                </McText>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-      </Animated.View>
       </View>
     );
   };
 
-  
   return (
-    <SafeAreaView style={styles.container}>
-      {/* Header Section */}
-      <View style={styles.headerContainer}>
-        <McText body4>Merch</McText>
-      </View>
-      <View style={styles.pleaseCenter}>
-      <Animated.FlatList
-        data={merchs.merchs}
-        keyExtractor={(item, index) => 'key' + index}
-        renderItem={merchCard}
-        onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {x: scrollX}}}],
-          {useNativeDriver: true},
-        )}
-        bounces={true}
-        snapToInterval={ITEM_SIZE}
-        decelerationRate="fast"
-        style={{flexGrow: 1}}
-        contentContainerStyle={{
-          paddingHorizontal: ITEM_SPACING,
-        }}
-      />
-      </View>
-    </SafeAreaView>
+    <Container>
+      <ScrollView>
+        {/* Header Section */}
+        <HeaderSection>
+          <McText h1>Merch</McText>
+          <View style={{flexDirection:'row'}}>
+            <McText style={{marginTop: 10, textAlign:'left'}} body4 color="gray">Explore all the different club merchandise!</McText>
+            
+            <McText onPress={() => navigation.navigate('AddMerch')} style={{marginTop: 0, textAlign:'right', position: 'absolute', right: 0}} h1 color="gray">+</McText>
+            
+          </View>
+          <Line />
+        </HeaderSection>
+        <View style={{marginTop: 60}}>
+          <FlatList
+            data={merchs.merchs}
+            keyExtractor={(item, index) => 'key' + index}
+            renderItem={merchCard}
+            decelerationRate="fast"
+            contentContainerStyle={{
+              paddingHorizontal: ITEM_SPACING,
+            }}
+          />
+        </View>
+      </ScrollView>
+    </Container>
   );
 };
 

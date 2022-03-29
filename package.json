@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
+    "@react-native-async-storage/async-storage": "^1.17.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
@@ -20,6 +21,7 @@
     "expo-linear-gradient": "~10.0.3",
     "expo-status-bar": "~1.1.0",
     "formik": "^2.2.9",
+    "is_js": "^0.9.0",
     "moment": "^2.29.1",
     "native-base": "^3.2.2",
     "nvm": "^0.0.4",
@@ -28,6 +30,7 @@
     "react-dom": "16.13.1",
     "react-native": "0.64.3",
     "react-native-apple-header": "^0.1.1",
+    "react-native-flash-message": "^0.2.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
@@ -37,6 +40,9 @@
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.11.7",
     "react-navigation-stack": "^2.10.4",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

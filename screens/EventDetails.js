@@ -12,6 +12,7 @@ import {
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { Container } from '../constants/styles';
 import styles from '../components/EventDetailsStyles.js';
 import moment from 'moment'; 
 //import pencil from '../constants/images.js';
@@ -57,7 +58,26 @@ const EventDetails = ({route, navigation}) => {
         <McText style={styles.descText} > Favorite: {item.favorite}</McText>
         <McText style={styles.bottomText}> Extra Notes: {item.extraNotes}</McText>
         </View>
-      </ScrollView>
+      </View>
+      <View style={{marginLeft: 10}}>
+        <McText h2 color={COLORS.gray1}>
+          {item.club}
+        </McText>
+        <McText h1>{item.eventName}</McText>
+        <McText body3 color={COLORS.gray1}>
+          {item.location}
+        </McText>
+        <McText body3 color={COLORS.gray1}>
+          Starting {moment(item.time).format('hh:mm A')}
+        </McText>
+
+        <McText />
+        <McText h3>About This Event</McText>
+        <McText />
+        <McText body3>{item.desc}</McText>
+        <McText body3>{item.extraNotes}</McText>
+      </View>
+    </ScrollView>
   );
 };
 

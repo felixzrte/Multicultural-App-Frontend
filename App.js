@@ -8,19 +8,15 @@ import {
   StatusBar,
 } from 'react-native';
 import * as Font from 'expo-font';
-import {EventDetails, Home, Place, Login, Merch} from './screens';
-import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import AuthStack from './navigation/AuthStack';
-import RootStack from './navigation/RootStack';
 
 import {customFonts} from './constants';
 import {COLORS} from './constants';
-
-const Stack = createStackNavigator();
+import Route from './navigation/Route';
+import FlashMessage from 'react-native-flash-message';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
-  const [auth, setAuth] = useState(true);
   const [assetsLoaded, setAssetLoaded] = useState(false);
 
   /* Loading custom fonts in async */
@@ -33,9 +29,10 @@ export default function App() {
     _loadAssetsAsync();
   });
   return assetsLoaded ? (
-    <NavigationContainer>
-      {auth ? <RootStack /> : <AuthStack />}
-    </NavigationContainer>
+    <Provider store={store}>
+      <Route />
+      <FlashMessage position="top" />
+    </Provider>
   ) : (
     <ActivityIndicator size="small" />
   );

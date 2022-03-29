@@ -91,6 +91,18 @@ export const StyledTextInput = styled.TextInput`
   margin-vertical: 5px;
   height: 45px;
 `;
+export const StyledTextInputNoPadding = styled.TextInput`
+  background-color: ${COLORS.secondary};
+  width: 100%;
+  border-color: #e8e8e8;
+  border-width: 1px;
+  border-radius: 10px;
+  padding-vertical: 15px;
+  padding-horizontal: 10px;
+  padding-left: 10px;
+  margin-vertical: 5px;
+  height: 45px;
+`;
 
 export const StyledInputLabel = styled.Text`
   color: ${COLORS.tertiary};
@@ -102,13 +114,13 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
   left: 15px;
-  top: 47%;
+  top: 48%;
   position: absolute;
   z-index: 1;
 `;
 export const RightIcon = styled.TouchableOpacity`
   right: 15px;
-  top: 47%;
+  top: 48%;
   position: absolute;
   z-index: 1;
 `;
@@ -190,8 +202,8 @@ export const BigClubLogo = styled.Image`
   height: 55px;
 `;
 export const EventItemBox = styled.View`
-  width: 130px;
-  height: 180px;
+  width: 180px;
+  height: 250px;
   border-radius: 10px;
   background-color: ${COLORS.lightGray};
   justify-content: center;
