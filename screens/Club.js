@@ -57,8 +57,9 @@ const Club = ({route, navigation}) => {
         <McText></McText>
         <McText styles={styles.primaryColor} h2>About This Club</McText>
         <McText> </McText>
-        <McText style={styles.descText}> {item.missionStatement}</McText>
+        <McText style={styles.descText}> {item.bio}</McText>
         <McText></McText>
+        <McText style={styles.descText}> Instagram Page {item.instagram}</McText>
         </View>
       </ScrollView>
   );
