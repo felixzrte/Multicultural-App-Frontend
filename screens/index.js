@@ -17,6 +17,7 @@ import Signup from './Signup';
 import Signin from './Signin';
 import AddAnnouncement from './AddAnnouncement';
 import AddClub from './AddClub';
+import AddEvent from './AddEvent';
 
 export {
   Home,
@@ -38,4 +39,5 @@ export {
   Signup,
   AddAnnouncement,
   AddClub,
+  AddEvent,
 };
