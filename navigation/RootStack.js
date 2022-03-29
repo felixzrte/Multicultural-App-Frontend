@@ -25,6 +25,7 @@ export default function (Stack) {
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
       <Stack.Screen name="AddMerch" component={AddMerch} />
+      <Stack.Screen name="UpdateEvents" component={UpdateEvents}/>
     </>
   );
 }
