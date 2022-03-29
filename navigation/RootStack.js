@@ -8,6 +8,7 @@ import {
   UpdateProfile,
   Club,
   AddMerch,
+  UpdateEvents,
 } from '../screens';
 import Tabs from './Tabs';
 
