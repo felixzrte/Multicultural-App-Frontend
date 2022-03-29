@@ -14,6 +14,7 @@ import {McIcon, McText} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/MerchProductStyles.js';
 import moment from 'moment';
+import { Container } from '../constants/styles';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
@@ -35,7 +36,7 @@ const EventDetails = ({route, navigation}) => {
           />
         </View>
       </View>
-      <View style={styles.leftMargin}>
+      <View style={{marginLeft: 10}}>
         <McText h2 color={COLORS.gray1}>
           {item.club}
         </McText>
