@@ -114,19 +114,11 @@ const Home = ({navigation}) => {
                 Ends @7pm
               </McText>
             </View>
-            
           </LinearGradient>
         </BannerSection>
-        <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Announcements</McText>
-            <McText onPress={() => navigation.navigate('AddImageTest')} style={{ textAlign:'right', position: 'absolute', right: 0}} h1 >+</McText>
-          </View>
         {/* Clubs Section */}
         <Header2Section>
-        <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Multicultural Clubs</McText>
-            <McText onPress={() => navigation.navigate('AddClub')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
-          </View>
+          <McText h2>Multicultural Clubs </McText>
         </Header2Section>
         <View>
           <FlatList
@@ -139,11 +131,8 @@ const Home = ({navigation}) => {
           />
         </View>
         {/* Events Section */}
-        <Header2Section> 
-          <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Upcoming Events</McText>
-            <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
-          </View>
+        <Header2Section>
+          <McText h2>Upcoming Events</McText>
         </Header2Section>
 
         <View>
