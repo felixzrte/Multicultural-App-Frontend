@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() =>
-          navigation.navigate('ClubsPage', {
+          navigation.navigate('Club', {
             item: item,
           })
         }>
@@ -37,6 +37,20 @@ const Home = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+  const {
+    data: clubs,
+    loadingClubs,
+    errorClubs,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubs');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (errorClubs) {
+    console.log(errorClubs);
+  }
+  console.log(clubs);
 
   const renderEventItem = ({item, index}) => {
     return (
@@ -60,7 +74,7 @@ const Home = ({navigation}) => {
 
   const {
     data: events,
-    loading,
+    loadingEvents,
     error,
   } = useFetch('https://mcapp-api.herokuapp.com/api/v1/events');
   /*
@@ -122,11 +136,11 @@ const Home = ({navigation}) => {
         </Header2Section>
         <View>
           <FlatList
-            keyExtractor={(item) => 'club' + item.id}
+            data={clubs.clubs}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{}}
-            data={dummyData.Clubs}
+            keyExtractor={(item, index) => 'key' + index}
             renderItem={renderClubItem}
           />
         </View>
