@@ -30,9 +30,9 @@ const Home = ({navigation}) => {
         <ClubItemBox
           style={{
             marginLeft: index === 0 ? 16 : 0,
-            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+            marginRight: index === item.length - 1 ? 16 : 16,
           }}>
-          <BigClubLogo source={item.logo} />
+          <BigClubLogo source={{uri: item.logoImage}}/>
         </ClubItemBox>
       </TouchableOpacity>
     );
