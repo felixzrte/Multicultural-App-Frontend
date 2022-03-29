@@ -43,26 +43,6 @@ const EventDetails = ({route, navigation}) => {
           />
         </View>
       </View>
-      <View style={styles.leftMargin}>
-        <McText h1 style={styles.heading}>
-          {item.eventName}
-        </McText>
-        <McText />
-        <McText h2 style={styles.heading}>
-          About This Event
-        </McText>
-        <McText />
-        <McText style={styles.descText}> Description: {item.desc}</McText>
-        <McText />
-        <McText style={styles.descText}> Date and Time: {item.date}</McText>
-        <McText style={styles.descText}> Location: {item.location}</McText>
-        <McText style={styles.descText}> Attendence: {item.attendence}</McText>
-        <McText style={styles.descText}> Favorite: {item.favorite}</McText>
-        <McText style={styles.bottomText}>
-          {' '}
-          Extra Notes: {item.extraNotes}
-        </McText>
-      </View>
       <View style={{marginLeft: 10}}>
         <McText h2 color={COLORS.gray1}>
           {item.club}
