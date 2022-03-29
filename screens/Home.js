@@ -122,10 +122,10 @@ const Home = ({navigation}) => {
             <View
               style={{width: 175, margin: 20, justifyContent: 'space-between'}}>
               <McText h2 color="white">
-                Stay tuned for the big announcment
+                International Gala Auditions End Today!
               </McText>
               <McText body3 color="white">
-                Tomorrow @7pm
+                Ends @7pm
               </McText>
             </View>
           </LinearGradient>
