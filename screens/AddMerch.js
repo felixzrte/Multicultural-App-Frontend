@@ -27,6 +27,7 @@ import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
 
+
 const AddMerch = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
@@ -92,35 +93,39 @@ const AddMerch = ({navigation}) => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <SubTitle>Create An Account</SubTitle>
+          <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
             <McText>Item Name</McText>
-            <StyledTextInputNoPadding placeholder="Enter Item Name Here"></StyledTextInputNoPadding>
-            <CustomInput
-              label="Item Name"
-              
-              placeholderTextColor={COLORS.gray}
-              autoCapitalize={false}
-            />
-            
-            <CustomInput
-              label="Email Address"
-              placeholder="example@gmail.com"
-              placeholderTextColor={COLORS.gray}
-              autoCapitalize={false}
-            />
+            <StyledTextInputNoPadding placeholder="Enter Item Name"></StyledTextInputNoPadding>
+            <McText>Item Price</McText>
+            <StyledTextInputNoPadding placeholder="Enter Price"></StyledTextInputNoPadding>
+            <McText>Picture</McText>
             <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
-              text="REGISTER"
+              text="Add Image From Gallary"
+            />
+            
+            <StyledTextInputNoPadding placeholder="Enter Picture"></StyledTextInputNoPadding>
+            <McText>Email</McText>
+            <StyledTextInputNoPadding placeholder="Enter Email"></StyledTextInputNoPadding>
+            <McText>Phone Number</McText>
+            <StyledTextInputNoPadding placeholder="Enter Phone Number"></StyledTextInputNoPadding>
+            <McText>Description</McText>
+            <StyledTextInputNoPadding placeholder="Enter Description"></StyledTextInputNoPadding>
+            <McText>Number of Smalls</McText>
+            <StyledTextInputNoPadding placeholder="Enter Number of Smalls"></StyledTextInputNoPadding>
+            <McText>Number of Mediums</McText>
+            <StyledTextInputNoPadding placeholder="Enter Number of Mediums"></StyledTextInputNoPadding>
+            <McText>Number of Larges</McText>
+            <StyledTextInputNoPadding placeholder="Enter Numbers of Larges"></StyledTextInputNoPadding>
+
+            <CustomButton
+              onPress={onSignup}
+              isLoading={isLoading}
+              text="Add New Item"
             />
             <Line />
-            <ExtraView>
-              <ExtraText>Already Have An Account? </ExtraText>
-              <TextLink onPress={() => navigation.navigate('Signin')}>
-                <TextLinkContent>Login</TextLinkContent>
-              </TextLink>
-            </ExtraView>
           </StyledFormArea>
         </InnerContainer>
       </StyledContainer>

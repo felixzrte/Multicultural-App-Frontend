@@ -6,6 +6,9 @@ import Profile from './Profile';
 import Login from './Login';
 import Merch from './Merch';
 import AddMerch from './AddMerch';
+import AddEvent from './AddEvent';
+import AddClub from './AddClub';
+import AddAnnouncement from './AddAnnouncement';
 import Register from './Register';
 import Welcome from './Welcome';
 import Suggestion from './Suggestion';
@@ -15,9 +18,6 @@ import Club from './Club';
 import UpdateProfile from './UpdateProfile';
 import Signup from './Signup';
 import Signin from './Signin';
-import AddAnnouncement from './AddAnnouncement';
-import AddClub from './AddClub';
-import AddEvent from './AddEvent';
 
 export {
   Home,
@@ -31,13 +31,13 @@ export {
   Suggestion,
   Merch,
   AddMerch,
+  AddEvent,
+  AddClub,
+  AddAnnouncement,
   Transition,
   Product,
   Club,
   UpdateProfile,
   Signin,
   Signup,
-  AddAnnouncement,
-  AddClub,
-  AddEvent,
 };
