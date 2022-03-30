@@ -30,9 +30,9 @@ const Home = ({navigation}) => {
         <ClubItemBox
           style={{
             marginLeft: index === 0 ? 16 : 0,
-            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+            marginRight: index === item.length - 1 ? 16 : 16,
           }}>
-          <BigClubLogo source={item.logo} />
+          <BigClubLogo source={{uri: item.logoImage}}/>
         </ClubItemBox>
       </TouchableOpacity>
     );
@@ -74,7 +74,7 @@ const Home = ({navigation}) => {
 
   const {
     data: events,
-    loading,
+    loadingEvents,
     error,
   } = useFetch('https://mcapp-api.herokuapp.com/api/v1/events');
   /*
@@ -128,7 +128,6 @@ const Home = ({navigation}) => {
                 Ends @7pm
               </McText>
             </View>
-            
           </LinearGradient>
         </BannerSection>
         <View style={{flexDirection:'row'}}>
@@ -153,8 +152,8 @@ const Home = ({navigation}) => {
           />
         </View>
         {/* Events Section */}
-        <Header2Section> 
-          <View style={{flexDirection:'row'}}>
+        <Header2Section>
+        <View style={{flexDirection:'row'}}>
             <McText style={{textAlign:'left'}} h2 >Upcoming Events</McText>
             <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
           </View>
