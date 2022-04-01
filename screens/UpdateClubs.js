@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -33,20 +32,17 @@ import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
 
-const UpdateEvents = ({navigation}) => {
+const UpdateClubs = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
     isLoading: false,
-    club: '',
-    eventName: '',
-    location: '',
-    time: '',
-    description: '',
-    extraNotes: '',
+    Name: '',
+    Bio: '',
+    Instagram: '',
   });
 
-  const {isLoading, club, eventName, location, time, description, extraNotes} = state;
+  const {isLoading, Name, Bio, Instagram} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
 
 
@@ -57,52 +53,34 @@ const UpdateEvents = ({navigation}) => {
         <StatusBar style="dark" />
         <InnerContainer>
         <HeaderSection>
-          <McText h1>Update Events</McText>
+          <McText h1>Update Club</McText>
           <Line />
         </HeaderSection>
           <StyledFormArea>
             <UpdateInput
-              label="Club"
-              placeholder="Club"
+              label="Club Name"
+              placeholder="Club Name"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(club) => updateState({club})}
+              onChangeText={(Name) => updateState({Name})}
             />
             <UpdateInput
-              label="Event Name"
-              placeholder="Event Name"
+              label="Bio"
+              placeholder="Bio"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(eventName) => updateState({eventName})}
+              onChangeText={(Bio) => updateState({Bio})}
             />
             <UpdateInput
-              label="Location"
-              placeholder="Location"
+              label="Instagram"
+              placeholder="Instagram"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(location) => updateState({location})}
-            />
-            <UpdateInput
-              label="Time"
-              placeholder="Time"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(time) => updateState({time})}
-            />
-            <UpdateInput
-              label="Description"
-              placeholder="Description"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(description) => updateState({description})}
-            />
-            <UpdateInput
-              label="Extra Notes"
-              placeholder="Extra Notes"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(extraNotes) => updateState({extraNotes})}
+              onChangeText={(Instagram) => updateState({Instagram})}
             />
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
+              onPress={() => navigation.navigate('Club')}
               isLoading={isLoading}
-              text="UPDATE EVENTS"
+              text="UPDATE CLUBS"
             />
             <Line />
           </StyledFormArea>
@@ -113,4 +91,4 @@ const UpdateEvents = ({navigation}) => {
 };
 
 
-export default UpdateEvents;
+export default UpdateClubs;

@@ -20,6 +20,12 @@ import AddClub from './AddClub';
 import AddEvent from './AddEvent';
 import UpdateEvents from './UpdateEvents';
 
+import UpdateClubs from './UpdateClubs';
+import UpdateAnnouncement from './UpdateAnnouncement';
+import UpdateProduct from './UpdateProduct';
+import Announcement from './Announcement';
+
+
 export {
   Home,
   Bookmark,
@@ -42,4 +48,9 @@ export {
   AddClub,
   AddEvent,
   UpdateEvents,
+  Announcement,
+  UpdateClubs,
+  UpdateAnnouncement,
+  UpdateProduct,
 };
+

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -33,7 +32,7 @@ import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
 
-const UpdateEvents = ({navigation}) => {
+const UpdateAnnouncement = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
@@ -57,7 +56,7 @@ const UpdateEvents = ({navigation}) => {
         <StatusBar style="dark" />
         <InnerContainer>
         <HeaderSection>
-          <McText h1>Update Events</McText>
+          <McText h1>Update Announcement</McText>
           <Line />
         </HeaderSection>
           <StyledFormArea>
@@ -102,7 +101,7 @@ const UpdateEvents = ({navigation}) => {
             <CustomButton
               onPress={() => navigation.navigate('EventDetails')}
               isLoading={isLoading}
-              text="UPDATE EVENTS"
+              text="UPDATE ANNOUNCEMENTS"
             />
             <Line />
           </StyledFormArea>
@@ -113,4 +112,4 @@ const UpdateEvents = ({navigation}) => {
 };
 
 
-export default UpdateEvents;
+export default UpdateAnnouncement;

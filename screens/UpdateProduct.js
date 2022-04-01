@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -33,20 +32,23 @@ import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
 
-const UpdateEvents = ({navigation}) => {
+const UpdateProduct = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
     isLoading: false,
-    club: '',
-    eventName: '',
-    location: '',
-    time: '',
+    merchItemname: '',
+    merchItemprice: '',
     description: '',
+    contactEmail: '',
+    contactNumber: '',
     extraNotes: '',
+    numSmall: '',
+    numMedium: '',
+    numLarge: '',
   });
 
-  const {isLoading, club, eventName, location, time, description, extraNotes} = state;
+  const {isLoading, merchItemname, merchItemprice, description, contactEmail, contactNumber, extraNotes, numSmall, numMedium, numLarge} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
 
 
@@ -57,33 +59,21 @@ const UpdateEvents = ({navigation}) => {
         <StatusBar style="dark" />
         <InnerContainer>
         <HeaderSection>
-          <McText h1>Update Events</McText>
+          <McText h1>Update Product</McText>
           <Line />
         </HeaderSection>
           <StyledFormArea>
             <UpdateInput
-              label="Club"
-              placeholder="Club"
+              label="Product name"
+              placeholder="Product Name"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(club) => updateState({club})}
+              onChangeText={(merchItemname) => updateState({merchItemname})}
             />
             <UpdateInput
-              label="Event Name"
-              placeholder="Event Name"
+              label="Item Price"
+              placeholder="Item Price"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(eventName) => updateState({eventName})}
-            />
-            <UpdateInput
-              label="Location"
-              placeholder="Location"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(location) => updateState({location})}
-            />
-            <UpdateInput
-              label="Time"
-              placeholder="Time"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(time) => updateState({time})}
+              onChangeText={(merchItemprice) => updateState({merchItemprice})}
             />
             <UpdateInput
               label="Description"
@@ -92,17 +82,41 @@ const UpdateEvents = ({navigation}) => {
               onChangeText={(description) => updateState({description})}
             />
             <UpdateInput
-              label="Extra Notes"
-              placeholder="Extra Notes"
+              label="Contact Email"
+              placeholder="Contact Email"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(extraNotes) => updateState({extraNotes})}
+              onChangeText={(contactEmail) => updateState({contactEmail})}
+            />
+            <UpdateInput
+              label="Contact Number"
+              placeholder="Contact Number"
+              placeholderTextColor={COLORS.gray}
+              onChangeText={(contactNumber) => updateState({contactNumber})}
+            />
+            <UpdateInput
+              label="Small"
+              placeholder="Small"
+              placeholderTextColor={COLORS.gray}
+              onChangeText={(numSmall) => updateState({numSmall})}
+            />
+            <UpdateInput
+              label="Medium"
+              placeholder="Medium"
+              placeholderTextColor={COLORS.gray}
+              onChangeText={(numMedium) => updateState({numMedium})}
+            />
+            <UpdateInput
+              label="Large"
+              placeholder="Large"
+              placeholderTextColor={COLORS.gray}
+              onChangeText={(numLarge) => updateState({numLarge})}
             />
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
+              onPress={() => navigation.navigate('Product')}
               isLoading={isLoading}
-              text="UPDATE EVENTS"
+              text="UPDATE PRODUCTS"
             />
             <Line />
           </StyledFormArea>
@@ -113,4 +127,4 @@ const UpdateEvents = ({navigation}) => {
 };
 
 
-export default UpdateEvents;
+export default UpdateProduct;
