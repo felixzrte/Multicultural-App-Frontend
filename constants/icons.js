@@ -13,6 +13,7 @@ const up_arrow = require('../assets/icons/up_arrow.png');
 const search = require('../assets/icons/search_icon.png');
 const home = require('../assets/icons/home.png');
 const filter = require('../assets/icons/filter_icon.png');
+const Pencil = require('../assets/icons/Pencil.png');
 
 export default {
   aeroplane,
@@ -30,4 +31,5 @@ export default {
   search,
   home,
   filter,
+  Pencil,
 };

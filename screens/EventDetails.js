@@ -8,13 +8,17 @@ import {
   StyleSheet,
   Image,
   Logo,
+  ImageBackground,
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import {McIcon, McText} from '../components';
+import {McIcon, McText, CustomButton } from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/MerchProductStyles.js';
 import moment from 'moment';
 import { Container } from '../constants/styles';
+import { Pencil } from '../assets/icons/Pencil.png';
+import { up_arrow } from '../assets/icons/up_arrow.png';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
@@ -24,7 +28,15 @@ const EventDetails = ({route, navigation}) => {
 
   return (
     <ScrollView>
-      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>  
+      <TouchableOpacity
+             style={{
+             borderRadius: '50/2',
+             borderColor: "#000000",
+             borderWidth: "0px",
+             color: "#FFFF00",
+              }}
+            onPress={() => navigation.navigate('Home')}>
         <View style={styles.productItemContainer}>
           <Image
             source={{uri: item.image}}
@@ -34,7 +46,28 @@ const EventDetails = ({route, navigation}) => {
               borderRadius: SIZES.radius,
             }}
           />
-        </View>
+        </View>         
+      </TouchableOpacity>   
+      </View>
+      <View style={{ backgroundcolor: 'black', marginLeft: '30%'}}>
+      <TouchableOpacity
+             style={{marginLeft: "70%",
+             borderRadius: '50/2',
+             borderColor: "#000000",
+             borderWidth: "1px",
+             justifyContent: "center",
+             alignItems: "center",
+             marginRight: "10%", 
+              }}
+            onPress={() => navigation.navigate('UpdateEvents')}>
+      <Image
+            source={icons.Pencil}
+            style={{
+              height: 30,
+              width: 30,
+            }}
+            />
+      </TouchableOpacity>
       </View>
       <View style={{marginLeft: 10}}>
         <McText h2 color={COLORS.gray1}>

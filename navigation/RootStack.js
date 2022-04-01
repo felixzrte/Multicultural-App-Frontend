@@ -8,6 +8,11 @@ import {
   UpdateProfile,
   Club,
   AddMerch,
+  UpdateEvents,
+  UpdateClubs,
+  UpdateProduct,
+  UpdateAnnouncement,
+  Announcement,
 } from '../screens';
 import Tabs from './Tabs';
 
@@ -25,6 +30,11 @@ export default function (Stack) {
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
       <Stack.Screen name="AddMerch" component={AddMerch} />
+      <Stack.Screen name="UpdateEvents" component={UpdateEvents} />
+      <Stack.Screen name="UpdateClubs" component={UpdateClubs} />
+      <Stack.Screen name="UpdateProduct" component={UpdateProduct} />
+      <Stack.Screen name="Announcement" component={Announcement} />
+      <Stack.Screen name="UpdateAnnouncement" component={UpdateAnnouncement} />
     </>
   );
 }
