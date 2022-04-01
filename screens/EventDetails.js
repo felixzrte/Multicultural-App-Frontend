@@ -13,7 +13,6 @@ import {
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText, CustomButton } from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Container} from '../constants/styles';
 import styles from '../components/EventDetailsStyles.js';
 import moment from 'moment';
 import { Container } from '../constants/styles';
@@ -36,16 +35,6 @@ const EventDetails = ({route, navigation}) => {
 
   return (
     <ScrollView>
-      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>  
-      <TouchableOpacity
-             style={{
-             borderRadius: '50/2',
-             borderColor: "#000000",
-             borderWidth: "0px",
-             color: "#FFFF00",
-              }}
-            onPress={() => navigation.navigate('Home')}>
-        <View style={styles.productItemContainer}>
       <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
         <View style={styles.eventItemContainer}>
           <Image
@@ -57,7 +46,7 @@ const EventDetails = ({route, navigation}) => {
             }}
           />
         </View>         
-      </TouchableOpacity>   
+
       </View>
       <View style={{ backgroundcolor: 'black', marginLeft: '30%'}}>
       <TouchableOpacity
