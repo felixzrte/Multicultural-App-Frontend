@@ -130,15 +130,16 @@ const Home = ({navigation}) => {
             </View>
           </LinearGradient>
         </BannerSection>
+        <McText></McText>
         <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Announcements</McText>
-            <McText onPress={() => navigation.navigate('AddAnnouncement')} style={{ textAlign:'right', position: 'absolute', right: 0}} h1 >+</McText>
+            <McText style={{textAlign:'left'}} h2>   Announcements</McText>
+            <McText onPress={() => navigation.navigate('AddAnnouncement')} style={{ textAlign:'right', right: -10}} h1 > + </McText>
           </View>
         {/* Clubs Section */}
         <Header2Section>
         <View style={{flexDirection:'row'}}>
             <McText style={{textAlign:'left'}} h2 >Multicultural Clubs</McText>
-            <McText onPress={() => navigation.navigate('AddClub')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+            <McText onPress={() => navigation.navigate('AddClub')} style={{ textAlign:'right',right: -10}} h1 > + </McText>
           </View>
         </Header2Section>
         <View>
@@ -155,7 +156,7 @@ const Home = ({navigation}) => {
         <Header2Section>
         <View style={{flexDirection:'row'}}>
             <McText style={{textAlign:'left'}} h2 >Upcoming Events</McText>
-            <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+            <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -35}} h1 >+</McText>
           </View>
         </Header2Section>
 
