@@ -23,20 +23,34 @@ const Home = ({navigation}) => {
       <TouchableOpacity
         activeOpacity={1}
         onPress={() =>
-          navigation.navigate('ClubsPage', {
+          navigation.navigate('Club', {
             item: item,
           })
         }>
         <ClubItemBox
           style={{
             marginLeft: index === 0 ? 16 : 0,
-            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+            marginRight: index === item.length - 1 ? 16 : 16,
           }}>
-          <BigClubLogo source={item.logo} />
+          <BigClubLogo source={{uri: item.logoImage}}/>
         </ClubItemBox>
       </TouchableOpacity>
     );
   };
+  const {
+    data: clubs,
+    loadingClubs,
+    errorClubs,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubs');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (errorClubs) {
+    console.log(errorClubs);
+  }
+  console.log(clubs);
 
   const renderEventItem = ({item, index}) => {
     return (
@@ -60,7 +74,7 @@ const Home = ({navigation}) => {
 
   const {
     data: events,
-    loading,
+    loadingEvents,
     error,
   } = useFetch('https://mcapp-api.herokuapp.com/api/v1/events');
   /*
@@ -116,23 +130,33 @@ const Home = ({navigation}) => {
             </View>
           </LinearGradient>
         </BannerSection>
+        <View style={{flexDirection:'row'}}>
+            <McText style={{textAlign:'left'}} h2 >Announcements</McText>
+            <McText onPress={() => navigation.navigate('AddAnnouncement')} style={{ textAlign:'right', position: 'absolute', right: 0}} h1 >+</McText>
+          </View>
         {/* Clubs Section */}
         <Header2Section>
-          <McText h2>Multicultural Clubs </McText>
+        <View style={{flexDirection:'row'}}>
+            <McText style={{textAlign:'left'}} h2 >Multicultural Clubs</McText>
+            <McText onPress={() => navigation.navigate('AddClub')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+          </View>
         </Header2Section>
         <View>
           <FlatList
-            keyExtractor={(item) => 'club' + item.id}
+            data={clubs.clubs}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{}}
-            data={dummyData.Clubs}
+            keyExtractor={(item, index) => 'key' + index}
             renderItem={renderClubItem}
           />
         </View>
         {/* Events Section */}
         <Header2Section>
-          <McText h2>Upcoming Events</McText>
+        <View style={{flexDirection:'row'}}>
+            <McText style={{textAlign:'left'}} h2 >Upcoming Events</McText>
+            <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+          </View>
         </Header2Section>
 
         <View>

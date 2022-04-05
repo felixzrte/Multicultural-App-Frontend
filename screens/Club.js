@@ -15,12 +15,29 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../components/MerchProductStyles.js';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { Center } from 'native-base';
+import useFetch from '../useFetch';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
 
-const ClubsPage = ({route, navigation}) => {
+const Club = ({route, navigation}) => {
   const {item} = route.params;
+  const {
+    data: club,
+    loading,
+    error,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubs');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (error) {
+    console.log(error);
+  }
+  
+  console.log(club);
 
   return (
       <ScrollView>
@@ -36,6 +53,26 @@ const ClubsPage = ({route, navigation}) => {
             />
             </View>
           </View>
+      <View style={{ backgroundcolor: 'black', marginLeft: '30%'}}>
+      <TouchableOpacity
+             style={{marginLeft: "70%",
+             borderRadius: '50/2',
+             borderColor: "#000000",
+             borderWidth: "1px",
+             justifyContent: "center",
+             alignItems: "center",
+             marginRight: "10%", 
+              }}
+            onPress={() => navigation.navigate('UpdateClubs')}>
+      <Image
+            source={icons.Pencil}
+            style={{
+              height: 30,
+              width: 30,
+            }}
+            />
+      </TouchableOpacity>
+      </View>
         <View style={{alignItems:'center'}}>
         <McText h1>{item.name}</McText>
         <McText></McText>
@@ -43,9 +80,12 @@ const ClubsPage = ({route, navigation}) => {
         <McText> </McText>
         <McText style={styles.descText}> {item.bio}</McText>
         <McText></McText>
+        <McText style={styles.descText}> Instagram Page {item.instagram}</McText>
         </View>
       </ScrollView>
   );
 };
 
-export default ClubsPage;
+
+
+export default Club;
