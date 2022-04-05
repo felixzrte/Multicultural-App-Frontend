@@ -26,9 +26,7 @@ import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 import useFetch from '../useFetch';
-
-
-
+import axios from 'axios';
 
 const AddMerch = ({navigation}) => {
   const {
@@ -46,6 +44,16 @@ const AddMerch = ({navigation}) => {
   }
   console.log(merchs);
  
+  axios.post('wtf/api/v1/merchs', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   
 
   return (
