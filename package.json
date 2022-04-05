@@ -32,6 +32,7 @@
     "react-native-apple-header": "^0.1.1",
     "react-native-flash-message": "^0.2.1",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-loading-spinner-overlay": "^3.0.0",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",

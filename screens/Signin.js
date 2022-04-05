@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
-import {CustomButton, CustomInput} from '../components';
+import React, {useContext, useState} from 'react';
+import {CustomButton, CustomInput, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
   InnerContainer,
@@ -18,57 +18,20 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import validator from '../utils/validation';
-import {showError} from '../utils/helperFunction';
-import actions from '../redux/actions';
-
+import {AuthContext} from '../context/AuthContext';
+import Spinner from 'react-native-loading-spinner-overlay';
 const Signin = ({navigation}) => {
   const {height} = useWindowDimensions();
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    email: '',
-    password: '',
-  });
 
-  const {isLoading, email, password} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
-
-  const isValidData = () => {
-    const error = validator({
-      email,
-      password,
-    });
-    if (error) {
-      showError(error);
-      return false;
-    }
-    return true;
-  };
-
-  const onLogin = async () => {
-    const checkValid = isValidData();
-    if (checkValid) {
-      updateState({isLoading: true});
-      try {
-        const res = await actions.login({
-          email,
-          password,
-        });
-        console.log('res====>', res);
-        updateState({isLoading: false});
-      } catch (error) {
-        console.log('error raised');
-        showError(error.message);
-        updateState({isLoading: false});
-      }
-      // navigation.navigate('Signup');
-    }
-  };
+  const {isLoading, login} = useContext(AuthContext);
 
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
+        <Spinner visible={isLoading} />
         <StatusBar style="dark" />
         <InnerContainer>
           <Logo
@@ -84,8 +47,9 @@ const Signin = ({navigation}) => {
               placeholder="example@gmail.com"
               placeholderTextColor={COLORS.gray}
               keyboardType="email-address"
-              onChangeText={(email) => updateState({email})}
               autoCapitalize={false}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
             />
             <CustomInput
               label="Password"
@@ -96,13 +60,10 @@ const Signin = ({navigation}) => {
               isPassword={true}
               hidePassword={hidePassword}
               setHidePassword={setHidePassword}
-              onChangeText={(password) => updateState({password})}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
-            <CustomButton
-              onPress={onLogin}
-              isLoading={isLoading}
-              text="LOGIN"
-            />
+            <CustomButton text="LOGIN" onPress={() => login(email, password)} />
             <Line />
             <ExtraView>
               <ExtraText>Don't Have An Account? </ExtraText>
