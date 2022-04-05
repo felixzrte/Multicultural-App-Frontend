@@ -20,6 +20,11 @@ import {SubHeader, Container, HeaderSection, Line} from '../constants/styles';
 import styles from '../components/SuggestionStyles.js';
 
 const Suggestion = () => {
+
+
+
+
+  
   return (
     <View style={{backgroundColor: '#0277bd'}}>
       <SafeAreaView>
