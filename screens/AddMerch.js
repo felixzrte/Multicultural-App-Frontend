@@ -25,58 +25,28 @@ import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
+import useFetch from '../useFetch';
+
 
 
 
 const AddMerch = ({navigation}) => {
-  const {height} = useWindowDimensions();
-  const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-  const {isLoading, email, password, fullName, confirmPassword} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
-
-  const isValidData = () => {
-    const error = validator({
-      fullName,
-      email,
-      password,
-      confirmPassword,
-    });
-    if (error) {
-      showError(error);
-      return false;
+  const {
+    data: merchs,
+    loading,
+    error,
+  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/AddMerch');
+  /*
+    if (loading) {
+      return null;
     }
-    return true;
-  };
-
-  const onSignup = async () => {
-    const checkValid = isValidData();
-    if (checkValid) {
-      updateState({isLoading: true});
-      try {
-        const res = await actions.signup({
-          name: fullName,
-          email,
-          password,
-          confirmPassword,
-        });
-        console.log('res for signup====>', res);
-        showMessage('Registered Successfully');
-        updateState({isLoading: false});
-        navigation.goBack();
-      } catch (error) {
-        console.log('error raised');
-        showError(error.message);
-        updateState({isLoading: false});
-      }
-    }
-  };
+  */
+  if (error) {
+    console.log(error);
+  }
+  console.log(merchs);
+ 
+  
 
   return (
     <Container>
@@ -100,11 +70,11 @@ const AddMerch = ({navigation}) => {
             <McText>Item Price</McText>
             <StyledTextInputNoPadding placeholder="Enter Price"></StyledTextInputNoPadding>
             <McText>Picture</McText>
-            <CustomButton
+            {/* <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
               text="Add Image From Gallary"
-            />
+            /> */}
             
             <StyledTextInputNoPadding placeholder="Enter Picture"></StyledTextInputNoPadding>
             <McText>Email</McText>
@@ -121,8 +91,6 @@ const AddMerch = ({navigation}) => {
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges"></StyledTextInputNoPadding>
 
             <CustomButton
-              onPress={onSignup}
-              isLoading={isLoading}
               text="Add New Item"
             />
             <Line />
