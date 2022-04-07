@@ -38,9 +38,6 @@ const AddMerch = ({navigation}) => {
   var contactEmail;
   var contactNumber;
   var description;
-  
-  
-
 
   const {
     data: merchs,
@@ -79,12 +76,12 @@ const AddMerch = ({navigation}) => {
   .catch(function (error) {
     console.log(error);
   });
-}
+};
   
 handleInput = event => {
-  this.setState({name: event.target.value});
+  this.setState({merchItemName: event.target.value});
   console.log("LOOK AT ME");
-}
+};
 
 
   return (
