@@ -38,6 +38,8 @@ const AddMerch = ({navigation}) => {
   var contactEmail;
   var contactNumber;
   var description;
+  
+  
 
 
   const {
@@ -79,6 +81,11 @@ const AddMerch = ({navigation}) => {
   });
 }
   
+handleInput = event => {
+  this.setState({name: event.target.value});
+  console.log("LOOK AT ME");
+}
+
 
   return (
     <Container>
@@ -98,22 +105,22 @@ const AddMerch = ({navigation}) => {
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
             <McText>Item Name</McText>
-            <StyledTextInputNoPadding placeholder="Enter Item Name" value={(this.merchItem.merchItemName)} onChangeText={this.merchItem}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Item Name" value={(this.merchItem.merchItemName)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Item Price</McText>
-            <StyledTextInputNoPadding placeholder="Enter Price" onChangeText={(this.merchItem.merchItemPrice)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Price" value={(this.merchItem.merchItemPrice)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Picture</McText>
             {/* <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
               text="Add Image From Gallary"
             /> */} 
-            <StyledTextInputNoPadding placeholder="Enter Picture" onChangeText={(this.merchItem.pic)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Picture" value={(this.merchItem.pic)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Email</McText>
-            <StyledTextInputNoPadding placeholder="Enter Email" onChangeText={(this.merchItem.contactEmail)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Email" value={(this.merchItem.contactEmail)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Phone Number</McText>
-            <StyledTextInputNoPadding placeholder="Enter Phone Number" onChangeText={(this.merchItem.contactNumber)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Phone Number" value={(this.merchItem.contactNumber)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Description</McText>
-            <StyledTextInputNoPadding placeholder="Enter Description" onChangeText={(this.merchItem.description)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Description" value={(this.merchItem.description)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>
             <StyledTextInputNoPadding placeholder="Enter Number of Smalls" ></StyledTextInputNoPadding>
             <McText>Number of Mediums</McText>
