@@ -43,10 +43,15 @@ const AddMerch = ({navigation}) => {
     console.log(error);
   }
   console.log(merchs);
- 
-  axios.post('wtf/api/v1/merchs', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
+ const submitMerch = () =>{
+  axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
+    "merchItemName": "Name Test",
+    "merchItemPrice": "3",
+    "pic": "Pic Test",
+    "contactEmail": "test@gmail.com",
+    "contactNumber": "111-111-1111",
+    "description": "ugdfuagsldkfhj",
+    "deletedStatus": false
   })
   .then(function (response) {
     console.log(response);
@@ -54,6 +59,7 @@ const AddMerch = ({navigation}) => {
   .catch(function (error) {
     console.log(error);
   });
+}
   
 
   return (
@@ -98,9 +104,7 @@ const AddMerch = ({navigation}) => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges"></StyledTextInputNoPadding>
 
-            <CustomButton
-              text="Add New Item"
-            />
+            <CustomButton onPress={submitMerch} text="Add New Item"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
