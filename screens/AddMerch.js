@@ -29,15 +29,19 @@ import useFetch from '../useFetch';
 import axios from 'axios';
 
 const AddMerch = ({navigation}) => {
+  const [merchItemName, setMerchItemName] = useState('');
+  const [merchItemPrice, setMerchItemPrice] = useState('');
+  const [pic, setPic] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [description, setDescription] = useState('');
+ 
 
-  var merchItem = {merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description}
-  this.merchItem;
-  var merchItemName;
-  var merchItemPrice;
-  var pic;
-  var contactEmail;
-  var contactNumber;
-  var description;
+  const handleInput = event => {
+    setMerchItemName(event.target.value);
+    console.log("LOOK HERE");
+    console.log(setMerchItemName);
+  }
 
   const {
     data: merchs,
@@ -54,34 +58,33 @@ const AddMerch = ({navigation}) => {
   }
   console.log(merchs);
 
- const submitMerch = (merchItem) =>{
+ const submitMerch = (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description) =>{
    //Add any validation steps
-   let newMerch = {newMerchItemName: merchItem.merchItemName, newMerchItemPrice: merchItem.merchItemPrice, 
-    newPic: merchItem.pic, newContactEmail: merchItem.contactEmail, newContactNumber: merchItem.contactNumber, 
-    newDescription: merchItem.description}
-    console.log(merchItem);
-    console.log(newMerch);
-  axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
-    "merchItemName": newMerch.newMerchItemName,
-    "merchItemPrice": newMerch.newMerchItemPrice,
-    "pic": newMerch.newPic,
-    "contactEmail": newMerch.newContactEmail,
-    "contactNumber": newMerch.newContactNumber,
-    "description": newMerch.newDescription,
-    "deletedStatus": false
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+   console.log(merchItemName);
+   console.log(merchItemPrice);
+   console.log(pic);
+   console.log(contactEmail);
+   console.log(contactNumber);
+   console.log(description);
+
+   axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
+     "merchItemName": merchItemName,
+     "merchItemPrice": merchItemPrice,
+     "pic": pic,
+     "contactEmail": contactEmail,
+     "contactNumber": contactNumber,
+     "description": description,
+     "deletedStatus": false
+   })
+   .then(function (response) {
+     console.log(response);
+   })
+   .catch(function (error) {
+     console.log("error");
+   });
 };
   
-handleInput = event => {
-  this.setState({merchItemName: event.target.value});
-  console.log("LOOK AT ME");
-};
+//add handle input here
 
 
   return (
@@ -102,22 +105,22 @@ handleInput = event => {
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
             <McText>Item Name</McText>
-            <StyledTextInputNoPadding placeholder="Enter Item Name" value={(this.merchItem.merchItemName)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
             <McText>Item Price</McText>
-            <StyledTextInputNoPadding placeholder="Enter Price" value={(this.merchItem.merchItemPrice)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
             <McText>Picture</McText>
             {/* <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
               text="Add Image From Gallary"
             /> */} 
-            <StyledTextInputNoPadding placeholder="Enter Picture" value={(this.merchItem.pic)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Picture" value={pic} onChangeText={text => setPic(text)}></StyledTextInputNoPadding>
             <McText>Email</McText>
-            <StyledTextInputNoPadding placeholder="Enter Email" value={(this.merchItem.contactEmail)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
             <McText>Phone Number</McText>
-            <StyledTextInputNoPadding placeholder="Enter Phone Number" value={(this.merchItem.contactNumber)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Phone Number" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
             <McText>Description</McText>
-            <StyledTextInputNoPadding placeholder="Enter Description" value={(this.merchItem.description)} onChangeText={this.handleInput}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Description" value={description} onChangeText={text => setDescription(text)}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>
             <StyledTextInputNoPadding placeholder="Enter Number of Smalls" ></StyledTextInputNoPadding>
             <McText>Number of Mediums</McText>
@@ -125,7 +128,7 @@ handleInput = event => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" ></StyledTextInputNoPadding>
 
-            <CustomButton onPress={submitMerch} text="Add New Item"/>
+            <CustomButton onPress={submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
