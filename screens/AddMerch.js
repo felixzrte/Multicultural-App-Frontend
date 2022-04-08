@@ -98,20 +98,20 @@ const AddMerch = ({navigation}) => {
 
 
 
-  const {
-    data: merchs,
-    loading,
-    error,
-  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/AddMerch');
-  /*
-    if (loading) {
-      return null;
-    }
-  */
-  if (error) {
-    console.log(error);
-  }
-  console.log(merchs);
+  // const {
+  //   data: merchs,
+  //   loading,
+  //   error,
+  // } = useFetch('https://mcapp-api.herokuapp.com/api/v1/AddMerch');
+  // /*
+  //   if (loading) {
+  //     return null;
+  //   }
+  // */
+  // if (error) {
+  //   console.log(error);
+  // }
+  // console.log(merchs);
   
 //add handle input here
 
@@ -157,7 +157,7 @@ const AddMerch = ({navigation}) => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" value={numLarge} onChangeText={text => setNumLarge(text)}></StyledTextInputNoPadding>
 
-            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Item"/>
+            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Merch Item"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>

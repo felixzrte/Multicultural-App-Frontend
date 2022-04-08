@@ -21,31 +21,25 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import validator from '../utils/validation';
+import validator from '../utils/announcementValidation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
+import axios from 'axios';
 
 
 const AddAnnouncement = ({navigation}) => {
-  const {height} = useWindowDimensions();
-  const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-  const {isLoading, email, password, fullName, confirmPassword} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
+  const [announcementTitle, setAnnouncementTitle] = useState('');
+  const [announcementContents, setAnnouncementContents] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const isValidData = () => {
     const error = validator({
-      fullName,
-      email,
-      password,
-      confirmPassword,
+      announcementTitle,
+      announcementContents,
+      startDate,
+      endDate,
     });
     if (error) {
       showError(error);
@@ -54,27 +48,30 @@ const AddAnnouncement = ({navigation}) => {
     return true;
   };
 
-  const onSignup = async () => {
+  function submitAnnouncement (announcementTitle, announcementContents, startDate, endDate) {
+    //Add any validation steps
+    console.log(announcementTitle);
+    console.log(announcementContents);
+    console.log(startDate);
+    console.log(endDate);
+
     const checkValid = isValidData();
-    if (checkValid) {
-      updateState({isLoading: true});
-      try {
-        const res = await actions.signup({
-          name: fullName,
-          email,
-          password,
-          confirmPassword,
-        });
-        console.log('res for signup====>', res);
-        showMessage('Registered Successfully');
-        updateState({isLoading: false});
-        navigation.goBack();
-      } catch (error) {
-        console.log('error raised');
-        showError(error.message);
-        updateState({isLoading: false});
-      }
-    }
+  if (checkValid) {
+    axios.post('https://mcapp-api.herokuapp.com/api/v1/announcements', {
+      "announcementTitle": announcementTitle,
+      "announcementContents": announcementContents,
+      "startDate": startDate,
+      "endDate": endDate,
+      "deletedStatus": false
+    })
+    .catch(function (error) {
+      console.log("error");
+    })
+    .then(function (response) {
+      console.log(response);
+      navigation.navigate('Home')
+    });
+  }
   };
 
   return (
@@ -95,19 +92,15 @@ const AddAnnouncement = ({navigation}) => {
           <SubTitle>Add a New Announcement</SubTitle>
           <StyledFormArea>
             <McText>Announcement Title</McText>
-            <StyledTextInputNoPadding placeholder="Enter Announcement Title"></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Announcement Title" value={announcementTitle} onChangeText={text => setAnnouncementTitle(text)}></StyledTextInputNoPadding>
             <McText>Announcement Contents</McText>
-            <StyledTextInputNoPadding placeholder="Enter Announcement Contents"></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Announcement Contents" value={announcementContents} onChangeText={text => setAnnouncementContents(text)}></StyledTextInputNoPadding>
             <McText>Start Date</McText>
-            <StyledTextInputNoPadding placeholder="Enter Start Date"></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Start Date" value={startDate} onChangeText={text => setStartDate(text)}></StyledTextInputNoPadding>
             <McText>End Date</McText>
-            <StyledTextInputNoPadding placeholder="Enter End Date"></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter End Date" value={endDate} onChangeText={text => setEndDate(text)}></StyledTextInputNoPadding>
  
-            <CustomButton
-              onPress={onSignup}
-              isLoading={isLoading}
-              text="Add New Announcement"
-            />
+            <CustomButton onPress={() => submitAnnouncement(announcementTitle, announcementContents, startDate, endDate)} text="Add New Announcement"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
