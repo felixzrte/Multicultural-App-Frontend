@@ -10,7 +10,7 @@ const checkEmpty = (val, key) => {
 };
 
 export default function (data) {
-  const {merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description} = data;
+  const {merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge} = data;
 
   if (merchItemName !== undefined) {
     let emptyValidationText = checkEmpty(
@@ -78,6 +78,18 @@ export default function (data) {
       }
     }
   }
+
+  if (isNaN(numSmall) == true) {
+      return 'Number of smalls must be a numeric value';
+    } 
+
+  if (isNaN(numMedium) == true) {
+    return 'Number of mediums must be a numeric value';
+    } 
+
+  if (isNaN(numLarge) == true) {
+    return 'Number of larges must be a numeric value';
+    } 
 
 
 }

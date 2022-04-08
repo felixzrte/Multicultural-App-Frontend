@@ -37,6 +37,9 @@ const AddMerch = ({navigation}) => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
+  const [numSmall, setNumSmall] = useState('');
+  const [numMedium, setNumMedium] = useState('');
+  const [numLarge, setNumLarge] = useState('');
 
    const isValidData = () => {
      const error = validator({
@@ -46,6 +49,9 @@ const AddMerch = ({navigation}) => {
        contactEmail,
        contactNumber,
        description,
+       numSmall,
+       numMedium,
+       numLarge,
      });
      if (error) {
        showError(error);
@@ -54,7 +60,7 @@ const AddMerch = ({navigation}) => {
      return true;
    };
  
-  function submitMerch (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description) {
+  function submitMerch (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge) {
     //Add any validation steps
     console.log(merchItemName);
     console.log(merchItemPrice);
@@ -62,7 +68,10 @@ const AddMerch = ({navigation}) => {
     console.log(contactEmail);
     console.log(contactNumber);
     console.log(description);
-    
+    console.log(numSmall);
+    console.log(numMedium);
+    console.log(numLarge);
+
     const checkValid = isValidData();
   if (checkValid) {
     axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
@@ -72,6 +81,9 @@ const AddMerch = ({navigation}) => {
       "contactEmail": contactEmail,
       "contactNumber": contactNumber,
       "description": description,
+      "numSmall": numSmall,
+      "numMedium": numMedium,
+      "numLarge": numLarge,
       "deletedStatus": false
     })
     .catch(function (error) {
@@ -139,13 +151,13 @@ const AddMerch = ({navigation}) => {
             <McText>Description</McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={description} onChangeText={text => setDescription(text)}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>
-            <StyledTextInputNoPadding placeholder="Enter Number of Smalls" ></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Number of Smalls" value={numSmall} onChangeText={text => setNumSmall(text)}></StyledTextInputNoPadding>
             <McText>Number of Mediums</McText>
-            <StyledTextInputNoPadding placeholder="Enter Number of Mediums"></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Number of Mediums" value={numMedium} onChangeText={text => setNumMedium(text)}></StyledTextInputNoPadding>
             <McText>Number of Larges</McText>
-            <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" ></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" value={numLarge} onChangeText={text => setNumLarge(text)}></StyledTextInputNoPadding>
 
-            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
+            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Item"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
