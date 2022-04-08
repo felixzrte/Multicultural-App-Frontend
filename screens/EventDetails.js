@@ -20,18 +20,19 @@ import { Container } from '../constants/styles';
 import { Pencil } from '../assets/icons/Pencil.png';
 import { up_arrow } from '../assets/icons/up_arrow.png';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import RNRestart from 'react-native-restart';
+import {Restart} from 'fiction-expo-restart';
 
 
 const ITEM_WIDTH = SIZES.width * 1;
 const ITEM_HEIGHT = ITEM_WIDTH * 1;
-const startReload = ()=> RNRestart.Restart();
+
 
 
 
 
 
 const EventDetails = ({route, navigation}) => {
+  const startReload = ()=> Restart();
   const {item} = route.params;
 
   var inputDate = 'item.date';
@@ -66,8 +67,9 @@ const EventDetails = ({route, navigation}) => {
              borderWidth: "0px",
              backgroundcolor: "red"
               }}
+              onPress={startReload}
               >
-          <Button title="Reload" onPress={startReload}/>
+                      <CustomButton text="Delete"/>
       </TouchableOpacity>
       <TouchableOpacity
              style={{marginLeft: "20%",

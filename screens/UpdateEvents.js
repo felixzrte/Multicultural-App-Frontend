@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions} from 'react-native';
+import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions, Button} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
@@ -31,9 +31,12 @@ import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
-
+import useFetch from '../useFetch';
+import axios from 'axios';
+import {Restart} from 'fiction-expo-restart';
 
 const UpdateEvents = ({navigation}) => {
+  const startReload = ()=> Restart();
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
@@ -104,6 +107,7 @@ const UpdateEvents = ({navigation}) => {
               isLoading={isLoading}
               text="UPDATE EVENTS"
             />
+            <Button title="Reload" onPress={startReload}/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
