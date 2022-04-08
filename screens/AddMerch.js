@@ -21,13 +21,13 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 import useFetch from '../useFetch';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import validator from '../utils/merchValidation';
 
 
 const AddMerch = ({navigation}) => {
@@ -38,9 +38,21 @@ const AddMerch = ({navigation}) => {
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
+   const isValidData = () => {
+     const error = validator({
+       merchItemName,
+       merchItemPrice,
+       pic,
+       contactEmail,
+       contactNumber,
+       description,
+     });
+     if (error) {
+       showError(error);
+       return false;
+     }
+     return true;
+   };
  
   function submitMerch (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description) {
     //Add any validation steps
@@ -50,7 +62,9 @@ const AddMerch = ({navigation}) => {
     console.log(contactEmail);
     console.log(contactNumber);
     console.log(description);
-  
+    
+    const checkValid = isValidData();
+  if (checkValid) {
     axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
       "merchItemName": merchItemName,
       "merchItemPrice": merchItemPrice,
@@ -60,13 +74,14 @@ const AddMerch = ({navigation}) => {
       "description": description,
       "deletedStatus": false
     })
+    .catch(function (error) {
+      console.log("error");
+    })
     .then(function (response) {
       console.log(response);
       navigation.navigate('Merch')
-    })
-    .catch(function (error) {
-      console.log("error");
     });
+  }
   };
 
 
