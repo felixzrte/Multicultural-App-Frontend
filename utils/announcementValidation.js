@@ -40,6 +40,9 @@ export default function (data) {
     if (emptyValidationText !== '') {
       return emptyValidationText;
     }
+    else if (!validator.date(startDate)) {
+        return 'Enter a valid Date';
+    }
   }
 
   if (endDate !== undefined) {
