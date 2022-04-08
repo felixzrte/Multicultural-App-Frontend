@@ -1,8 +1,9 @@
 import is from 'is_js';
-import validator from 'is_js';
+import validator from 'validator';
 import { isValidPhoneNumber } from 'react-phone-number-input';
+
 const checkEmpty = (val, key) => {
-  if (validator.empty(val.trim())) {
+  if (validator.isEmpty(val.trim())) {
     return `${key}`;
   } else {
     return '';
@@ -40,8 +41,8 @@ export default function (data) {
     if (emptyValidationText !== '') {
       return emptyValidationText;
     }
-    else if (!validator.date(startDate)) {
-        return 'Enter a valid Date';
+    else if (!validator.isDate(startDate)) {
+        return 'Enter a valid start date';
     }
   }
 
@@ -52,6 +53,9 @@ export default function (data) {
     );
     if (emptyValidationText !== '') {
       return emptyValidationText;
+    }
+    else if (!validator.isDate(endDate)) {
+        return 'Enter a valid end date';
     }
   }
 }

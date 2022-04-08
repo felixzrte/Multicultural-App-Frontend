@@ -65,9 +65,10 @@ const AddAnnouncement = ({navigation}) => {
       "deletedStatus": false
     })
     .catch(function (error) {
-      console.log("error");
+      console.log(error);
     })
     .then(function (response) {
+      console.log("THIS IS THE response");
       console.log(response);
       navigation.navigate('Home')
     });
@@ -96,9 +97,9 @@ const AddAnnouncement = ({navigation}) => {
             <McText>Announcement Contents</McText>
             <StyledTextInputNoPadding placeholder="Enter Announcement Contents" value={announcementContents} onChangeText={text => setAnnouncementContents(text)}></StyledTextInputNoPadding>
             <McText>Start Date</McText>
-            <StyledTextInputNoPadding placeholder="Enter Start Date" value={startDate} onChangeText={text => setStartDate(text)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={startDate} onChangeText={text => setStartDate(text)}></StyledTextInputNoPadding>
             <McText>End Date</McText>
-            <StyledTextInputNoPadding placeholder="Enter End Date" value={endDate} onChangeText={text => setEndDate(text)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={endDate} onChangeText={text => setEndDate(text)}></StyledTextInputNoPadding>
  
             <CustomButton onPress={() => submitAnnouncement(announcementTitle, announcementContents, startDate, endDate)} text="Add New Announcement"/>
             <Line />
