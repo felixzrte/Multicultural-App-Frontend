@@ -28,6 +28,7 @@ import {showMessage} from 'react-native-flash-message';
 import useFetch from '../useFetch';
 import axios from 'axios';
 
+
 const AddMerch = ({navigation}) => {
   const [merchItemName, setMerchItemName] = useState('');
   const [merchItemPrice, setMerchItemPrice] = useState('');
@@ -35,13 +36,39 @@ const AddMerch = ({navigation}) => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
- 
 
-  const handleInput = event => {
-    setMerchItemName(event.target.value);
-    console.log("LOOK HERE");
-    console.log(setMerchItemName);
+  function refreshPage() {
+    window.location.reload(false);
   }
+ 
+  function submitMerch (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description) {
+    //Add any validation steps
+    console.log(merchItemName);
+    console.log(merchItemPrice);
+    console.log(pic);
+    console.log(contactEmail);
+    console.log(contactNumber);
+    console.log(description);
+  
+    axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
+      "merchItemName": merchItemName,
+      "merchItemPrice": merchItemPrice,
+      "pic": pic,
+      "contactEmail": contactEmail,
+      "contactNumber": contactNumber,
+      "description": description,
+      "deletedStatus": false
+    })
+    .then(function (response) {
+      console.log(response);
+      navigation.navigate('Merch')
+    })
+    .catch(function (error) {
+      console.log("error");
+    });
+  };
+
+
 
   const {
     data: merchs,
@@ -57,32 +84,6 @@ const AddMerch = ({navigation}) => {
     console.log(error);
   }
   console.log(merchs);
-
- const submitMerch = (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description) =>{
-   //Add any validation steps
-   console.log(merchItemName);
-   console.log(merchItemPrice);
-   console.log(pic);
-   console.log(contactEmail);
-   console.log(contactNumber);
-   console.log(description);
-
-   axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
-     "merchItemName": merchItemName,
-     "merchItemPrice": merchItemPrice,
-     "pic": pic,
-     "contactEmail": contactEmail,
-     "contactNumber": contactNumber,
-     "description": description,
-     "deletedStatus": false
-   })
-   .then(function (response) {
-     console.log(response);
-   })
-   .catch(function (error) {
-     console.log("error");
-   });
-};
   
 //add handle input here
 
@@ -128,7 +129,7 @@ const AddMerch = ({navigation}) => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" ></StyledTextInputNoPadding>
 
-            <CustomButton onPress={submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
+            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
