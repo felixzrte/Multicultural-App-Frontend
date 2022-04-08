@@ -32,7 +32,7 @@ import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 
 
-const UpdateClubs = ({navigation}) => {
+const UpdateClubs = (navigation) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
