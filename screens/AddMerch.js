@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, StyleSheet, useWindowDimensions} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, useWindowDimensions, Button} from 'react-native';
 import React, {useState} from 'react';
 import {CustomButton, CustomInput, McIcon, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
@@ -31,6 +31,9 @@ import validator from '../utils/merchValidation';
 
 
 const AddMerch = ({navigation}) => {
+
+  const startReload = ()=> Restart();
+
   const [merchItemName, setMerchItemName] = useState('');
   const [merchItemPrice, setMerchItemPrice] = useState('');
   const [pic, setPic] = useState('');
@@ -158,6 +161,7 @@ const AddMerch = ({navigation}) => {
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" value={numLarge} onChangeText={text => setNumLarge(text)}></StyledTextInputNoPadding>
 
             <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Merch Item"/>
+
             <Line />
           </StyledFormArea>
         </InnerContainer>

@@ -8,6 +8,11 @@ import {
   UpdateProfile,
   Club,
   AddMerch,
+  UpdateEvents,
+  UpdateClubs,
+  UpdateProduct,
+  UpdateAnnouncement,
+  Announcement,
   AddEvent,
   AddClub,
   AddAnnouncement,
@@ -28,6 +33,11 @@ export default function (Stack) {
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Suggestion" component={Suggestion} />
       <Stack.Screen name="AddMerch" component={AddMerch} />
+      <Stack.Screen name="UpdateEvents" component={UpdateEvents} />
+      <Stack.Screen name="UpdateClubs" component={UpdateClubs} />
+      <Stack.Screen name="UpdateProduct" component={UpdateProduct} />
+      <Stack.Screen name="Announcement" component={Announcement} />
+      <Stack.Screen name="UpdateAnnouncement" component={UpdateAnnouncement} />
       <Stack.Screen name="AddEvent" component={AddEvent} />
       <Stack.Screen name="AddClub" component={AddClub} />
       <Stack.Screen name="AddAnnouncement" component={AddAnnouncement} />
