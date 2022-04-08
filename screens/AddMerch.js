@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, StyleSheet, useWindowDimensions} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, useWindowDimensions, Button} from 'react-native';
 import React, {useState} from 'react';
 import {CustomButton, CustomInput, McIcon, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
@@ -28,9 +28,13 @@ import {showMessage} from 'react-native-flash-message';
 import useFetch from '../useFetch';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import {Restart} from 'fiction-expo-restart';
 
 
 const AddMerch = ({navigation}) => {
+
+  const startReload = ()=> Restart();
+
   const [merchItemName, setMerchItemName] = useState('');
   const [merchItemPrice, setMerchItemPrice] = useState('');
   const [pic, setPic] = useState('');
@@ -130,7 +134,8 @@ const AddMerch = ({navigation}) => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" ></StyledTextInputNoPadding>
 
-            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
+            <CustomButton onPress={() =>onPress= submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description)} text="Add New Item"/>
+            <Button title="Reload" onPress={startReload}/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
