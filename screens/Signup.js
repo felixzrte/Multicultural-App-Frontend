@@ -1,6 +1,11 @@
 import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
-import {CustomButton, CustomInput, CustomInputNoPadding} from '../components';
+import React, {useContext, useState} from 'react';
+import {
+  CustomButton,
+  CustomInput,
+  CustomInputNoPadding,
+  McText,
+} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
   InnerContainer,
@@ -18,65 +23,23 @@ import {
 } from '../constants/styles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import validator from '../utils/validation';
-import {showError} from '../utils/helperFunction';
-import actions from '../redux/actions';
-import {showMessage} from 'react-native-flash-message';
+import {AuthContext} from '../context/AuthContext';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const Signup = ({navigation}) => {
   const {height} = useWindowDimensions();
   const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
-  const {isLoading, email, password, fullName, confirmPassword} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
-
-  const isValidData = () => {
-    const error = validator({
-      fullName,
-      email,
-      password,
-      confirmPassword,
-    });
-    if (error) {
-      showError(error);
-      return false;
-    }
-    return true;
-  };
-
-  const onSignup = async () => {
-    const checkValid = isValidData();
-    if (checkValid) {
-      updateState({isLoading: true});
-      try {
-        const res = await actions.signup({
-          name: fullName,
-          email,
-          password,
-          confirmPassword,
-        });
-        console.log('res for signup====>', res);
-        showMessage('Registered Successfully');
-        updateState({isLoading: false});
-        navigation.goBack();
-      } catch (error) {
-        console.log('error raised');
-        showError(error.message);
-        updateState({isLoading: false});
-      }
-    }
-  };
+  const {isLoading, register} = useContext(AuthContext);
 
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
+        <Spinner visible={isLoading} />
         <StatusBar style="dark" />
         <InnerContainer>
           <Logo
@@ -91,7 +54,8 @@ const Signup = ({navigation}) => {
               icon="person"
               placeholder="Felix Zarate"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(fullName) => updateState({fullName})}
+              value={name}
+              onChangeText={(text) => setName(text)}
             />
             <CustomInput
               label="Email Address"
@@ -99,8 +63,9 @@ const Signup = ({navigation}) => {
               placeholder="example@gmail.com"
               placeholderTextColor={COLORS.gray}
               keyboardType="email-address"
-              onChangeText={(email) => updateState({email})}
               autoCapitalize={false}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
             />
             <CustomInput
               label="Password"
@@ -111,7 +76,8 @@ const Signup = ({navigation}) => {
               isPassword={true}
               hidePassword={hidePassword}
               setHidePassword={setHidePassword}
-              onChangeText={(password) => updateState({password})}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
             <CustomInput
               label="Confirm Password"
@@ -122,12 +88,14 @@ const Signup = ({navigation}) => {
               isPassword={true}
               hidePassword={hidePassword}
               setHidePassword={setHidePassword}
-              onChangeText={(confirmPassword) => updateState({confirmPassword})}
+              value={confirmPassword}
+              onChangeText={(text) => setConfirmPassword(text)}
             />
             <CustomButton
-              onPress={onSignup}
-              isLoading={isLoading}
               text="REGISTER"
+              onPress={() => {
+                register(name, email, password, confirmPassword);
+              }}
             />
             <Line />
             <ExtraView>
