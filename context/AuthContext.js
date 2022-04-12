@@ -53,7 +53,7 @@ export const AuthProvider = ({children}) => {
 
   const logout = () => {
     try {
-      AsyncStorage.removeItem('userInfo');
+      AsyncStorage.removeItem('token');
       setUserInfo({});
       setIsLoading(false);
     } catch (e) {
