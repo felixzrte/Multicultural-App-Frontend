@@ -6,7 +6,7 @@ const CUSTOMFONT_BOLD = 'ProductSans-Bold';
 const CUSTOMFONT_BLACK = 'ProductSans-Black';
 const ITEM_SIZE = width * 0.8;
 const ITEM_SPACING = (width - ITEM_SIZE) / 2;
-const CARD_WIDTH = width * 0.65;
+const CARD_WIDTH = width - 32;
 
 export const COLORS = {
   default: '#000000',

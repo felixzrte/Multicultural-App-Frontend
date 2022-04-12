@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StatusBar, View, Image, FlatList} from 'react-native';
+import {StatusBar, View, Image, FlatList, Dimensions} from 'react-native';
 import {McText, McAvatar} from '../components';
 import {LinearGradient} from 'expo-linear-gradient';
 import {
@@ -11,11 +11,14 @@ import {
   ClubItemBox,
   BigClubLogo,
   EventItemBox,
+  AnnouncementItemBox,
+  TextView,
 } from '../constants/styles';
 import React from 'react';
 import {COLORS, images, dummyData} from '../constants';
 import useFetch from '../useFetch';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {ANNOUNCEMENTS} from '../config/urls';
 
 const Home = ({navigation}) => {
   const renderClubItem = ({item, index}) => {
@@ -32,7 +35,7 @@ const Home = ({navigation}) => {
             marginLeft: index === 0 ? 16 : 0,
             marginRight: index === item.length - 1 ? 16 : 16,
           }}>
-          <BigClubLogo source={{uri: item.logoImage}}/>
+          <BigClubLogo source={{uri: item.logoImage}} />
         </ClubItemBox>
       </TouchableOpacity>
     );
@@ -75,8 +78,43 @@ const Home = ({navigation}) => {
   const {
     data: events,
     loadingEvents,
-    error,
+    errorEvents,
   } = useFetch('https://mcapp-api.herokuapp.com/api/v1/events');
+  /*
+    if (loading) {
+      return null;
+    }
+  */
+  if (errorEvents) {
+    console.log(errorEvents);
+  }
+  console.log(events);
+
+  const renderAnnouncementItem = ({item, index}) => {
+    return (
+      <AnnouncementItemBox
+        style={{
+          marginTop: 70,
+          marginLeft: index === 0 ? 16 : 0,
+          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+        }}>
+        <View style={{padding: 20}}>
+          <McText h2 color="white">
+            {item.announcementTitle}
+          </McText>
+          <McText body4 color="white">
+            {item.announcementContents}
+          </McText>
+        </View>
+      </AnnouncementItemBox>
+    );
+  };
+
+  const {
+    data: announcements,
+    loadingAnnouncements,
+    error,
+  } = useFetch(`${ANNOUNCEMENTS}`);
   /*
     if (loading) {
       return null;
@@ -85,7 +123,7 @@ const Home = ({navigation}) => {
   if (error) {
     console.log(error);
   }
-  console.log(events);
+  console.log(announcements);
 
   return (
     <Container>
@@ -103,42 +141,39 @@ const Home = ({navigation}) => {
           <Line />
         </HeaderSection>
         {/* Banner Section */}
-        <BannerSection>
-          <LinearGradient
-            colors={['#4C4478', '#0C0C69']}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={{
-              height: 150,
-              borderRadius: 16,
-              backgroundColor: 'green',
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-            }}>
-            <View
-              style={{width: 175, margin: 20, justifyContent: 'space-between'}}>
-              <McText h2 color="white">
-                International Gala Auditions End Today!
-              </McText>
-              <McText body3 color="white">
-                Ends @7pm
-              </McText>
-            </View>
-          </LinearGradient>
-        </BannerSection>
-        <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Announcements</McText>
-            <McText onPress={() => navigation.navigate('AddAnnouncement')} style={{ textAlign:'right', position: 'absolute', right: 0}} h1 >+</McText>
-          </View>
+        <View>
+          <FlatList
+            data={announcements.announcements}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{}}
+            keyExtractor={(item, index) => 'key' + index}
+            renderItem={renderAnnouncementItem}
+          />
+        </View>
+        {/* <View style={{flexDirection: 'row'}}>
+          <McText style={{textAlign: 'left'}} h2>
+            Announcements
+          </McText>
+          <McText
+            onPress={() => navigation.navigate('AddAnnouncement')}
+            style={{textAlign: 'right', position: 'absolute', right: 0}}
+            h1>
+            +
+          </McText>
+        </View> */}
         {/* Clubs Section */}
         <Header2Section>
-        <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Multicultural Clubs</McText>
-            <McText onPress={() => navigation.navigate('AddClub')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+          <View style={{flexDirection: 'row'}}>
+            <McText style={{textAlign: 'left'}} h2>
+              Multicultural Clubs
+            </McText>
+            {/* <McText
+              onPress={() => navigation.navigate('AddClub')}
+              style={{textAlign: 'right', position: 'absolute', right: -100}}
+              h1>
+              +
+            </McText> */}
           </View>
         </Header2Section>
         <View>
@@ -153,9 +188,16 @@ const Home = ({navigation}) => {
         </View>
         {/* Events Section */}
         <Header2Section>
-        <View style={{flexDirection:'row'}}>
-            <McText style={{textAlign:'left'}} h2 >Upcoming Events</McText>
-            <McText onPress={() => navigation.navigate('AddEvent')} style={{ textAlign:'right', position: 'absolute', right: -100}} h1 >+</McText>
+          <View style={{flexDirection: 'row'}}>
+            <McText style={{textAlign: 'left'}} h2>
+              Upcoming Events
+            </McText>
+            <McText
+              onPress={() => navigation.navigate('AddEvent')}
+              style={{textAlign: 'right', position: 'absolute', right: -100}}
+              h1>
+              +
+            </McText>
           </View>
         </Header2Section>
 
