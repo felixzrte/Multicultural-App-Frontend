@@ -31,23 +31,76 @@ import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
+import axios from 'axios';
 
 
 const UpdateEvents = ({navigation}) => {
-  const {height} = useWindowDimensions();
-  const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    club: '',
-    eventName: '',
-    location: '',
-    time: '',
-    description: '',
-    extraNotes: '',
-  });
+  const startReload = ()=> Restart();
 
-  const {isLoading, club, eventName, location, time, description, extraNotes} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
+  const [club, setclub] = useState('');
+  const [eventName, seteventName] = useState('');
+  const [date, setdate] = useState('');
+  const [desc, setdesc] = useState('');
+  const [location, setlocation] = useState('');
+  const [attendence, setattendence] = useState('');
+  const [image, setimage] = useState('');
+  const [favorite, setfavorite] = useState('');
+  const [extraNotes, setextraNotes] = useState('');
+
+   const isValidData = () => {
+     const error = validator({
+       club,
+       eventName,
+       date,
+       desc,
+       location,
+       attendence,
+       image,
+       favorite,
+       extraNotes,
+     });
+     if (error) {
+       showError(error);
+       return false;
+     }
+     return true;
+   };
+ 
+  function submitEvent (club, eventName, date, desc, location, attendence, image, favorite, extraNotes) {
+    //Add any validation steps
+    console.log(club);
+    console.log(eventName);
+    console.log(date);
+    console.log(desc);
+    console.log(location);
+    console.log(attendence);
+    console.log(image);
+    console.log(favorite);
+    console.log(extraNotes);
+
+    const checkValid = isValidData();
+  if (checkValid) {
+    axios.post('https://mcapp-api.herokuapp.com/api/v1/events', {
+      "club": club,
+      "eventName": eventName,
+      "date": date,
+      "desc": desc,
+      "location": location,
+      "attendence": attendence,
+      "image": image,
+      "favorite": favorite,
+      "extraNotes": extraNotes,
+      "deletedStatus": false
+    })
+    .catch(function (error) {
+      console.log("error");
+    })
+    .then(function (response) {
+      console.log(response);
+      navigation.navigate('EventDetails')
+    });
+  }
+  };
 
 
 
@@ -65,45 +118,59 @@ const UpdateEvents = ({navigation}) => {
               label="Club"
               placeholder="Club"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(club) => updateState({club})}
+              value={club} onChangeText={text => setclub(text)}
             />
             <UpdateInput
               label="Event Name"
               placeholder="Event Name"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(eventName) => updateState({eventName})}
+              value={eventName} onChangeText={text => seteventName(text)}
             />
             <UpdateInput
-              label="Location"
-              placeholder="Location"
+              label="Date"
+              placeholder="Date"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(location) => updateState({location})}
-            />
-            <UpdateInput
-              label="Time"
-              placeholder="Time"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(time) => updateState({time})}
+              value={date} onChangeText={text => setdate(text)}
             />
             <UpdateInput
               label="Description"
               placeholder="Description"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(description) => updateState({description})}
+              value={desc} onChangeText={text => setdesc(text)}
             />
             <UpdateInput
-              label="Extra Notes"
-              placeholder="Extra Notes"
+              label="Location"
+              placeholder="Location"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(extraNotes) => updateState({extraNotes})}
+              value={location} onChangeText={text => setlocation(text)}
+            />
+            <UpdateInput
+              label="Attendence"
+              placeholder="Attendence"
+              placeholderTextColor={COLORS.gray}
+              value={attendence} onChangeText={text => setattendence(text)}
+            />
+            <UpdateInput
+              label="Image"
+              placeholder="Image"
+              placeholderTextColor={COLORS.gray}
+              value={image} onChangeText={text => setimage(text)}
+            />
+            <UpdateInput
+              label="Favorite"
+              placeholder="Favorite"
+              placeholderTextColor={COLORS.gray}
+              value={favorite} onChangeText={text => setfavorite(text)}
+            />
+            <UpdateInput
+              label="ExtraNotes"
+              placeholder="ExtraNotes"
+              placeholderTextColor={COLORS.gray}
+              value={extraNotes} onChangeText={text => setextraNotes(text)}
             />
             <View style={{marginTop: "5%"}}>
             </View>
-            <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
-              isLoading={isLoading}
-              text="UPDATE EVENTS"
-            />
+            <CustomButton onPress={() => submitEvent(club, eventName, date, desc, location, attendence, image, favorite, extraNotes)} text="Submit Event"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
@@ -114,3 +181,7 @@ const UpdateEvents = ({navigation}) => {
 
 
 export default UpdateEvents;
+/*
+name
+suggestion
+*/

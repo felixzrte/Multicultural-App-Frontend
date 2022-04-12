@@ -30,23 +30,58 @@ import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
+import axios from 'axios';
 
 
 const UpdateAnnouncement = ({navigation}) => {
-  const {height} = useWindowDimensions();
-  const [hidePassword, setHidePassword] = useState(true);
-  const [state, setState] = useState({
-    isLoading: false,
-    club: '',
-    eventName: '',
-    location: '',
-    time: '',
-    description: '',
-    extraNotes: '',
-  });
+  const startReload = ()=> Restart();
 
-  const {isLoading, club, eventName, location, time, description, extraNotes} = state;
-  const updateState = (data) => setState(() => ({...state, ...data}));
+  const [announcementTitle, setannouncementTitle] = useState('');
+  const [announcementContents, setannouncementContents] = useState('');
+  const [startDate, setstartDate] = useState('');
+  const [endDate, setendDate] = useState('');
+
+
+   const isValidData = () => {
+     const error = validator({
+      announcementTitle,
+      announcementContents,
+      startDate,
+      endDate,
+     });
+     if (error) {
+       showError(error);
+       return false;
+     }
+     return true;
+   };
+ 
+  function submitEvent (announcementTitle, announcementContents, startDate, endDate,) {
+    //Add any validation steps
+    console.log(announcementTitle);
+    console.log(announcementContents);
+    console.log(startDate);
+    console.log(desc);
+    console.log(endDate);
+
+    const checkValid = isValidData();
+  if (checkValid) {
+    axios.post('https://mcapp-api.herokuapp.com/api/v1/announcements', {
+      "announcementTitle": announcementTitle,
+      "announcementContents": announcementContents,
+      "startDate": startDate,
+      "endDate": endDate,
+      "deletedStatus": false
+    })
+    .catch(function (error) {
+      console.log("error");
+    })
+    .then(function (response) {
+      console.log(response);
+      navigation.navigate('Club')
+    });
+  }
+  };
 
 
 
@@ -61,48 +96,32 @@ const UpdateAnnouncement = ({navigation}) => {
         </HeaderSection>
           <StyledFormArea>
             <UpdateInput
-              label="Club"
-              placeholder="Club"
+              label="Announcement Title"
+              placeholder="Announcement Title"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(club) => updateState({club})}
+              value={announcementTitle} onChangeText={text => setannouncementTitle(text)}
             />
             <UpdateInput
-              label="Event Name"
-              placeholder="Event Name"
+              label="Announcement Contents"
+              placeholder="Announcement Contents"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(eventName) => updateState({eventName})}
+              value={announcementContents} onChangeText={text => setannouncementContents(text)}
             />
             <UpdateInput
-              label="Location"
-              placeholder="Location"
+              label="Start Date"
+              placeholder="Start Date"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(location) => updateState({location})}
+              value={startDate} onChangeText={text => setstartDate(text)}
             />
             <UpdateInput
               label="Time"
               placeholder="Time"
               placeholderTextColor={COLORS.gray}
-              onChangeText={(time) => updateState({time})}
-            />
-            <UpdateInput
-              label="Description"
-              placeholder="Description"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(description) => updateState({description})}
-            />
-            <UpdateInput
-              label="Extra Notes"
-              placeholder="Extra Notes"
-              placeholderTextColor={COLORS.gray}
-              onChangeText={(extraNotes) => updateState({extraNotes})}
+              value={endDate} onChangeText={text => setendDate(text)}
             />
             <View style={{marginTop: "5%"}}>
             </View>
-            <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
-              isLoading={isLoading}
-              text="UPDATE ANNOUNCEMENTS"
-            />
+            <CustomButton onPress={() => submitEvent(announcementTitle, announcementContents, startDate, endDate,)} text="Submit Announcement"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>
