@@ -9,7 +9,7 @@ import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText} from '../components';
 
-const Transition = () => {
+const Transition = ({navigation}) => {
   return (
     <View>
       <SafeAreaView>
@@ -27,7 +27,7 @@ const Transition = () => {
           </View>
           <View
             style={{marginLeft: '15%', marginRight: '15%', marginTop: '10%'}}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
               <Text>Continue</Text>
             </TouchableOpacity>
           </View>
