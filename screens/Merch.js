@@ -17,7 +17,6 @@ import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import styled from 'styled-components/native';
 import {McIcon, McText} from '../components';
 import useFetch from '../useFetch';
-import {ceil} from 'react-native-reanimated';
 import styles from '../components/MerchProductStyles';
 import {HeaderSection, Line, Container} from '../constants/styles';
 const OVERFLOW_HEIGHT = 70;
