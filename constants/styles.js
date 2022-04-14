@@ -7,10 +7,11 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Dimensions,
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import Constants from 'expo-constants';
-
+const {width, height} = Dimensions.get('window');
 const StatusBarHeight = Constants.StatusBarHeight;
 
 export const StyledContainer = styled.View`
@@ -220,6 +221,16 @@ export const EventItemBox = styled.View`
   height: 250px;
   border-radius: 10px;
   background-color: ${COLORS.lightGray};
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+`;
+
+export const AnnouncementItemBox = styled.View`
+  width: ${SIZES.cardWidth};
+  height: 180px;
+  border-radius: 10px;
+  background-color: #4C4478
   justify-content: center;
   align-items: center;
   margin-top: 16px;

@@ -5,4 +5,6 @@ export const getAPIUrl = (endpoint) => API_BASE_URL + endpoint;
 export const LOGIN = getAPIUrl('users/login');
 export const SIGNUP = getAPIUrl('users/signup');
 export const LOGOUT = getAPIUrl('users/logout');
+export const ANNOUNCEMENTS = getAPIUrl('announcements');
+
 
