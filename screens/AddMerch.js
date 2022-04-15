@@ -57,7 +57,6 @@ const AddMerch = ({navigation}) => {
        numLarge,
      });
      if (error) {
-      console.log(error);
        showError(error);
        return false;
      }
@@ -76,9 +75,7 @@ const AddMerch = ({navigation}) => {
     console.log(numMedium);
     console.log(numLarge);
 
-
     const checkValid = isValidData();
-    console.log(checkValid);
   if (checkValid) {
     axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
       "merchItemName": merchItemName,
@@ -102,6 +99,26 @@ const AddMerch = ({navigation}) => {
   }
   };
 
+
+
+  // const {
+  //   data: merchs,
+  //   loading,
+  //   error,
+  // } = useFetch('https://mcapp-api.herokuapp.com/api/v1/AddMerch');
+  // /*
+  //   if (loading) {
+  //     return null;
+  //   }
+  // */
+  // if (error) {
+  //   console.log(error);
+  // }
+  // console.log(merchs);
+  
+//add handle input here
+
+
   return (
     <Container>
       <ScrollView>
@@ -119,22 +136,22 @@ const AddMerch = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
-            <McText>Item Name <McText>*</McText></McText>
+            <McText>Item Name</McText>
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
-            <McText>Item Price <McText>*</McText></McText>
+            <McText>Item Price</McText>
             <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
-            <McText>Picture <McText>*</McText></McText>
+            <McText>Picture</McText>
             {/* <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
               text="Add Image From Gallary"
             /> */} 
             <StyledTextInputNoPadding placeholder="Enter Picture" value={pic} onChangeText={text => setPic(text)}></StyledTextInputNoPadding>
-            <McText>Email <McText>*</McText></McText>
+            <McText>Email</McText>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
-            <McText>Phone Number <McText>*</McText></McText>
+            <McText>Phone Number</McText>
             <StyledTextInputNoPadding placeholder="Enter Phone Number" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
-            <McText>Description <McText>*</McText></McText>
+            <McText>Description</McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={description} onChangeText={text => setDescription(text)}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>
             <StyledTextInputNoPadding placeholder="Enter Number of Smalls" value={numSmall} onChangeText={text => setNumSmall(text)}></StyledTextInputNoPadding>
