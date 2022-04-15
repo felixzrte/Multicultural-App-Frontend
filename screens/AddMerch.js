@@ -76,6 +76,7 @@ const AddMerch = ({navigation}) => {
     console.log(numMedium);
     console.log(numLarge);
 
+
     const checkValid = isValidData();
     console.log(checkValid);
   if (checkValid) {
