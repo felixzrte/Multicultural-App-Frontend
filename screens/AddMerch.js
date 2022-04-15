@@ -57,6 +57,7 @@ const AddMerch = ({navigation}) => {
        numLarge,
      });
      if (error) {
+      console.log(error);
        showError(error);
        return false;
      }
@@ -76,6 +77,7 @@ const AddMerch = ({navigation}) => {
     console.log(numLarge);
 
     const checkValid = isValidData();
+    console.log(checkValid);
   if (checkValid) {
     axios.post('https://mcapp-api.herokuapp.com/api/v1/merchs', {
       "merchItemName": merchItemName,
