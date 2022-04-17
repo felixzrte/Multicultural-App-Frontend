@@ -158,7 +158,7 @@ export const MsgBox = styled.Text`
 `;
 export const Line = styled.View`
   height: 1px;
-  width: 100%;
+  width: ${SIZES.width};
   background-color: ${COLORS.gray};
   margin-vertical: 10px;
 `;
@@ -230,8 +230,19 @@ export const AnnouncementItemBox = styled.View`
   width: ${SIZES.cardWidth};
   height: 180px;
   border-radius: 10px;
-  background-color: #4C4478
+  background-color: #4c4478;
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+`;
+
+export const BottomBarSection = styled.View`
+  height: 12%;
+  width: ${SIZES.width + 'px'};
+  border-top-left-radius: ${SIZES.radius};
+  border-top-right-radius: ${SIZES.radius};
+  background-color: #d3d3d3;
+  position: absolute;
+  bottom: 0px;
+  justify-content: center;
 `;
