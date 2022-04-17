@@ -1,5 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StatusBar, View, Image, FlatList, Dimensions} from 'react-native';
+import {
+  StatusBar,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+  ImageBackground,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {McText, McAvatar} from '../components';
 import {LinearGradient} from 'expo-linear-gradient';
 import {
@@ -15,7 +23,7 @@ import {
   TextView,
 } from '../constants/styles';
 import React from 'react';
-import {COLORS, images, dummyData} from '../constants';
+import {COLORS, images, dummyData, SIZES} from '../constants';
 import useFetch from '../useFetch';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {ANNOUNCEMENTS} from '../config/urls';
@@ -57,21 +65,30 @@ const Home = ({navigation}) => {
 
   const renderEventItem = ({item, index}) => {
     return (
-      <TouchableOpacity
-        activeOpacity={1}
+      <TouchableWithoutFeedback
         onPress={() =>
           navigation.navigate('EventDetails', {
             item: item,
           })
         }>
-        <EventItemBox
+        <View
           style={{
+            marginTop: 16,
             marginLeft: index === 0 ? 16 : 0,
-            marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+            marginRight: index === events.length - 1 ? 16 : 16,
           }}>
-          <McText body4>{item.eventName}</McText>
-        </EventItemBox>
-      </TouchableOpacity>
+          <ImageBackground
+            source={{uri: item.image}}
+            resizeMode="stretch"
+            borderRadius={SIZES.radius}
+            style={{
+              width: SIZES.width / 1.7,
+              height: SIZES.width / 1.2,
+              justifyContent: 'space-between',
+            }}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 
@@ -92,21 +109,31 @@ const Home = ({navigation}) => {
 
   const renderAnnouncementItem = ({item, index}) => {
     return (
-      <AnnouncementItemBox
+      <LinearGradient
+        colors={['#4C4478', '#0C0C69']}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
         style={{
-          marginTop: 70,
-          marginLeft: index === 0 ? 16 : 0,
-          marginRight: index === dummyData.Clubs.length - 1 ? 16 : 16,
+          height: 180,
+          width: SIZES.cardWidth,
+          marginHorizontal: 16,
+          borderRadius: 16,
+          marginTop: 60,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
-        <View style={{padding: 20}}>
-          <McText h2 color="white">
+        <View style={{flexDirection: 'column', margin: 10}}>
+          <McText body4 color={'white'} style={{opacity: 0.65}}>
+            {item.club}
+          </McText>
+          <McText h2 color={'white'}>
             {item.announcementTitle}
           </McText>
-          <McText body4 color="white">
+          <McText body4 color={'white'}>
             {item.announcementContents}
           </McText>
         </View>
-      </AnnouncementItemBox>
+      </LinearGradient>
     );
   };
 
@@ -192,12 +219,12 @@ const Home = ({navigation}) => {
             <McText style={{textAlign: 'left'}} h2>
               Upcoming Events
             </McText>
-            <McText
+            {/* <McText
               onPress={() => navigation.navigate('AddEvent')}
               style={{textAlign: 'right', position: 'absolute', right: -100}}
               h1>
               +
-            </McText>
+            </McText> */}
           </View>
         </Header2Section>
 
