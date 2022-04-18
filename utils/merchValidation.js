@@ -43,7 +43,7 @@ export default function (data) {
     if (emptyValidationText !== '') {
         return emptyValidationText;
     }
-    else if (!(contactNumber.match('[0-9]{10}'))) {
+    else if (!(contactNumber.match('[0-9]{3}[-][0-9]{3}[-][0-9]{4}'))) {
       return 'Contact number must be a valid phone number';
   } 
 }

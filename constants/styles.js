@@ -119,6 +119,19 @@ export const StyledTextInputNoPadding = styled.TextInput`
   height: 45px;
 `;
 
+export const StyledMultiLine = styled.TextInput`
+  background-color: ${COLORS.secondary};
+  width: 100%;
+  border-color: #e8e8e8;
+  border-width: 1px;
+  border-radius: 10px;
+  padding-vertical: 15px;
+  padding-horizontal: 10px;
+  padding-left: 10px;
+  margin-vertical: 5px;
+  height: 250px;
+`;
+
 export const StyledInputLabel = styled.Text`
   color: ${COLORS.tertiary};
   font-size: 13px;

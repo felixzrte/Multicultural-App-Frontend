@@ -26,6 +26,8 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
+  Container,
+  StyledMultiLine
   } from '../constants/styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -34,18 +36,20 @@ import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton, UpdateInput} from '../components';
 import styles from '../components/SuggestionStyles.js';
-import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import validator from '../utils/validation';
 import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 import axios from 'axios';
+import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 
 const Suggestion = ({navigation}) => {
+
   const startReload = ()=> Restart();
 
   const [name, setname] = useState('');
   const [suggestion, setsuggestion] = useState('');
+
 
    const isValidData = () => {
      const error = validator({
@@ -83,63 +87,50 @@ const Suggestion = ({navigation}) => {
   };
 
   return (
-    <View style={{backgroundColor: '#0277bd'}}>
-      <SafeAreaView>
-          <View style={{backgroundColor: 'white'}}>
-            <View style={styles.header}>
-              <McText
-                h1
-                style={{
-                  marginTop: '7%',
-                  marginLeft: '5%',
-                  marginBottom: '10%',
-                  color: 'white',
-                }}>
-                Suggestions
-              </McText>
-            </View>
+    <Container>
+    <ScrollView>
+      <HeaderSection>
+        <McText h1 style={{marginBottom: '-2%'}}>Suggestions</McText>
+          <View style={{flexDirection:'row'}}>
+            <McText style={{marginTop: 1, textAlign:'left'}} body4 color="gray">Submit a suggestion to improve the club!</McText>
           </View>
-                <View style={{backgroundColor: 'white', marginBottom: '10%'}}>
-            <View
-              style={{
-                marginTop: '50%',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-            </View>
-            <McText
-                h2
-                style={{
-                  marginTop: '7%',
-                  marginLeft: '25%',
-                  color: 'black',
-                }}>
+          <Line />
+        </HeaderSection>
+
+        <KeyboardAvoidingWrapper>
+      <StyledContainer>
+                
+        <InnerContainer>
+            
+            <SubTitle>
                 Enter a Suggestion:
-              </McText>
-              <View style={{margin: "5%"}}>
-              <UpdateInput
-              placeholder="Name"
-              placeholderTextColor={COLORS.gray}
-              value={name} onChangeText={text => setname(text)}
-            />
-              <UpdateInput
+              </SubTitle>
+              <StyledFormArea>
+              
+              <McText style={{marginBottom: "5%", marginTop: "5%"}}>Feel free to be completly honest all of your feedback is submitted anonymously!</McText>
+
+
+              <StyledMultiLine
+              style={{}}
+              multiline={true}
+              numberOfLines={5}
+              textAlign="left"
               placeholder="Suggestion"
               placeholderTextColor={COLORS.gray}
               value={suggestion} onChangeText={text => setsuggestion(text)}
             />
-            </View>
-            <View
-              style={{
-                marginLeft: '10%',
-                marginRight: '10%',
-                marginTop: '15%',
-                marginBottom: '80%',
-              }}>
-              <CustomButton onPress={() => submitEvent(name, suggestion)} text="Submit Suggestion"/>
-            </View>
-          </View>
-    </SafeAreaView>
-    </View>
+          
+            <McText style={{marginBottom: "5%", marginTop: "5%"}}>If you do not wish to be indentified make sure not to mention your name or contact information.</McText>
+           
+           
+              <CustomButton style={{}} onPress={() => submitEvent(name, suggestion)} text="Submit Suggestion"/>
+            </StyledFormArea>
+            </InnerContainer>
+            </StyledContainer>
+    </KeyboardAvoidingWrapper>
+      </ScrollView>
+      </Container>
+    
   );
 };
 
