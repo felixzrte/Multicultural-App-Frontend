@@ -19,6 +19,7 @@ import {
   Container,
   StyledTextInputNoPadding
 } from '../constants/styles';
+import styles from '../components/AddStyles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import validator from '../utils/announcementValidation';
@@ -60,6 +61,7 @@ const AddAnnouncement = ({navigation}) => {
     axios.post('https://mcapp-api.herokuapp.com/api/v1/announcements', {
       "announcementTitle": announcementTitle,
       "announcementContents": announcementContents,
+      "club": "Multicultural Council",
       "startDate": startDate,
       "endDate": endDate,
       "deletedStatus": false
@@ -92,13 +94,13 @@ const AddAnnouncement = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Add a New Announcement</SubTitle>
           <StyledFormArea>
-            <McText>Announcement Title</McText>
+            <McText>Announcement Title <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Announcement Title" value={announcementTitle} onChangeText={text => setAnnouncementTitle(text)}></StyledTextInputNoPadding>
-            <McText>Announcement Contents</McText>
+            <McText>Announcement Contents <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Announcement Contents" value={announcementContents} onChangeText={text => setAnnouncementContents(text)}></StyledTextInputNoPadding>
-            <McText>Start Date</McText>
+            <McText>Start Date <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={startDate} onChangeText={text => setStartDate(text)}></StyledTextInputNoPadding>
-            <McText>End Date</McText>
+            <McText>End Date <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={endDate} onChangeText={text => setEndDate(text)}></StyledTextInputNoPadding>
  
             <CustomButton onPress={() => submitAnnouncement(announcementTitle, announcementContents, startDate, endDate)} text="Add New Announcement"/>

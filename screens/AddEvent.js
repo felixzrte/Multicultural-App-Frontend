@@ -19,6 +19,7 @@ import {
   Container,
   StyledTextInputNoPadding
 } from '../constants/styles';
+import styles from '../components/AddStyles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {showError} from '../utils/helperFunction';
@@ -106,17 +107,17 @@ const AddEvent = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Add a New Event</SubTitle>
           <StyledFormArea>
-            <McText>Club Name</McText>
+            <McText>Club Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Club Name" value={club} onChangeText={text => setClub(text)}></StyledTextInputNoPadding>
-            <McText>Event Name</McText>
+            <McText>Event Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Event Name" value={eventName} onChangeText={text => setEventName(text)}></StyledTextInputNoPadding>
-            <McText>Date</McText>
-            <StyledTextInputNoPadding placeholder="Enter Date" value={date} onChangeText={text => setDate(text)}></StyledTextInputNoPadding>
-            <McText>Description</McText>
+            <McText>Date <McText style={styles.requiredText}>*</McText></McText>
+            <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={date} onChangeText={text => setDate(text)}></StyledTextInputNoPadding>
+            <McText>Description <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={desc} onChangeText={text => setDesc(text)}></StyledTextInputNoPadding>
-            <McText>Location</McText>
+            <McText>Location <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Location" value={location} onChangeText={text => setLocation(text)}></StyledTextInputNoPadding>
-            <McText>Image</McText>
+            <McText>Image <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Image" value={image} onChangeText={text => setImage(text)}></StyledTextInputNoPadding>
             <McText>Extra Notes</McText>
             <StyledTextInputNoPadding placeholder="Enter Extra Notes" value={extraNotes} onChangeText={text => setExtraNotes(text)}></StyledTextInputNoPadding>

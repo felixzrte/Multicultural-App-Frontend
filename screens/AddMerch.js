@@ -19,6 +19,7 @@ import {
   Container,
   StyledTextInputNoPadding
 } from '../constants/styles';
+import styles from '../components/AddStyles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {showError} from '../utils/helperFunction';
@@ -136,22 +137,22 @@ const AddMerch = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
-            <McText>Item Name</McText>
+            <McText>Item Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
-            <McText>Item Price</McText>
+            <McText>Item Price <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
-            <McText>Picture</McText>
+            <McText>Picture <McText style={styles.requiredText}>*</McText></McText>
             {/* <CustomButton
               onPress={onSignup}
               isLoading={isLoading}
               text="Add Image From Gallary"
             /> */} 
             <StyledTextInputNoPadding placeholder="Enter Picture" value={pic} onChangeText={text => setPic(text)}></StyledTextInputNoPadding>
-            <McText>Email</McText>
+            <McText>Email <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
-            <McText>Phone Number</McText>
+            <McText>Phone Number <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Phone Number" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
-            <McText>Description</McText>
+            <McText>Description <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={description} onChangeText={text => setDescription(text)}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>
             <StyledTextInputNoPadding placeholder="Enter Number of Smalls" value={numSmall} onChangeText={text => setNumSmall(text)}></StyledTextInputNoPadding>
