@@ -18,10 +18,13 @@ import {
   AddAnnouncement,
 } from '../screens';
 import Tabs from './Tabs';
+import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 
 export default function (Stack) {
   return (
+    
     <>
+
       <Stack.Screen name="Home" component={Tabs} />
       <Stack.Screen name="Bookmark" component={Tabs} />
       <Stack.Screen name="Maps" component={Tabs} />
@@ -41,6 +44,8 @@ export default function (Stack) {
       <Stack.Screen name="AddEvent" component={AddEvent} />
       <Stack.Screen name="AddClub" component={AddClub} />
       <Stack.Screen name="AddAnnouncement" component={AddAnnouncement} />
+
     </>
+    
   );
 }
