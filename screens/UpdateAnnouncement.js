@@ -37,16 +37,51 @@ const UpdateAnnouncement = ({navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [state, setState] = useState({
     isLoading: false,
-    club: '',
-    eventName: '',
-    location: '',
-    time: '',
-    description: '',
-    extraNotes: '',
+    announcementTitle: '',
+    announcementContents: '',
+    startDate: '',
+    endDate: '',
   });
 
-  const {isLoading, club, eventName, location, time, description, extraNotes} = state;
+  const {isLoading, announcementTitle, announcementContents, startDate, endDate} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
+
+  const isValidData = () => {
+    const error = validator({
+      announcementTitle,
+      announcementContents,
+      startDate,
+      endDate,
+    });
+    if (error) {
+      showError(error);
+      return false;
+    }
+    return true;
+  };
+  
+  const onSignup = async () => {
+    const checkValid = isValidData();
+    if (checkValid) {
+      updateState({isLoading: true});
+      try {
+        const res = await actions.signup({
+          name: announcementTitle,
+          announcementContents,
+          startDate,
+          endDate,
+        });
+        console.log('res for signup====>', res);
+        showMessage('Registered Successfully');
+        updateState({isLoading: false});
+        navigation.goBack();
+      } catch (error) {
+        console.log('error raised');
+        showError(error.message);
+        updateState({isLoading: false});
+      }
+    }
+  };
 
 
 
@@ -99,7 +134,7 @@ const UpdateAnnouncement = ({navigation}) => {
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
+              onPress={onSignup}
               isLoading={isLoading}
               text="UPDATE ANNOUNCEMENTS"
             />

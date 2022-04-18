@@ -51,6 +51,53 @@ const UpdateProduct = ({navigation}) => {
   const {isLoading, merchItemname, merchItemprice, description, contactEmail, contactNumber, extraNotes, numSmall, numMedium, numLarge} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
 
+  const isValidData = () => {
+    const error = validator({
+      merchItemname,
+      merchItemprice,
+      description,
+      contactEmail,
+      contactNumber,
+      extraNotes,
+      numSmall,
+      numMedium,
+      numLarge,
+    });
+    if (error) {
+      showError(error);
+      return false;
+    }
+    return true;
+  };
+
+  const onSignup = async () => {
+    const checkValid = isValidData();
+    if (checkValid) {
+      updateState({isLoading: true});
+      try {
+        const res = await actions.signup({
+          name: merchItemname,
+          merchItemprice,
+          description,
+          contactEmail,
+          contactNumber,
+          extraNotes,
+          numSmall,
+          numMedium,
+          numLarge,
+        });
+        console.log('res for signup====>', res);
+        showMessage('Registered Successfully');
+        updateState({isLoading: false});
+        navigation.goBack();
+      } catch (error) {
+        console.log('error raised');
+        showError(error.message);
+        updateState({isLoading: false});
+      }
+    }
+  };
+
 
 
   return (
@@ -114,7 +161,7 @@ const UpdateProduct = ({navigation}) => {
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton
-              onPress={() => navigation.navigate('Product')}
+              onPress={onSignup}
               isLoading={isLoading}
               text="UPDATE PRODUCTS"
             />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   Alert,
   TouchableOpacity,
   TextInput,
+  useWindowDimensions,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -18,9 +19,53 @@ import ClubCard from '../components/ClubCard';
 import {McIcon, McText, CustomButton} from '../components';
 import {SubHeader, Container, HeaderSection, Line} from '../constants/styles';
 import styles from '../components/SuggestionStyles.js';
+import validator from '../utils/validation';
+import {showError} from '../utils/helperFunction';
+import actions from '../redux/actions';
+import {showMessage} from 'react-native-flash-message';
 
-const Suggestion = () => {
 
+const Suggestion = ({navigation}) => {
+  const {height} = useWindowDimensions();
+  const [hidePassword, setHidePassword] = useState(true);
+  const [state, setState] = useState({
+    isLoading: false,
+    suggestion: '',
+  });
+  const {isLoading, suggestion} = state;
+  const updateState = (data) => setState(() => ({...state, ...data}));
+
+
+  const isValidData = () => {
+    const error = validator({
+    suggestion,
+    });
+    if (error) {
+      showError(error);
+      return false;
+    }
+    return true;
+  };
+
+  const onSignup = async () => {
+    const checkValid = isValidData();
+    if (checkValid) {
+      updateState({isLoading: true});
+      try {
+        const res = await actions.signup({
+          name: suggestion,
+        });
+        console.log('res for signup====>', res);
+        showMessage('Registered Successfully');
+        updateState({isLoading: false});
+        navigation.goBack();
+      } catch (error) {
+        console.log('error raised');
+        showError(error.message);
+        updateState({isLoading: false});
+      }
+    }
+  };
 
 
 
@@ -73,18 +118,17 @@ const Suggestion = () => {
             />
 
             <View
-              alignItems="center"
-              justifyContent="center"
               style={{
-                width: '95%',
-                marginLeft: '3%',
                 marginRight: '10%',
+                marginLeft: '10%',
                 marginTop: '15%',
                 marginBottom: '60%',
               }}>
-              <TouchableOpacity style={styles.button}>
-                <Text>Send</Text>
-              </TouchableOpacity>
+            <CustomButton
+              onPress={onSignup}
+              isLoading={isLoading}
+              text="Send"
+            />
             </View>
           </View>
     </SafeAreaView>

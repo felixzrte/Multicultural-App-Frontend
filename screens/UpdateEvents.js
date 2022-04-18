@@ -52,7 +52,46 @@ const UpdateEvents = ({navigation}) => {
   const {isLoading, club, eventName, location, time, description, extraNotes} = state;
   const updateState = (data) => setState(() => ({...state, ...data}));
 
+  const isValidData = () => {
+    const error = validator({
+      club,
+      eventName,
+      location,
+      time,
+      description,
+      extraNotes,
+    });
+    if (error) {
+      showError(error);
+      return false;
+    }
+    return true;
+  };
 
+  const onSignup = async () => {
+    const checkValid = isValidData();
+    if (checkValid) {
+      updateState({isLoading: true});
+      try {
+        const res = await actions.signup({
+          name: club,
+          eventName,
+          location,
+          time,
+          description,
+          extraNotes,
+        });
+        console.log('res for signup====>', res);
+        showMessage('Registered Successfully');
+        updateState({isLoading: false});
+        navigation.goBack();
+      } catch (error) {
+        console.log('error raised');
+        showError(error.message);
+        updateState({isLoading: false});
+      }
+    }
+  };
 
   return (
     <KeyboardAvoidingWrapper>
@@ -103,7 +142,7 @@ const UpdateEvents = ({navigation}) => {
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton
-              onPress={() => navigation.navigate('EventDetails')}
+              onPress={onSignup}
               isLoading={isLoading}
               text="UPDATE EVENTS"
             />
