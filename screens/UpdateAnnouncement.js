@@ -20,7 +20,6 @@ ExtraText,
 TextLink,
 TextLinkContent,
 } from '../constants/styles';
-import AppleHeader from 'react-native-apple-header';
 import {StatusBar} from 'expo-status-bar';
 import ClubCard from '../components/ClubCard';
 import {McIcon, McText, UpdateInput, CustomButton, CustomInput, CustomInputNoPadding} from '../components';

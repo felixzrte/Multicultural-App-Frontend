@@ -17,8 +17,9 @@ const Pencil = require('../assets/icons/Pencil.png');
 const password = require('../assets/icons/password.png');
 const profile = require('../assets/icons/profile.png');
 const feedback = require('../assets/icons/feedback.png');
-const resouces = require('../assets/icons/resouces.png');
+const resouces = require('../assets/icons/resouces.jpg');
 const about = require('../assets/icons/about.png');
+const mainpic = require('../assets/icons/mainpic.png');
 
 export default {
   aeroplane,
@@ -42,5 +43,6 @@ export default {
   feedback,
   resouces,
   about,
+  mainpic,
 
 };
