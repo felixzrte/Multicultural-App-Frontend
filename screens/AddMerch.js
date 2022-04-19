@@ -45,6 +45,8 @@ const AddMerch = ({navigation}) => {
   const [numSmall, setNumSmall] = useState('');
   const [numMedium, setNumMedium] = useState('');
   const [numLarge, setNumLarge] = useState('');
+  // const [club, setClub] = useState('');
+  const club = "Club Name";
 
    const isValidData = () => {
      const error = validator({
@@ -89,10 +91,12 @@ const AddMerch = ({navigation}) => {
       "numSmall": numSmall,
       "numMedium": numMedium,
       "numLarge": numLarge,
+      "club": club,
       "deletedStatus": false
     })
     .catch(function (error) {
       console.log("error");
+      console.log(error);
     })
     .then(function (response) {
       console.log(response);
@@ -169,7 +173,6 @@ const pickImage = async () => {
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
             <McText>Item Price <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
-            
             <McText>Email <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
             <McText>Phone Number <McText style={styles.requiredText}>*</McText></McText>
