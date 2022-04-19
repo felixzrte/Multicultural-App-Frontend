@@ -21,6 +21,8 @@ const heart_filled = require('../assets/icons/heart_filled.png');
 const heart_outlined = require('../assets/icons/heart_outlined.png');
 const insta = require('../assets/icons/insta.png');
 const email = require('../assets/icons/email.png');
+const phone = require('../assets/icons/phone.png');
+
 
 export default {
   aeroplane,
@@ -46,4 +48,5 @@ export default {
   heart_outlined,
   insta,
   email,
+  phone,
 };
