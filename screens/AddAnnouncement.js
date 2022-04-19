@@ -40,6 +40,7 @@ const AddAnnouncement = ({navigation}) => {
 
   const isValidData = () => {
     const error = validator({
+      clubName,
       announcementTitle,
       announcementContents,
       startDate,
@@ -54,6 +55,7 @@ const AddAnnouncement = ({navigation}) => {
 
   function submitAnnouncement (clubName, announcementTitle, announcementContents, startDate, endDate) {
     //Add any validation steps
+    console.log(clubName);
     console.log(announcementTitle);
     console.log(announcementContents);
     console.log(startDate);

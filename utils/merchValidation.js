@@ -10,8 +10,28 @@ const checkEmpty = (val, key) => {
 };
 
 export default function (data) {
-  const {merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge} = data;
+  const {merchItemName, merchItemPrice, pic, club, contactEmail, contactNumber, description, numSmall, numMedium, numLarge} = data;
   console.log("im in the validation for merch ")
+
+  if (pic !== undefined) {
+    let emptyValidationText = checkEmpty(
+      pic,
+      'Please enter a picture for your merch item',
+    );
+    if (emptyValidationText !== '') {
+      return emptyValidationText;
+    }
+  }
+
+  if (club !== undefined) {
+    let emptyValidationText = checkEmpty(
+        club,
+      'Please enter a club for your announcement',
+    );
+    if (emptyValidationText !== '') {
+      return emptyValidationText;
+    }
+  }
 
   if (merchItemName !== undefined) {
     let emptyValidationText = checkEmpty(
@@ -48,16 +68,6 @@ export default function (data) {
       return 'Contact number must be a valid phone number';
   } 
 }
-
-  if (pic !== undefined) {
-    let emptyValidationText = checkEmpty(
-      pic,
-      'Please enter a picture for your merch item',
-    );
-    if (emptyValidationText !== '') {
-      return emptyValidationText;
-    }
-  }
 
   if (description !== undefined) {
     let emptyValidationText = checkEmpty(

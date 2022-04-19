@@ -29,6 +29,7 @@ import useFetch from '../useFetch';
 import {showMessage} from 'react-native-flash-message';
 import validator from '../utils/eventValidation';
 import axios from 'axios';
+import * as ImagePicker from 'expo-image-picker';
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 
 
@@ -38,7 +39,7 @@ const AddEvent = ({navigation}) => {
   const [date, setDate] = useState('');
   const [desc, setDesc] = useState('');
   const [location, setLocation] = useState('');
-  const [image, setImage] = useState('');
+  const [pic, setPic] = useState('');
   const [extraNotes, setExtraNotes] = useState('');
 
   const isValidData = () => {
@@ -48,7 +49,7 @@ const AddEvent = ({navigation}) => {
       date,
       desc,
       location,
-      image,
+      pic,
       extraNotes,
     });
     if (error) {
@@ -58,7 +59,7 @@ const AddEvent = ({navigation}) => {
     return true;
   };
 
-  function submitEvent (club, eventName, date, desc, location, image, extraNotes) {
+  function submitEvent (club, eventName, date, desc, location, pic, extraNotes) {
     //Add any validation steps
 
     console.log(club);
@@ -66,7 +67,7 @@ const AddEvent = ({navigation}) => {
     console.log(date);
     console.log(desc);
     console.log(location);
-    console.log(image);
+    console.log(pic);
     console.log(extraNotes);
 
     const checkValid = isValidData();
@@ -77,7 +78,7 @@ const AddEvent = ({navigation}) => {
       "date": date,
       "desc": desc,
       "location": location,
-      "image": image,
+      "pic": pic,
       "extraNotes": extraNotes,
       "deletedStatus": false
     })
@@ -92,6 +93,7 @@ const AddEvent = ({navigation}) => {
   }
   };
 
+  
   return (
     <Container>
       <ScrollView>
@@ -158,11 +160,11 @@ const AddEvent = ({navigation}) => {
             <McText>Location <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Location" value={location} onChangeText={text => setLocation(text)}></StyledTextInputNoPadding>
             <McText>Image <McText style={styles.requiredText}>*</McText></McText>
-            <StyledTextInputNoPadding placeholder="Enter Image" value={image} onChangeText={text => setImage(text)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="Enter Image" value={pic} onChangeText={text => setPic(text)}></StyledTextInputNoPadding>
             <McText>Extra Notes</McText>
             <StyledTextInputNoPadding placeholder="Enter Extra Notes" value={extraNotes} onChangeText={text => setExtraNotes(text)}></StyledTextInputNoPadding>
  
-            <CustomButton onPress={() => submitEvent(club, eventName, date, desc, location, image, extraNotes)} text="Add New Event"/>
+            <CustomButton onPress={() => submitEvent(club, eventName, date, desc, location, pic, extraNotes)} text="Add New Event"/>
             <Line />
           </StyledFormArea>
         </InnerContainer>

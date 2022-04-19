@@ -30,7 +30,8 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import validator from '../utils/merchValidation';
 import * as ImagePicker from 'expo-image-picker';
-
+import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
+import AddStyles, {headerText, menuContent} from '../components/AddStyles';
 
 const AddMerch = ({navigation}) => {
 
@@ -42,17 +43,18 @@ const AddMerch = ({navigation}) => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
-  const [numSmall, setNumSmall] = useState('');
-  const [numMedium, setNumMedium] = useState('');
-  const [numLarge, setNumLarge] = useState('');
-  // const [club, setClub] = useState('');
-  const club = "Club Name";
+  const [numSmall, setNumSmall] = useState('0');
+  const [numMedium, setNumMedium] = useState('0');
+  const [numLarge, setNumLarge] = useState('0');
+  const [club, setClub] = useState('');
+ 
 
    const isValidData = () => {
      const error = validator({
        merchItemName,
        merchItemPrice,
        pic,
+       club,
        contactEmail,
        contactNumber,
        description,
@@ -67,11 +69,12 @@ const AddMerch = ({navigation}) => {
      return true;
    };
  
-  function submitMerch (merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge) {
+  function submitMerch (merchItemName, merchItemPrice, pic, club, contactEmail, contactNumber, description, numSmall, numMedium, numLarge) {
     //Add any validation steps
     console.log(merchItemName);
     console.log(merchItemPrice);
     console.log(pic);
+    console.log(club);
     console.log(contactEmail);
     console.log(contactNumber);
     console.log(description);
@@ -85,13 +88,13 @@ const AddMerch = ({navigation}) => {
       "merchItemName": merchItemName,
       "merchItemPrice": merchItemPrice,
       "pic": pic,
+      "club": club,
       "contactEmail": contactEmail,
       "contactNumber": contactNumber,
       "description": description,
       "numSmall": numSmall,
       "numMedium": numMedium,
       "numLarge": numLarge,
-      "club": club,
       "deletedStatus": false
     })
     .catch(function (error) {
@@ -162,13 +165,50 @@ const pickImage = async () => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        
+          <SubTitle>Add a New Item of Merchandise</SubTitle>
+          <StyledFormArea>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Pick an image from camera roll" onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
     
     </View>
-          <SubTitle>Add a New Item of Merchandise</SubTitle>
-          <StyledFormArea>
+
+    <MenuProvider style={{}}>
+        <Menu  onSelect={text => setClub(text)}>
+      
+
+          <MenuTrigger  >
+          <McText style={AddStyles.headerText}>Select A Club <McText style={styles.requiredText}>*</McText></McText>
+          </MenuTrigger >
+          <McText style={{marginBottom: "5%"}}>Club: <McText> {club}</McText></McText>
+
+          <MenuOptions style={{}}>
+            
+            <MenuOption value={"La Alianza Latina"}>
+              <McText >La Alianza Latina</McText>
+            </MenuOption>
+            <MenuOption value={"Black Student Union"}>
+              <McText >Black Student Union</McText>
+            </MenuOption>
+            <MenuOption value={"Caribbean Student Association"}>
+              <McText >Caribbean Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"Asian Student Association"}>
+              <McText >Asian Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"African Student Union"}>
+              <McText >African Student Union</McText>
+            </MenuOption>
+            <MenuOption value={"International Student Association"}>
+              <McText >International Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"Multicultural Council"}>
+              <McText >Multicultural Council</McText>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
+        </MenuProvider>
             <McText>Item Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
             <McText>Item Price <McText style={styles.requiredText}>*</McText></McText>
@@ -186,7 +226,7 @@ const pickImage = async () => {
             <McText>Number of Larges</McText>
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" value={numLarge} onChangeText={text => setNumLarge(text)}></StyledTextInputNoPadding>
 
-            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Merch Item"/>
+            <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, club, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Merch Item"/>
 
             <Line />
           </StyledFormArea>
