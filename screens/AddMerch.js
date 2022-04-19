@@ -151,7 +151,7 @@ const AddMerch = ({navigation}) => {
             <McText>Email <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
             <McText>Phone Number <McText style={styles.requiredText}>*</McText></McText>
-            <StyledTextInputNoPadding placeholder="Enter Phone Number" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
+            <StyledTextInputNoPadding placeholder="XXX-XXX-XXXX" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
             <McText>Description <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={description} onChangeText={text => setDescription(text)}></StyledTextInputNoPadding>
             <McText>Number of Smalls</McText>

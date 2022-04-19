@@ -129,7 +129,7 @@ export const StyledMultiLine = styled.TextInput`
   padding-horizontal: 10px;
   padding-left: 10px;
   margin-vertical: 5px;
-  height: 250px;
+  height: 125px;
 `;
 
 export const StyledInputLabel = styled.Text`

@@ -123,31 +123,31 @@ const Suggestion = ({navigation}) => {
 
           <MenuTrigger  >
           <McText style={AddStyles.headerText}>Select A Club</McText>
-          </MenuTrigger  >
+          </MenuTrigger >
           <McText>Club: <McText>JOE ENTER YOUR CLUB VARIABLE HERE</McText></McText>
 
           <MenuOptions style={{}}>
             
             <MenuOption value={"La Alianza Latina"}>
-              <Text style={AddStyles.menuContent}>La Alianza Latina</Text>
+              <McText >La Alianza Latina</McText>
             </MenuOption>
             <MenuOption value={"Black Student Union"}>
-              <Text style={AddStyles.menuContent}>Black Student Union</Text>
+              <McText >Black Student Union</McText>
             </MenuOption>
             <MenuOption value={"Caribbean Student Association"}>
-              <Text style={AddStyles.menuContent}>Caribbean Student Association</Text>
+              <McText >Caribbean Student Association</McText>
             </MenuOption>
             <MenuOption value={"Asian Student Association"}>
-              <Text style={AddStyles.menuContent}>Asian Student Association</Text>
+              <McText >Asian Student Association</McText>
             </MenuOption>
             <MenuOption value={"African Student Union"}>
-              <Text style={AddStyles.menuContent}>African Student Union</Text>
+              <McText >African Student Union</McText>
             </MenuOption>
             <MenuOption value={"International Student Association"}>
-              <Text style={AddStyles.menuContent}>International Student Association</Text>
+              <McText >International Student Association</McText>
             </MenuOption>
             <MenuOption value={"Multicultural Council"}>
-              <Text style={AddStyles.menuContent}>Multicultural Council</Text>
+              <McText >Multicultural Council</McText>
             </MenuOption>
          
           </MenuOptions>
@@ -158,7 +158,7 @@ const Suggestion = ({navigation}) => {
               
               <McText style={{marginBottom: "5%", marginTop: "5%"}}>Feel free to be completly honest all of your feedback is submitted anonymously!</McText>
 
-
+              
               <StyledMultiLine
               style={{}}
               multiline={true}
@@ -168,12 +168,12 @@ const Suggestion = ({navigation}) => {
               placeholderTextColor={COLORS.gray}
               value={suggestion} onChangeText={text => setsuggestion(text)}
             />
-          
+            </MenuProvider>
             <McText style={{marginBottom: "5%", marginTop: "5%"}}>If you do not wish to be indentified make sure not to mention your name or contact information.</McText>
             
            
               <CustomButton style={{}} onPress={() => submitEvent(name, suggestion)} text="Submit Suggestion"/>
-              </MenuProvider>
+              
             </StyledFormArea>
             
             </InnerContainer>
