@@ -14,6 +14,11 @@ const search = require('../assets/icons/search_icon.png');
 const home = require('../assets/icons/home.png');
 const filter = require('../assets/icons/filter_icon.png');
 const Pencil = require('../assets/icons/Pencil.png');
+const password = require('../assets/icons/password.png');
+const profile = require('../assets/icons/profile.png');
+const feedback = require('../assets/icons/feedback.png');
+const resouces = require('../assets/icons/resouces.png');
+const about = require('../assets/icons/about.png');
 
 export default {
   aeroplane,
@@ -32,4 +37,10 @@ export default {
   home,
   filter,
   Pencil,
+  password,
+  profile,
+  feedback,
+  resouces,
+  about,
+
 };
