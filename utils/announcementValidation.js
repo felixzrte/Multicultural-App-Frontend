@@ -11,7 +11,18 @@ const checkEmpty = (val, key) => {
 };
 
 export default function (data) {
-  const {announcementTitle, announcementContents, startDate, endDate} = data;
+  const {clubName, announcementTitle, announcementContents, startDate, endDate} = data;
+
+  
+  if (clubName !== undefined) {
+    let emptyValidationText = checkEmpty(
+        clubName,
+      'Please enter a club for your announcement',
+    );
+    if (emptyValidationText !== '') {
+      return emptyValidationText;
+    }
+  }
 
   if (announcementTitle !== undefined) {
     let emptyValidationText = checkEmpty(
