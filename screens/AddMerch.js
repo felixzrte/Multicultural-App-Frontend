@@ -128,6 +128,7 @@ const pickImage = async () => {
   // No permissions request is necessary for launching the image library
   let result = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: ImagePicker.MediaTypeOptions.All,
+    base64: true,
     allowsEditing: true,
     aspect: [4, 3],
     quality: 1,
@@ -137,6 +138,7 @@ const pickImage = async () => {
 
   if (!result.cancelled) {
     setImage(result.uri);
+    setPic('data:image/png;base64,' + result.base64);
   }
 };
 
@@ -159,6 +161,7 @@ const pickImage = async () => {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Pick an image from camera roll" onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    
     </View>
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
@@ -166,13 +169,7 @@ const pickImage = async () => {
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
             <McText>Item Price <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
-            <McText>Picture <McText style={styles.requiredText}>*</McText></McText>
-            {/* <CustomButton
-              onPress={onSignup}
-              isLoading={isLoading}
-              text="Add Image From Gallary"
-            /> */} 
-            <StyledTextInputNoPadding placeholder="Enter Picture" value={pic} onChangeText={text => setPic(text)}></StyledTextInputNoPadding>
+            
             <McText>Email <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
             <McText>Phone Number <McText style={styles.requiredText}>*</McText></McText>
