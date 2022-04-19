@@ -20,6 +20,7 @@ import {
   StyledTextInputNoPadding
 } from '../constants/styles';
 import styles from '../components/AddStyles';
+import AddStyles, {headerText, menuContent} from '../components/AddStyles';
 import {StatusBar} from 'expo-status-bar';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {showError} from '../utils/helperFunction';
@@ -28,6 +29,7 @@ import useFetch from '../useFetch';
 import {showMessage} from 'react-native-flash-message';
 import validator from '../utils/eventValidation';
 import axios from 'axios';
+import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 
 
 const AddEvent = ({navigation}) => {
@@ -107,14 +109,52 @@ const AddEvent = ({navigation}) => {
         <InnerContainer>
           <SubTitle>Add a New Event</SubTitle>
           <StyledFormArea>
-            <McText>Club Name <McText style={styles.requiredText}>*</McText></McText>
-            <StyledTextInputNoPadding placeholder="Enter Club Name" value={club} onChangeText={text => setClub(text)}></StyledTextInputNoPadding>
+          <MenuProvider style={{}}>
+        <Menu  onSelect={text => setClub(text)}>
+      
+
+          <MenuTrigger  >
+          <McText style={AddStyles.headerText}>Select A Club <McText style={styles.requiredText}>*</McText></McText>
+          </MenuTrigger >
+          <McText style={{marginBottom: "5%"}}>Club: <McText> {club}</McText></McText>
+
+          <MenuOptions style={{}}>
+            
+            <MenuOption value={"La Alianza Latina"}>
+              <McText >La Alianza Latina</McText>
+            </MenuOption>
+            <MenuOption value={"Black Student Union"}>
+              <McText >Black Student Union</McText>
+            </MenuOption>
+            <MenuOption value={"Caribbean Student Association"}>
+              <McText >Caribbean Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"Asian Student Association"}>
+              <McText >Asian Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"African Student Union"}>
+              <McText >African Student Union</McText>
+            </MenuOption>
+            <MenuOption value={"International Student Association"}>
+              <McText >International Student Association</McText>
+            </MenuOption>
+            <MenuOption value={"Multicultural Council"}>
+              <McText >Multicultural Council</McText>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
+
+
+
             <McText>Event Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Event Name" value={eventName} onChangeText={text => setEventName(text)}></StyledTextInputNoPadding>
             <McText>Date <McText style={styles.requiredText}>*</McText></McText>
+            
             <StyledTextInputNoPadding placeholder="YYYY/MM/DD" value={date} onChangeText={text => setDate(text)}></StyledTextInputNoPadding>
+            
             <McText>Description <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Description" value={desc} onChangeText={text => setDesc(text)}></StyledTextInputNoPadding>
+            </MenuProvider>
             <McText>Location <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Location" value={location} onChangeText={text => setLocation(text)}></StyledTextInputNoPadding>
             <McText>Image <McText style={styles.requiredText}>*</McText></McText>
