@@ -208,12 +208,13 @@ const pickImage = async () => {
             </MenuOption>
           </MenuOptions>
         </Menu>
-        </MenuProvider>
+        
             <McText>Item Name <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Item Name" value={merchItemName} onChangeText={text => setMerchItemName(text)}></StyledTextInputNoPadding>
             <McText>Item Price <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="Enter Price" value={merchItemPrice} onChangeText={text => setMerchItemPrice(text)}></StyledTextInputNoPadding>
             <McText>Email <McText style={styles.requiredText}>*</McText></McText>
+            </MenuProvider>
             <StyledTextInputNoPadding placeholder="Enter Email" value={contactEmail} onChangeText={text => setContactEmail(text)}></StyledTextInputNoPadding>
             <McText>Phone Number <McText style={styles.requiredText}>*</McText></McText>
             <StyledTextInputNoPadding placeholder="XXX-XXX-XXXX" value={contactNumber} onChangeText={text => setContactNumber(text)}></StyledTextInputNoPadding>
