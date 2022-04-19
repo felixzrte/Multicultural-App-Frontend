@@ -129,7 +129,7 @@ const Club = ({route, navigation}) => {
                   opacity: 0.65,
                 }}
               />
-              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
                 {item.instagram}
               </McText>
             </View>
@@ -148,14 +148,14 @@ const Club = ({route, navigation}) => {
                   opacity: 0.65,
                 }}
               />
-              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
                 {item.email}
               </McText>
             </View>
             <McText h3 style={{marginTop: 16}}>
               Mission
             </McText>
-            <McText body3 style={{marginTop: 8}}>
+            <McText body4 style={{marginTop: 8}}>
               {item.missionStatement}
             </McText>
           </View>
