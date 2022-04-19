@@ -9,7 +9,6 @@ import AddMerch from './AddMerch';
 import Register from './Register';
 import Welcome from './Welcome';
 import Suggestion from './Suggestion';
-import Transition from './Transition';
 import Product from './Product';
 import Club from './Club';
 import UpdateProfile from './UpdateProfile';
@@ -38,7 +37,6 @@ export {
   Suggestion,
   Merch,
   AddMerch,
-  Transition,
   Product,
   Club,
   UpdateProfile,
