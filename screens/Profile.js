@@ -50,7 +50,7 @@ const Profile = ({navigation}) => {
         <Image source={icons.mainpic} style={{ height: 200,width: 200, borderRadius: 200/2, backgroundColor: 'transparent',}} />
         </View>
         <View style={{marginTop: "20%"}}>
-        <McText h1>    {userInfo.user.name}</McText>
+        <McText h1>  {userInfo.user.name}</McText>
         </View>
         </View>
       </View>
