@@ -23,87 +23,121 @@ const Club = ({route, navigation}) => {
   return (
     <View>
       <ScrollView>
-        <View>
-          <ImageBackground
-            source={{uri: item.logoImage}}
-            resizeMode="cover"
-            style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              height: SIZES.width,
-              width: SIZES.width,
-            }}
-          />
-          {/* Color Overlay */}
-          <View
-            style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              height: SIZES.width + 60,
-              backgroundColor: 'black',
-              opacity: 0.1,
-            }}
-          />
-          {/* Navigation Header */}
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingHorizontal: SIZES.radius,
-              height: '15%',
-              alignItems: 'flex-end',
-            }}>
-            <TouchableOpacity
-              style={{marginLeft: SIZES.base}}
-              onPress={() => navigation.goBack()}>
-              <Image
-                source={icons.left_arrow}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: COLORS.white,
-                }}
-              />
-            </TouchableOpacity>
-            <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <McText h3 color={'white'}>
-                Event Detail
-              </McText>
-            </View>
-            <TouchableOpacity
-              style={{marginRight: SIZES.base}}
-              onPress={() => navigation.navigate('UpdateEvents')}>
-              <Image
-                source={icons.menu_dots}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: COLORS.white,
-                  alignSelf: 'flex-end',
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-          {/* Event Poster */}
-          <View style={{paddingTop: SIZES.padding, alignItems: 'center'}}>
+        {/* Navigation Header */}
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: SIZES.radius,
+            height: 65,
+            alignItems: 'flex-end',
+          }}>
+          <TouchableOpacity
+            style={{marginLeft: SIZES.base}}
+            onPress={() => navigation.goBack()}>
             <Image
-              source={{uri: item.logoImage}}
+              source={icons.left_arrow}
               resizeMode="contain"
               style={{
-                width: SIZES.width,
-                height: SIZES.width / 1.2,
+                width: 25,
+                height: 25,
+                tintColor: COLORS.black,
               }}
             />
+          </TouchableOpacity>
+          <View
+            style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <McText h3 color={'black'}>
+              Multicultural Clubs
+            </McText>
+          </View>
+          <TouchableOpacity
+            style={{marginRight: SIZES.base}}
+            onPress={() => navigation.navigate('UpdateClubs')}>
+            <Image
+              source={icons.menu_dots}
+              resizeMode="contain"
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: COLORS.black,
+                alignSelf: 'flex-end',
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        {/* Club Logo */}
+        <ImageBackground
+          resizeMode="contain"
+          source={{uri: item.logoImage}}
+          style={{
+            marginTop: 24,
+            width: SIZES.width,
+            height: SIZES.height / 2.5,
+          }}
+        />
+        {/* Description */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 15,
+            paddingHorizontal: 16,
+          }}>
+          <View>
+            <McText body3 style={{opacity: 0.5, letterSpacing: 1.5}}>
+              {item.acronym}
+            </McText>
+            <McText h2 style={{letterSpacing: 1.5}}>
+              {item.name}
+            </McText>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.insta}
+                style={{
+                  width: 14,
+                  height: 14,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.instagram}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.email}
+                style={{
+                  width: 14,
+                  height: 14,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.email}
+              </McText>
+            </View>
+            <McText h3 style={{marginTop: 16}}>
+              Mission
+            </McText>
+            <McText body3 style={{marginTop: 8}}>
+              {item.missionStatement}
+            </McText>
           </View>
         </View>
+        <View style={{paddingBottom: '20%'}} />
+        <View />
       </ScrollView>
     </View>
   );
