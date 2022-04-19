@@ -90,6 +90,30 @@ const Club = ({route, navigation}) => {
             <McText h2 style={{letterSpacing: 1.5}}>
               {item.name}
             </McText>
+            <McText
+              body3
+              style={{opacity: 0.8, letterSpacing: 1.5, marginVertical: 12}}>
+              {item.bio}
+            </McText>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.clock}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.meetingDays} | {item.meetingTimes}
+              </McText>
+            </View>
             <View
               style={{
                 flexDirection: 'row',
