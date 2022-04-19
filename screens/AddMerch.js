@@ -1,5 +1,5 @@
-import {View, Text, ScrollView, StyleSheet, useWindowDimensions, Button} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, ScrollView, StyleSheet, useWindowDimensions, Button, Image, Platform} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import {CustomButton, CustomInput, McIcon, McText} from '../components';
 import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import {
@@ -29,6 +29,7 @@ import useFetch from '../useFetch';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import validator from '../utils/merchValidation';
+import * as ImagePicker from 'expo-image-picker';
 
 
 const AddMerch = ({navigation}) => {
@@ -120,6 +121,26 @@ const AddMerch = ({navigation}) => {
 //add handle input here
 
 
+//IMAGES MAYBE PLS GOD WORK
+const [image, setImage] = useState(null);
+
+const pickImage = async () => {
+  // No permissions request is necessary for launching the image library
+  let result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
+  });
+
+  console.log(result);
+
+  if (!result.cancelled) {
+    setImage(result.uri);
+  }
+};
+
+
   return (
     <Container>
       <ScrollView>
@@ -135,6 +156,10 @@ const AddMerch = ({navigation}) => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    </View>
           <SubTitle>Add a New Item of Merchandise</SubTitle>
           <StyledFormArea>
             <McText>Item Name <McText style={styles.requiredText}>*</McText></McText>
