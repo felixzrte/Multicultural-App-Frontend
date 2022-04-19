@@ -59,30 +59,11 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
-                source={icons.bookmark}
+                source={icons.heart_filled}
                 resizeMode="contain"
                 style={{
-                  width: 30,
-                  height: 30,
-                  tintColor: focused ? COLORS.white : COLORS.gray,
-                }}
-              />
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Maps"
-        component={Maps}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <Image
-                source={icons.maps}
-                resizeMode="contain"
-                style={{
-                  width: 30,
-                  height: 30,
+                  width: 35,
+                  height: 35,
                   tintColor: focused ? COLORS.white : COLORS.gray,
                 }}
               />
@@ -97,7 +78,7 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
-                source={icons.settings}
+                source={icons.user}
                 resizeMode="contain"
                 style={{
                   width: 30,

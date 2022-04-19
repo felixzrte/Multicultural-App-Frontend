@@ -9,84 +9,212 @@ import {
   Image,
   Logo,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import {McIcon, McText, CustomButton } from '../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import styles from '../components/EventDetailsStyles.js';
+import {McIcon, McText, CustomButton} from '../components';
 import moment from 'moment';
-import { Container } from '../constants/styles';
-import { Pencil } from '../assets/icons/Pencil.png';
-import { up_arrow } from '../assets/icons/up_arrow.png';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
-
-const ITEM_WIDTH = SIZES.width * 1;
-const ITEM_HEIGHT = ITEM_WIDTH * 1;
+import {LinearGradient} from 'expo-linear-gradient';
+import {BottomBarSection, Line} from '../constants/styles';
 
 const EventDetails = ({route, navigation}) => {
   const {item} = route.params;
 
-  var inputDate = 'item.date';
-
-  var outputDate = moment(inputDate).format('dddd, MMM DD at HH:mm a');
-
-  console.log(outputDate);
-
   return (
-    <ScrollView>
-      <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
-        <View style={styles.eventItemContainer}>
-          <Image
+    <View>
+      <ScrollView>
+        {/* Event Poster Section */}
+        <View>
+          <ImageBackground
             source={{uri: item.image}}
+            resizeMode="cover"
             style={{
-              height: ITEM_HEIGHT,
-              width: ITEM_WIDTH,
-              borderRadius: SIZES.radius,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              height: SIZES.width + 60,
+              width: SIZES.width,
             }}
           />
-        </View>         
-
-      </View>
-      <View style={{ backgroundcolor: 'black', marginLeft: '30%'}}>
-      <TouchableOpacity
-             style={{marginLeft: "70%",
-             borderRadius: '50/2',
-             borderColor: "#000000",
-             borderWidth: "1px",
-             justifyContent: "center",
-             alignItems: "center",
-             marginRight: "10%", 
-              }}
-            onPress={() => navigation.navigate('UpdateEvents')}>
-      <Image
-            source={icons.Pencil}
+          {/* Color Overlay */}
+          <View
             style={{
-              height: 30,
-              width: 30,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              height: SIZES.width + 60,
+              backgroundColor: 'black',
+              opacity: 0.8,
             }}
+          />
+          {/* Navigation Header */}
+          <View
+            style={{
+              flexDirection: 'row',
+              paddingHorizontal: SIZES.radius,
+              height: '15%',
+              alignItems: 'flex-end',
+            }}>
+            <TouchableOpacity
+              style={{marginLeft: SIZES.base}}
+              onPress={() => navigation.goBack()}>
+              <Image
+                source={icons.left_arrow}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: COLORS.white,
+                }}
+              />
+            </TouchableOpacity>
+            <View
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <McText h3 color={'white'}>
+                Event Detail
+              </McText>
+            </View>
+            <TouchableOpacity
+              style={{marginRight: SIZES.base}}
+              onPress={() => navigation.navigate('UpdateEvents')}>
+              <Image
+                source={icons.menu_dots}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: COLORS.white,
+                  alignSelf: 'flex-end',
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          {/* Event Poster */}
+          <View style={{paddingTop: SIZES.padding, alignItems: 'center'}}>
+            <Image
+              source={{uri: item.image}}
+              resizeMode="contain"
+              style={{
+                width: SIZES.width,
+                height: SIZES.width / 1.2,
+              }}
             />
-      </TouchableOpacity>
-      </View>
-      <View style={{marginLeft: 10}}>
-        <McText h2 color={COLORS.gray1}>
-          {item.club}
-        </McText>
-        <McText h1>{item.eventName}</McText>
-        <McText body3 color={COLORS.gray1}>
-          {item.location}
-        </McText>
-        <McText body3 color={COLORS.gray1}>
-          Starting {moment(item.time).format('hh:mm A')}
-        </McText>
-
-        <McText />
-        <McText h3>About This Event</McText>
-        <McText />
-        <McText body3>{item.desc}</McText>
-        <McText body3>{item.extraNotes}</McText>
-      </View>
-    </ScrollView>
+          </View>
+        </View>
+        {/* Description */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: -15,
+            paddingHorizontal: 16,
+          }}>
+          <View>
+            <McText body4 style={{opacity: 0.5, letterSpacing: 1.5}}>
+              {item.club}
+            </McText>
+            <McText h2 style={{letterSpacing: 1.5}}>
+              {item.eventName}
+            </McText>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.clock}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {moment(item.date).format('DD, MMMM, Y | h:mm A')}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.maps}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.location}
+              </McText>
+            </View>
+            <McText h3 style={{marginTop: 16}}>
+              About
+            </McText>
+            <McText body3 style={{marginTop: 8}}>
+              {item.desc}
+            </McText>
+            <McText h3 style={{marginTop: 16}}>
+              Extra Notes
+            </McText>
+            <McText style={{marginTop: 8}}>{item.extraNotes}</McText>
+          </View>
+        </View>
+        <View style={{paddingBottom: '65%'}} />
+        <View />
+        {/* Buttons */}
+      </ScrollView>
+      <BottomBarSection>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+          <TouchableOpacity
+            style={{
+              width: SIZES.width / 6,
+              height: SIZES.width / 6,
+              backgroundColor: COLORS.blue,
+              marginLeft: 16,
+              marginVertical: SIZES.base,
+              borderRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={icons.heart_outlined}
+              resizeMode="contain"
+              style={{
+                width: SIZES.width,
+                height: SIZES.width / 10,
+                tintColor: COLORS.white,
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              height: SIZES.width / 6,
+              backgroundColor: COLORS.blue,
+              marginHorizontal: 16,
+              marginVertical: SIZES.base,
+              borderRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <McText h3 color={'white'} style={{letterSpacing: 1.5}}>
+              Sign Up For Event
+            </McText>
+          </TouchableOpacity>
+        </View>
+      </BottomBarSection>
+    </View>
   );
 };
 

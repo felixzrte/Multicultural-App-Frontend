@@ -8,84 +8,163 @@ import {
   StyleSheet,
   Image,
   Logo,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
-import {McIcon, McText} from '../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import styles from '../components/MerchProductStyles.js';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
-import { Center } from 'native-base';
-import useFetch from '../useFetch';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
-const ITEM_WIDTH = SIZES.width * 1;
-const ITEM_HEIGHT = ITEM_WIDTH * 1;
+import {McIcon, McText, CustomButton} from '../components';
+import moment from 'moment';
+import {LinearGradient} from 'expo-linear-gradient';
+import {BottomBarSection, Line} from '../constants/styles';
 
 const Club = ({route, navigation}) => {
   const {item} = route.params;
-  const {
-    data: club,
-    loading,
-    error,
-  } = useFetch('https://mcapp-api.herokuapp.com/api/v1/clubs');
-  /*
-    if (loading) {
-      return null;
-    }
-  */
-  if (error) {
-    console.log(error);
-  }
-  
-  console.log(club);
 
   return (
+    <View>
       <ScrollView>
-        <View style={{flex: 0, alignItems: 'center', justifyContent: 'center'}}>
-          <View style={styles.productItemContainer}>
+        {/* Navigation Header */}
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: SIZES.radius,
+            height: 65,
+            alignItems: 'flex-end',
+          }}>
+          <TouchableOpacity
+            style={{marginLeft: SIZES.base}}
+            onPress={() => navigation.goBack()}>
             <Image
-              source={{uri: item.logoImage}} // it says name of image in club model
+              source={icons.left_arrow}
+              resizeMode="contain"
               style={{
-                height: ITEM_HEIGHT,
-                width: ITEM_WIDTH,
-                borderRadius: SIZES.radius,
+                width: 25,
+                height: 25,
+                tintColor: COLORS.black,
               }}
             />
-            </View>
+          </TouchableOpacity>
+          <View
+            style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <McText h3 color={'black'}>
+              Multicultural Clubs
+            </McText>
           </View>
-      <View style={{ backgroundcolor: 'black', marginLeft: '30%'}}>
-      <TouchableOpacity
-             style={{marginLeft: "70%",
-             borderRadius: '50/2',
-             borderColor: "#000000",
-             borderWidth: "1px",
-             justifyContent: "center",
-             alignItems: "center",
-             marginRight: "10%", 
-              }}
+          <TouchableOpacity
+            style={{marginRight: SIZES.base}}
             onPress={() => navigation.navigate('UpdateClubs')}>
-      <Image
-            source={icons.Pencil}
-            style={{
-              height: 30,
-              width: 30,
-            }}
+            <Image
+              source={icons.menu_dots}
+              resizeMode="contain"
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: COLORS.black,
+                alignSelf: 'flex-end',
+              }}
             />
-      </TouchableOpacity>
-      </View>
-        <View style={{alignItems:'center'}}>
-        <McText h1>{item.name}</McText>
-        <McText></McText>
-        <McText styles={styles.primaryColor} h2>About This Club</McText>
-        <McText> </McText>
-        <McText style={{marginLeft: 20, marginRight:10 }} body3> {item.missionStatement}</McText>
-        <McText></McText>
-        <McText style={styles.descText}> Instagram Page: @ {item.instagram}</McText>
+          </TouchableOpacity>
         </View>
+        {/* Club Logo */}
+        <ImageBackground
+          resizeMode="contain"
+          source={{uri: item.logoImage}}
+          style={{
+            marginTop: 24,
+            width: SIZES.width,
+            height: SIZES.height / 2.5,
+          }}
+        />
+        {/* Description */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 15,
+            paddingHorizontal: 16,
+          }}>
+          <View>
+            <McText body3 style={{opacity: 0.5, letterSpacing: 1.5}}>
+              {item.acronym}
+            </McText>
+            <McText h2 style={{letterSpacing: 1.5}}>
+              {item.name}
+            </McText>
+            <McText
+              body3
+              style={{opacity: 0.8, letterSpacing: 1.5, marginVertical: 12}}>
+              {item.bio}
+            </McText>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.clock}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.meetingDays} | {item.meetingTimes}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.insta}
+                style={{
+                  width: 14,
+                  height: 14,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.instagram}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.email}
+                style={{
+                  width: 14,
+                  height: 14,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.email}
+              </McText>
+            </View>
+            <McText h3 style={{marginTop: 16}}>
+              Mission
+            </McText>
+            <McText body3 style={{marginTop: 8}}>
+              {item.missionStatement}
+            </McText>
+          </View>
+        </View>
+        <View style={{paddingBottom: '20%'}} />
+        <View />
       </ScrollView>
+    </View>
   );
 };
-
-
 
 export default Club;

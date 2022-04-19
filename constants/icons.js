@@ -14,6 +14,14 @@ const search = require('../assets/icons/search_icon.png');
 const home = require('../assets/icons/home.png');
 const filter = require('../assets/icons/filter_icon.png');
 const Pencil = require('../assets/icons/Pencil.png');
+const user = require('../assets/icons/user.png');
+const menu_dots = require('../assets/icons/menu_dots.png');
+const clock = require('../assets/icons/clock.png');
+const heart_filled = require('../assets/icons/heart_filled.png');
+const heart_outlined = require('../assets/icons/heart_outlined.png');
+const insta = require('../assets/icons/insta.png');
+const email = require('../assets/icons/email.png');
+const phone = require('../assets/icons/phone.png');
 const password = require('../assets/icons/password.png');
 const profile = require('../assets/icons/profile.png');
 const feedback = require('../assets/icons/feedback.png');
@@ -38,6 +46,14 @@ export default {
   home,
   filter,
   Pencil,
+  user,
+  menu_dots,
+  clock,
+  heart_filled,
+  heart_outlined,
+  insta,
+  email,
+  phone,
   password,
   profile,
   feedback,
