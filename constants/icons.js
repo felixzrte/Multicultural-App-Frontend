@@ -19,6 +19,8 @@ const menu_dots = require('../assets/icons/menu_dots.png');
 const clock = require('../assets/icons/clock.png');
 const heart_filled = require('../assets/icons/heart_filled.png');
 const heart_outlined = require('../assets/icons/heart_outlined.png');
+const insta = require('../assets/icons/insta.png');
+const email = require('../assets/icons/email.png');
 
 export default {
   aeroplane,
@@ -42,4 +44,6 @@ export default {
   clock,
   heart_filled,
   heart_outlined,
+  insta,
+  email,
 };

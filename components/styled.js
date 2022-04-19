@@ -41,12 +41,12 @@ const McText = styled.Text`
 `;
 
 const McIcon = styled.Image`
-  width: ${(props) => (props.size ? props.size : 16)};
-  height: ${(props) => (props.size ? props.size : 16)};
+  width: ${(props) => (props.size ? props.size : 16 + 'px')};
+  height: ${(props) => (props.size ? props.size : 16 + 'px')};
 `;
 const McAvatar = styled.Image`
-  width: ${(props) => (props.size ? props.size : 40)};
-  height: ${(props) => (props.size ? props.size : 40)};
+  width: ${(props) => (props.size ? props.size : 40 + 'px')};
+  height: ${(props) => (props.size ? props.size : 40 + 'px')};
 `;
 
 export {McText, McIcon, McAvatar};
