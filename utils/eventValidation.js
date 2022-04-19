@@ -10,17 +10,17 @@ const checkEmpty = (val, key) => {
 };
 
 export default function (data) {
-  const {club, eventName, date, desc, location, image, extraNotes} = data;
+  const {club, eventName, date, desc, location, pic, extraNotes, slug} = data;
   
-  if (image !== undefined) {
+  if (pic !== undefined) {
     let emptyValidationText = checkEmpty(
-      image,
-        'Please enter an image for the event',
+      pic,
+      'Please enter a picture for your event',
     );
     if (emptyValidationText !== '') {
-        return emptyValidationText;
+      return emptyValidationText;
     }
-}
+  }
 
   if (club !== undefined) {
     let emptyValidationText = checkEmpty(
@@ -84,6 +84,16 @@ if (location !== undefined) {
     if (emptyValidationText !== '') {
         return emptyValidationText;
     }
+}
+
+if (slug !== undefined) {
+  let emptyValidationText = checkEmpty(
+    slug,
+      'Please enter the slug',
+  );
+  if (emptyValidationText !== '') {
+      return emptyValidationText;
+  }
 }
 
 }
