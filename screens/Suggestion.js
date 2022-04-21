@@ -26,6 +26,7 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
+  StyledTextInputNoPadding
   } from '../constants/styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -42,7 +43,7 @@ import {showMessage} from 'react-native-flash-message';
 import axios from 'axios';
 
 const Suggestion = ({navigation}) => {
-  const startReload = ()=> Restart();
+  const startReload = ()=> DevSettings.reload()
 
   const [name, setname] = useState('');
   const [suggestion, setsuggestion] = useState('');
@@ -117,12 +118,12 @@ const Suggestion = ({navigation}) => {
                 Enter a Suggestion:
               </McText>
               <View style={{margin: "5%"}}>
-              <UpdateInput
+              <StyledTextInputNoPadding
               placeholder="Name"
               placeholderTextColor={COLORS.gray}
               value={name} onChangeText={text => setname(text)}
             />
-              <UpdateInput
+              <StyledTextInputNoPadding
               placeholder="Suggestion"
               placeholderTextColor={COLORS.gray}
               value={suggestion} onChangeText={text => setsuggestion(text)}
