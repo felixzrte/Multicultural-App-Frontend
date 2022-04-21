@@ -49,9 +49,8 @@ import KeyboardAvoidingWrapper from '../constants/KeyboardAvoidingWrapper';
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 
 const Suggestion = ({navigation}) => {
-  
 
-
+  const startReload = ()=> DevSettings.reload()
 
   const [name, setname] = useState('');
   const [suggestion, setsuggestion] = useState('');

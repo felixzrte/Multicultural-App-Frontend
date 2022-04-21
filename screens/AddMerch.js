@@ -35,7 +35,7 @@ import AddStyles, {headerText, menuContent} from '../components/AddStyles';
 
 const AddMerch = ({navigation}) => {
 
-  const startReload = ()=> Restart();
+  const startReload = ()=> DevSettings.reload()
 
   const [merchItemName, setMerchItemName] = useState('');
   const [merchItemPrice, setMerchItemPrice] = useState('');
@@ -228,6 +228,7 @@ const pickImage = async () => {
             <StyledTextInputNoPadding placeholder="Enter Numbers of Larges" value={numLarge} onChangeText={text => setNumLarge(text)}></StyledTextInputNoPadding>
 
             <CustomButton onPress={() => submitMerch(merchItemName, merchItemPrice, pic, club, contactEmail, contactNumber, description, numSmall, numMedium, numLarge)} text="Add New Merch Item"/>
+
 
             <Line />
           </StyledFormArea>
