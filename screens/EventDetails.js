@@ -10,15 +10,26 @@ import {
   Logo,
   ImageBackground,
   TouchableOpacity,
+  useWindowDimensions,
+  DevSettings
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText, CustomButton} from '../components';
 import moment from 'moment';
 import {LinearGradient} from 'expo-linear-gradient';
 import {BottomBarSection, Line} from '../constants/styles';
+import RNRestart from 'react-native-restart';
+
+
+
+
+
 
 const EventDetails = ({route, navigation}) => {
+
+
   const {item} = route.params;
+  const startReload = ()=> DevSettings.reload()
 
   return (
     <View>
@@ -211,6 +222,19 @@ const EventDetails = ({route, navigation}) => {
             <McText h3 color={'white'} style={{letterSpacing: 1.5}}>
               Sign Up For Event
             </McText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              height: SIZES.width / 6,
+              backgroundColor: COLORS.blue,
+              marginHorizontal: 16,
+              marginVertical: SIZES.base,
+              borderRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }} onPress={startReload} >
+          <McText h3>Click to reload!</McText>
           </TouchableOpacity>
         </View>
       </BottomBarSection>

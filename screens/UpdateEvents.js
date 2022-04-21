@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions} from 'react-native';
+import {View, StyleSheet, Image, Text, TextInput, useWindowDimensions, button,} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
@@ -31,10 +31,11 @@ import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 import axios from 'axios';
+import RNRestart from 'react-native-restart';
 
 
 const UpdateEvents = ({navigation}) => {
-  const startReload = ()=> Restart();
+  const startReload = ()=> RNRestart.Restart();
 
   const [club, setclub] = useState('');
   const [eventName, seteventName] = useState('');
@@ -170,6 +171,7 @@ const UpdateEvents = ({navigation}) => {
             <View style={{marginTop: "5%"}}>
             </View>
             <CustomButton onPress={() => submitEvent(club, eventName, date, desc, location, attendence, image, favorite, extraNotes)} text="Submit Event"/>
+            <button onClick={startReload}>Click to reload!</button>
             <Line />
           </StyledFormArea>
         </InnerContainer>
