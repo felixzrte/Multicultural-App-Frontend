@@ -11,11 +11,14 @@ import * as Font from 'expo-font';
 
 import {customFonts} from './constants';
 import {COLORS} from './constants';
-import Navigation from './navigation/Navigation';
-import {AuthProvider} from './context/AuthContext';
+import Route from './navigation/Route';
+import FlashMessage from 'react-native-flash-message';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
   const [assetsLoaded, setAssetLoaded] = useState(false);
+
   /* Loading custom fonts in async */
   const _loadAssetsAsync = async () => {
     await Font.loadAsync(customFonts);
@@ -26,9 +29,10 @@ export default function App() {
     _loadAssetsAsync();
   });
   return assetsLoaded ? (
-    <AuthProvider>
-      <Navigation />
-    </AuthProvider>
+    <Provider store={store}>
+      <Route />
+      <FlashMessage position="top" />
+    </Provider>
   ) : (
     <ActivityIndicator size="small" />
   );
