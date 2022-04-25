@@ -178,7 +178,7 @@ const Home = ({navigation}) => {
             renderItem={renderAnnouncementItem}
           />
         </View>
-         <View style={{flexDirection: 'row'}}>
+         {/* <View style={{flexDirection: 'row'}}>
           <McText style={{textAlign: 'left'}} h2>
             Announcements
           </McText>
@@ -188,7 +188,7 @@ const Home = ({navigation}) => {
             h1>
             +
           </McText>
-        </View> 
+        </View>  */}
         {/* Clubs Section */}
         <Header2Section>
           <View style={{flexDirection: 'row'}}>

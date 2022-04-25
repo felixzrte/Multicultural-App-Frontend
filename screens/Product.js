@@ -137,49 +137,9 @@ const Product = ({route, navigation}) => {
             </View>
           </View>
         </View>
-        <View style={{paddingBottom: '35%'}} />
+        <View style={{paddingBottom: '20%'}} />
         <View />
       </ScrollView>
-      <BottomBarSection>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <TouchableOpacity
-            style={{
-              width: SIZES.width / 6,
-              height: SIZES.width / 6,
-              backgroundColor: COLORS.blue,
-              marginLeft: 16,
-              marginVertical: SIZES.base,
-              borderRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Image
-              source={icons.heart_outlined}
-              resizeMode="contain"
-              style={{
-                width: SIZES.width,
-                height: SIZES.width / 10,
-                tintColor: COLORS.white,
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              height: SIZES.width / 6,
-              width: SIZES.width / 1.42,
-              backgroundColor: COLORS.blue,
-              marginHorizontal: 16,
-              marginVertical: SIZES.base,
-              borderRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <McText h3 color={'white'} style={{letterSpacing: 1.5}}>
-              Request Product
-            </McText>
-          </TouchableOpacity>
-        </View>
-      </BottomBarSection>
     </View>
   );
 };
