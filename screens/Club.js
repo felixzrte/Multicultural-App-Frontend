@@ -59,7 +59,7 @@ const Club = ({route, navigation}) => {
               style={{
                 width: 25,
                 height: 25,
-                tintColor: COLORS.black,
+                tintColor: 'transparent',
                 alignSelf: 'flex-end',
               }}
             />
@@ -112,6 +112,25 @@ const Club = ({route, navigation}) => {
               />
               <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
                 {item.meetingDays} | {item.meetingTimes}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
+                source={icons.maps}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.location}
               </McText>
             </View>
             <View
