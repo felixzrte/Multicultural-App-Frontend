@@ -22,7 +22,12 @@ const heart_outlined = require('../assets/icons/heart_outlined.png');
 const insta = require('../assets/icons/insta.png');
 const email = require('../assets/icons/email.png');
 const phone = require('../assets/icons/phone.png');
-
+const password = require('../assets/icons/password.png');
+const profile = require('../assets/icons/profile.png');
+const feedback = require('../assets/icons/feedback.png');
+const resouces = require('../assets/icons/resouces.png');
+const about = require('../assets/icons/about.png');
+const mainpic = require('../assets/icons/mainpic.png');
 
 export default {
   aeroplane,
@@ -49,4 +54,11 @@ export default {
   insta,
   email,
   phone,
+  password,
+  profile,
+  feedback,
+  resouces,
+  about,
+  mainpic,
+
 };

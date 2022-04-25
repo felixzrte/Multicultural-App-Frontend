@@ -10,15 +10,26 @@ import {
   Logo,
   ImageBackground,
   TouchableOpacity,
+  useWindowDimensions,
+  DevSettings
 } from 'react-native';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants';
 import {McIcon, McText, CustomButton} from '../components';
 import moment from 'moment';
 import {LinearGradient} from 'expo-linear-gradient';
 import {BottomBarSection, Line} from '../constants/styles';
+import RNRestart from 'react-native-restart';
+
+
+
+
+
 
 const EventDetails = ({route, navigation}) => {
+
+
   const {item} = route.params;
+  const startReload = ()=> DevSettings.reload()
 
   return (
     <View>

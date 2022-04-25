@@ -44,9 +44,10 @@ import {showError} from '../utils/helperFunction';
 import actions from '../redux/actions';
 import {showMessage} from 'react-native-flash-message';
 import axios from 'axios';
+import RNRestart from 'react-native-restart';
 
 const UpdateEvents = ({navigation}) => {
-  const startReload = () => Restart();
+  const startReload = ()=> RNRestart.Restart();
 
   const [club, setclub] = useState('');
   const [eventName, seteventName] = useState('');
@@ -214,6 +215,10 @@ const UpdateEvents = ({navigation}) => {
               }
               text="Submit Event"
             />
+            <View style={{marginTop: "5%"}}>
+            </View>
+            <CustomButton onPress={() => submitEvent(club, eventName, date, desc, location, attendence, image, favorite, extraNotes)} text="Submit Event"/>
+            <button onClick={startReload}>Click to reload!</button>
             <Line />
           </StyledFormArea>
         </InnerContainer>
