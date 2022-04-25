@@ -251,9 +251,8 @@ export const AnnouncementItemBox = styled.View`
 
 export const BottomBarSection = styled.View`
   height: 12%;
-  width: ${SIZES.width + 'px'};
-  border-top-left-radius: ${SIZES.radius + 'px'};
-  border-top-right-radius: ${SIZES.radius + 'px'};
+  width: ${SIZES.width / 4 + 'px'};
+  border-radius: ${SIZES.radius + 'px'};
   background-color: #d3d3d3;
   position: absolute;
   bottom: 0px;

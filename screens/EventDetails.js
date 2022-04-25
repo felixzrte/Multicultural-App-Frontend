@@ -178,7 +178,9 @@ const EventDetails = ({route, navigation}) => {
             <McText h3 style={{marginTop: 16}}>
               Extra Notes
             </McText>
-            <McText style={{marginTop: 8}}>{item.extraNotes}</McText>
+            <McText style={{marginTop: 8}} body4>
+              {item.extraNotes}
+            </McText>
           </View>
         </View>
         <View style={{paddingBottom: '65%'}} />
@@ -207,34 +209,6 @@ const EventDetails = ({route, navigation}) => {
                 tintColor: COLORS.white,
               }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              height: SIZES.width / 6,
-              backgroundColor: COLORS.blue,
-              marginHorizontal: 16,
-              marginVertical: SIZES.base,
-              borderRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <McText h3 color={'white'} style={{letterSpacing: 1.5}}>
-              Sign Up For Event
-            </McText>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              height: SIZES.width / 6,
-              backgroundColor: COLORS.blue,
-              marginHorizontal: 16,
-              marginVertical: SIZES.base,
-              borderRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }} onPress={startReload} >
-          <McText h3>Click to reload!</McText>
           </TouchableOpacity>
         </View>
       </BottomBarSection>

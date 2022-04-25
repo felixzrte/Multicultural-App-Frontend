@@ -59,7 +59,7 @@ const Club = ({route, navigation}) => {
               style={{
                 width: 25,
                 height: 25,
-                tintColor: COLORS.black,
+                tintColor: 'transparent',
                 alignSelf: 'flex-end',
               }}
             />
@@ -121,6 +121,25 @@ const Club = ({route, navigation}) => {
                 marginTop: 5,
               }}>
               <Image
+                source={icons.maps}
+                style={{
+                  width: 12,
+                  height: 12,
+                  marginRight: 8,
+                  opacity: 0.65,
+                }}
+              />
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
+                {item.location}
+              </McText>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 5,
+              }}>
+              <Image
                 source={icons.insta}
                 style={{
                   width: 14,
@@ -129,7 +148,7 @@ const Club = ({route, navigation}) => {
                   opacity: 0.65,
                 }}
               />
-              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
                 {item.instagram}
               </McText>
             </View>
@@ -148,14 +167,14 @@ const Club = ({route, navigation}) => {
                   opacity: 0.65,
                 }}
               />
-              <McText body3 style={{opacity: 0.65, letterSpacing: 1.5}}>
+              <McText body4 style={{opacity: 0.65, letterSpacing: 1.5}}>
                 {item.email}
               </McText>
             </View>
             <McText h3 style={{marginTop: 16}}>
               Mission
             </McText>
-            <McText body3 style={{marginTop: 8}}>
+            <McText body4 style={{marginTop: 8}}>
               {item.missionStatement}
             </McText>
           </View>
