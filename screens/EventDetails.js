@@ -98,7 +98,7 @@ const EventDetails = ({route, navigation}) => {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: COLORS.white,
+                  tintColor: 'transparent',
                   alignSelf: 'flex-end',
                 }}
               />

@@ -70,12 +70,12 @@ const Merch = ({navigation}) => {
                 }}
               />
               <View style={styles.headerContainer}>
-                <McText h1 numberOfLines={1}>
+                <McText h2 style={{marginTop: 8}}>
                   {item.merchItemName}
                 </McText>
               </View>
               <View style={styles.headerContainer}>
-                <McText body2 color={COLORS.gray1} numberOfLines={1}>
+                <McText body2 style={{marginBottom: 8, opacity: 0.7}}>
                   ${item.merchItemPrice}
                 </McText>
               </View>
@@ -94,7 +94,7 @@ const Merch = ({navigation}) => {
           <McText h1>Merch</McText>
           <View style={{flexDirection: 'row'}}>
             <McText
-              style={{marginTop: 10, textAlign: 'left'}}
+              style={{marginTop: 8, textAlign: 'left'}}
               body4
               color="gray">
               Explore all the different club merchandise!
@@ -109,7 +109,7 @@ const Merch = ({navigation}) => {
                 right: 0,
               }}
               h1
-              color="gray">
+              color="black">
               +
             </McText>
           </View>

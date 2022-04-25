@@ -17,7 +17,7 @@ export const COLORS = {
   black: '#000000',
   tabBar: '#121212',
   input: '#1D1D1D',
-  blue: '#4096FE',
+  blue: '#4C4498',
   gray: '#878787',
   gray1: '#666666',
   lightGray: '#F9FBFC',
