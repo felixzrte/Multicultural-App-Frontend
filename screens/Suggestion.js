@@ -52,10 +52,12 @@ import {
 } from 'react-native-popup-menu';
 
 const Suggestion = ({navigation}) => {
+
   const startReload = () => DevSettings.reload();
 
   const [name, setname] = useState('');
   const [suggestion, setsuggestion] = useState('');
+  const [club, setClub] = useState('');
 
   const isValidData = () => {
     const error = validator({
@@ -115,12 +117,13 @@ const Suggestion = ({navigation}) => {
             <InnerContainer>
               <StyledFormArea>
                 <MenuProvider style={{}}>
-                  <Menu onSelect={(value) => alert(`You Clicked : ${value}`)}>
+                  <Menu onSelect={text => setClub(text)}>
                     <MenuTrigger>
                       <McText style={AddStyles.headerText}>
-                        Select A Club
+                        Select A Club: 
                       </McText>
                     </MenuTrigger>
+                    <McText>{club}</McText>
                     {/* <McText>
                       Club: <McText>JOE ENTER YOUR CLUB VARIABLE HERE</McText>
                     </McText> */}
