@@ -109,7 +109,6 @@ const Suggestion = ({navigation}) => {
           </View>
           <Line />
         </HeaderSection>
-
         <KeyboardAvoidingWrapper>
           <StyledContainer>
             <InnerContainer>
@@ -117,7 +116,7 @@ const Suggestion = ({navigation}) => {
                 <MenuProvider style={{}}>
                   <Menu onSelect={(value) => alert(`You Clicked : ${value}`)}>
                     <MenuTrigger>
-                      <McText style={AddStyles.headerText}>
+                      <McText h2 style={{marginTop: 100}}>
                         Select A Club
                       </McText>
                     </MenuTrigger>
@@ -151,7 +150,11 @@ const Suggestion = ({navigation}) => {
                   </Menu>
 
                   <McText
-                    style={{marginBottom: '5%', marginTop: '5%', opacity: 0.6}}>
+                    style={{
+                      marginBottom: '5%',
+                      marginTop: '5%',
+                      opacity: 0.6,
+                    }}>
                     Feel free to be completly honest all of your feedback is
                     submitted anonymously!
                   </McText>

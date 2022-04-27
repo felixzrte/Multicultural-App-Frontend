@@ -8,6 +8,7 @@ import {
   RightIcon,
 } from '../constants/styles';
 import {Octicons, Ionicons} from '@expo/vector-icons';
+import { McText } from './styled';
 
 const CustomInput = ({
   label,
@@ -22,7 +23,7 @@ const CustomInput = ({
       <LeftIcon>
         <Octicons name={icon} size={30} color={COLORS.blue} />
       </LeftIcon>
-      <StyledInputLabel>{label}</StyledInputLabel>
+      <McText body3>{label}</McText>
       <StyledTextInput {...props} />
       {isPassword && (
         <RightIcon onPress={() => setHidePassword(!hidePassword)}>
