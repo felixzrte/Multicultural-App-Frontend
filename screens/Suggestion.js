@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import DropdownMenu from 'react-native-dropdown-menu';
 
@@ -52,7 +53,6 @@ import {
 } from 'react-native-popup-menu';
 
 const Suggestion = ({navigation}) => {
-
   const startReload = () => DevSettings.reload();
 
   const [name, setname] = useState('');
@@ -97,6 +97,19 @@ const Suggestion = ({navigation}) => {
   return (
     <Container>
       <ScrollView>
+        <TouchableOpacity
+          style={{marginLeft: 16}}
+          onPress={() => navigation.goBack()}>
+          <Image
+            source={icons.left_arrow}
+            resizeMode="contain"
+            style={{
+              width: 25,
+              height: 25,
+              tintColor: COLORS.black,
+            }}
+          />
+        </TouchableOpacity>
         <HeaderSection>
           <McText h1 style={{marginBottom: '-2%'}}>
             Suggestions
@@ -116,7 +129,7 @@ const Suggestion = ({navigation}) => {
             <InnerContainer>
               <StyledFormArea>
                 <MenuProvider style={{}}>
-                  <Menu onSelect={text => setClub(text)}>
+                  <Menu onSelect={(text) => setClub(text)}>
                     <MenuTrigger>
                       <McText h2 style={{marginTop: 100}}>
                         Select A Club

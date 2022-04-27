@@ -57,7 +57,7 @@ const Product = ({route, navigation}) => {
               style={{
                 width: 25,
                 height: 25,
-                tintColor: COLORS.black,
+                tintColor: 'transparent',
                 alignSelf: 'flex-end',
               }}
             />

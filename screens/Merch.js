@@ -90,6 +90,19 @@ const Merch = ({navigation}) => {
     <Container>
       <ScrollView>
         {/* Header Section */}
+        <TouchableOpacity
+          style={{marginLeft: 16}}
+          onPress={() => navigation.goBack()}>
+          <Image
+            source={icons.left_arrow}
+            resizeMode="contain"
+            style={{
+              width: 25,
+              height: 25,
+              tintColor: COLORS.black,
+            }}
+          />
+        </TouchableOpacity>
         <HeaderSection>
           <McText h1>Merch</McText>
           <View style={{flexDirection: 'row'}}>
@@ -100,7 +113,7 @@ const Merch = ({navigation}) => {
               Explore all the different club merchandise!
             </McText>
 
-            <McText
+            {/* <McText
               onPress={() => navigation.navigate('AddMerch')}
               style={{
                 marginTop: 0,
@@ -111,7 +124,7 @@ const Merch = ({navigation}) => {
               h1
               color="black">
               +
-            </McText>
+            </McText> */}
           </View>
           <Line />
         </HeaderSection>
