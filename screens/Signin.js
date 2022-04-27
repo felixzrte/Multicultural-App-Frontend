@@ -39,7 +39,7 @@ const Signin = ({navigation}) => {
             resizeMode="cover"
             source={images.mcc}
           />
-          <SubTitle>Account Login</SubTitle>
+          <McText h3>Account Login</McText>
           <StyledFormArea>
             <CustomInput
               label="Email Address"
@@ -66,9 +66,9 @@ const Signin = ({navigation}) => {
             <CustomButton text="LOGIN" onPress={() => login(email, password)} />
             <Line />
             <ExtraView>
-              <ExtraText>Don't Have An Account? </ExtraText>
+              <McText body3>Don't Have An Account? </McText>
               <TextLink onPress={() => navigation.navigate('Signup')}>
-                <TextLinkContent>Register</TextLinkContent>
+                <McText body3 color={COLORS.blue}>Register</McText>
               </TextLink>
             </ExtraView>
           </StyledFormArea>

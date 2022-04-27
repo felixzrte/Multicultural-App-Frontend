@@ -47,7 +47,7 @@ const Signup = ({navigation}) => {
             resizeMode="cover"
             source={images.mcc}
           />
-          <SubTitle>Create An Account</SubTitle>
+          <McText h3>Create An Account</McText>
           <StyledFormArea>
             <CustomInput
               label="Full Name"
@@ -99,9 +99,11 @@ const Signup = ({navigation}) => {
             />
             <Line />
             <ExtraView>
-              <ExtraText>Already Have An Account? </ExtraText>
+              <McText body3>Already Have An Account? </McText>
               <TextLink onPress={() => navigation.navigate('Signin')}>
-                <TextLinkContent>Login</TextLinkContent>
+                <McText body3 color={COLORS.blue}>
+                  Login
+                </McText>
               </TextLink>
             </ExtraView>
           </StyledFormArea>
